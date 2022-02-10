@@ -1,0 +1,1 @@
+yes y|buildozer android debug deploy run
