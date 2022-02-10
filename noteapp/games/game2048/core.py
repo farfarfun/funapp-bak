@@ -10,6 +10,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen, ScreenManager
+from noteapp.games.base import GameApp
 
 tile_color_map = {
     0: (0, 0.3, 0, 1),
@@ -377,7 +378,7 @@ class Game(Screen):
         self.manager.current = 'menu'
 
 
-class GameApp(App):
+class Game2048App(GameApp):
     def build(self):
         sm = ScreenManager()
         menu = Menu(name='menu')
