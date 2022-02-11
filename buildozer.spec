@@ -38,7 +38,7 @@ version = 0.9
 requirements = python3,noteapp,kivy==2.0.0
 
 # (str) Custom source folders for requirements Sets custom source for any requirements with recipes
-# requirements.source.kivy = ../../kivy
+requirements.source.kivy = ../noteapp
 
 # (list) Garden requirements
 #garden_requirements =
@@ -284,7 +284,7 @@ warn_on_root = 1
 build_dir = /home/bingtao/opt/.buildozer
 
 # (str) Path to build output (i.e. .apk, .ipa) storage
-bin_dir = ../bin
+bin_dir = ./bin
 
 #    -----------------------------------------------------------------------------
 #    List as sections
