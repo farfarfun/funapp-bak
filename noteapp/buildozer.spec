@@ -19,10 +19,10 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
-#source.exclude_exts = spec
+#source.exclude_exts = spec,setup.py
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin
+#source.exclude_dirs = tests, bin, example
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
@@ -35,10 +35,10 @@ version = 0.9
 # version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,noteapp,kivy==2.0.0
+requirements = python3,kivy==2.0.0
 
 # (str) Custom source folders for requirements Sets custom source for any requirements with recipes
-# requirements.source.kivy = ../../kivy
+requirements.source.kivy = ../noteapp
 
 # (list) Garden requirements
 #garden_requirements =
@@ -160,14 +160,14 @@ android.minapi = 28
 # android.add_compile_options = "sourceCompatibility = 1.8", "targetCompatibility = 1.8"
 
 # (list) Gradle repositories to add {can be necessary for some android.gradle_dependencies}
-# please enclose in double quotes 
+# please enclose in double quotes
 # e.g. android.gradle_repositories = "maven { url 'https://kotlin.bintray.com/ktor' }"
 #android.add_gradle_repositories =
 
-# (list) packaging options to add 
+# (list) packaging options to add
 # see https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.PackagingOptions.html
 # can be necessary to solve conflicts in gradle_dependencies
-# please enclose in double quotes 
+# please enclose in double quotes
 # e.g. android.add_packaging_options = "exclude 'META-INF/common.kotlin_module'", "exclude 'META-INF/*.kotlin_module'"
 #android.add_gradle_repositories =
 
@@ -284,7 +284,7 @@ warn_on_root = 1
 build_dir = /home/bingtao/opt/.buildozer
 
 # (str) Path to build output (i.e. .apk, .ipa) storage
-bin_dir = ../bin
+bin_dir = ./bin
 
 #    -----------------------------------------------------------------------------
 #    List as sections
