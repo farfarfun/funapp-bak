@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = My Application
+title = notechats
 
 # (str) Package name
-package.name = myapp
+package.name = noteapp
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -28,18 +28,16 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.7
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
 # version.filename = %(source.dir)s/main.py
 
-# (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy
+# (list) Application requirements comma separated e.g. requirements = sqlite3,kivy
+requirements = python3,noteapp,kivy==2.0.0
 
-# (str) Custom source folders for requirements
-# Sets custom source for any requirements with recipes
+# (str) Custom source folders for requirements Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
 # (list) Garden requirements
@@ -57,11 +55,9 @@ orientation = portrait
 # (list) List of service to declare
 #services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
 
-#
+# ########################################################################################################
 # OSX Specific
-#
-
-#
+# ########################################################################################################
 # author = © Copyright Info
 
 # change the major version of python used by the app
@@ -70,9 +66,9 @@ osx.python_version = 3
 # Kivy version to use
 osx.kivy_version = 1.9.1
 
-#
+# ########################################################################################################
 # Android specific
-#
+# ########################################################################################################
 
 # (bool) Indicate if the application should be fullscreen or not
 fullscreen = 0
@@ -85,13 +81,13 @@ fullscreen = 0
 #android.presplash_color = #FFFFFF
 
 # (list) Permissions
-#android.permissions = INTERNET
+android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 27
+android.api = 30
 
 # (int) Minimum API your APK will support.
-#android.minapi = 21
+android.minapi = 28
 
 # (int) Android SDK version to use
 #android.sdk = 20
@@ -219,15 +215,15 @@ fullscreen = 0
 #android.copy_libs = 1
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.arch = armeabi-v7a
+android.arch = arm64-v8a
 
 # (int) overrides automatic versionCode computation (used in build.gradle)
 # this is not the same as app version and should only be edited if you know what you're doing
 # android.numeric_version = 1
 
-#
+# ########################################################################################################
 # Python for android (p4a) specific
-#
+# ########################################################################################################
 
 # (str) python-for-android fork to use, defaults to upstream (kivy)
 #p4a.fork = kivy
@@ -251,9 +247,9 @@ android.arch = armeabi-v7a
 #p4a.port =
 
 
-#
+# ########################################################################################################
 # iOS specific
-#
+# ########################################################################################################
 
 # (str) Path to a custom kivy-ios folder
 #ios.kivy_ios_dir = ../kivy-ios
@@ -288,7 +284,7 @@ warn_on_root = 1
 build_dir = /home/bingtao/opt/.buildozer
 
 # (str) Path to build output (i.e. .apk, .ipa) storage
-# bin_dir = ./bin
+bin_dir = ../bin
 
 #    -----------------------------------------------------------------------------
 #    List as sections
