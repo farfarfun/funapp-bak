@@ -9,7 +9,7 @@ class SampleApp(App):
         text = 'Hello World'
         try:
             from noteapp.screen import main_screen
-            main_screen
+            main_screen()
         except Exception as e:
             text = f"error:{e}"
         text += f"\n{os.listdir()}"

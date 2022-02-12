@@ -28,14 +28,14 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.0.9
+version = 0.0.10
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
 # version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, kivy==2.0.0, ffpyplayer, git+https://github.com/notechats/noteapp.git
+requirements = python3, kivy==2.0.0, numpy, pandas, ffpyplayer, git+https://github.com/notechats/noteapp.git
 
 # (str) Custom source folders for requirements Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../noteapp
