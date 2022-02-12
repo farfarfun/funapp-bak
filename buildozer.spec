@@ -4,7 +4,7 @@
 title = notechats
 
 # (str) Package name
-package.name = noteapp
+package.name = notechats
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -28,17 +28,17 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.9
+version = 0.0.4
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
 # version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0
+requirements = python3,noteapp,kivy==2.0.0
 
 # (str) Custom source folders for requirements Sets custom source for any requirements with recipes
-requirements.source.kivy = ../noteapp
+# requirements.source.kivy = ../noteapp
 
 # (list) Garden requirements
 #garden_requirements =
@@ -246,6 +246,7 @@ android.arch = arm64-v8a
 # (int) port number to specify an explicit --port= p4a argument (eg for bootstrap flask)
 #p4a.port =
 
+p4a.setup_py = false
 
 # ########################################################################################################
 # iOS specific

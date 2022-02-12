@@ -1,4 +1,4 @@
-cd noteapp
+# cd noteapp
 # yes y|buildozer android clean
 # yes y|buildozer android update
 # yes y|buildozer android deploy
@@ -6,4 +6,4 @@ cd noteapp
 # yes y|buildozer android release
 
 
-yes y|buildozer android debug deploy
+yes y|buildozer android debug deploy --ignore-setup-py
