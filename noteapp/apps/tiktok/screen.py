@@ -1,3 +1,5 @@
+import os
+
 from kivy.core.window import Window
 from kivy.metrics import dp
 from kivy.uix.screenmanager import FadeTransition, Screen, ScreenManager
@@ -11,6 +13,7 @@ from noteapp.utils.widget import widget_wrap
 
 
 class TiktokScreen(Screen):
+    assets = "./assets"
 
     def __init__(self, data: DataGenerate = None, **kwargs):
         self.data = data or DefaultGenerate()
@@ -32,7 +35,9 @@ class TiktokScreen(Screen):
             widget_wrap(Screen(name='inbox'), MDLabel(text='Inbox', halign='center')),
             widget_wrap(Screen(name='profile'), MDLabel(text='Profile', halign='center')))
 
-        layout12 = widget_wrap(MDBoxLayout(size_hint_y=None, height='50dp'), NavBar(screen_manager=layout11))
+        layout12 = widget_wrap(MDBoxLayout(size_hint_y=None, height='50dp'), NavBar(
+            image_source=os.path.join(self.assets, 'img/tiktok/plus.png'),
+            screen_manager=layout11))
 
         layout1.add_widget(layout11)
         layout1.add_widget(layout12)
@@ -45,8 +50,8 @@ class TiktokScreen(Screen):
             MDTextButton(text='Following', font_size='16sp', theme_text_color='Custom', text_color=[1, 1, 1, 1],
                          bold=True)
         )
-        self.add_widget(layout1)
-        self.add_widget(layout2)
+        self.layout.add_widget(layout1)
+        self.layout.add_widget(layout2)
 
     def on_enter(self, *args):
         for i in range(10):
