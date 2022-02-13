@@ -1,7 +1,6 @@
 """
 
 """
-from abc import ABC
 
 from kivy.metrics import dp
 from kivy.properties import ObjectProperty
@@ -17,7 +16,7 @@ from kivymd.utils.fitimage import FitImage
 from noteapp.utils.widget import widget_wrap
 
 
-class ProfileImg(MDFloatLayout, ABC):
+class ProfileImg(MDFloatLayout):
 
     def __init__(self, size_hint=(None, None), size=('50dp', '50dp'), radius='25dp', md_bg_color=None, img='',
                  **kwargs):
@@ -36,7 +35,7 @@ class ProfileImg(MDFloatLayout, ABC):
                                 halign='center', bold=True))
 
 
-class AlbumImg(MDFloatLayout, ABC):
+class AlbumImg(MDFloatLayout):
     def __init__(self, size_hint=(None, None), size=(50, 50), radius=25, md_bg_color=None, img='', **kwargs):
         super(AlbumImg, self).__init__(**kwargs)
         self.size_hint = size_hint
@@ -48,7 +47,7 @@ class AlbumImg(MDFloatLayout, ABC):
                                  center=self.center))
 
 
-class NavBar(MDBoxLayout, ABC):
+class NavBar(MDBoxLayout):
     def __init__(self, image_source="", md_bg_color=None, orientation='vertical', height=dp(50),
                  size_hint_y=None, screen_manager=None, **kwargs):
         self.md_bg_color = md_bg_color or [0, 0, 0, 1]
@@ -69,7 +68,7 @@ class NavBar(MDBoxLayout, ABC):
         self.add_widget(MDBoxLayout(size_hint_y=None, height='5dp'))
 
 
-class NavIcon(ButtonBehavior, MDBoxLayout, ABC):
+class NavIcon(ButtonBehavior, MDBoxLayout):
     def __init__(self, icon='', text='', orientation='vertical', text_size='14sp', icon_size='35sp', screen='',
                  **kwargs):
         super(NavIcon, self).__init__(**kwargs)
@@ -90,7 +89,7 @@ class NavIcon(ButtonBehavior, MDBoxLayout, ABC):
         self.parent.parent.screen_manager.current = self.screen
 
 
-class VideoCard(MDBoxLayout, ABC):
+class VideoCard(MDBoxLayout):
     def __init__(self, data, md_bg_color=None,
                  size_hint_y=None, video_state='stop', *args, **kwargs):
         super(VideoCard, self).__init__(**kwargs)
