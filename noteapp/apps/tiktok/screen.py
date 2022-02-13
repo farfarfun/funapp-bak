@@ -5,10 +5,9 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDTextButton
 from kivymd.uix.card import MDSeparator
 from kivymd.uix.label import MDLabel
+from noteapp.apps.tiktok import data as users
 from noteapp.apps.tiktok.layout import NavBar, SnapScroll, VideoCard
 from noteapp.utils.widget import widget_wrap
-
-from .data import data as users
 
 
 class Home(Screen):
