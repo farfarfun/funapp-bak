@@ -10,12 +10,12 @@ from noteapp.apps.tiktok.layout import NavBar, SnapScroll, VideoCard
 from noteapp.utils.widget import widget_wrap
 
 
-class Home(Screen):
+class TiktokScreen(Screen):
 
     def __init__(self, data: DataGenerate = None, **kwargs):
         self.data = data or DefaultGenerate()
 
-        super(Home, self).__init__(**kwargs)
+        super(TiktokScreen, self).__init__(**kwargs)
         self.layout = MDBoxLayout(orientation='vertical', adaptive_height=True)
 
         layout1 = widget_wrap(
