@@ -1,6 +1,8 @@
 """
 
 """
+from abc import ABC
+
 from kivy.metrics import dp
 from kivy.properties import ObjectProperty
 from kivy.uix.behaviors import ButtonBehavior
@@ -15,14 +17,15 @@ from kivymd.utils.fitimage import FitImage
 from noteapp.utils.widget import widget_wrap
 
 
-class ProfileImg(MDFloatLayout):
-    def __init__(self, size_hint=(None, None), size=('50dp', '50dp'), radius='25dp', md_bg_color=[1, 1, 1, 1], img='',
+class ProfileImg(MDFloatLayout, ABC):
+
+    def __init__(self, size_hint=(None, None), size=('50dp', '50dp'), radius='25dp', md_bg_color=None, img='',
                  **kwargs):
         super(ProfileImg, self).__init__(**kwargs)
         self.size_hint = size_hint
         self.size = size
         self.radius = radius
-        self.md_bg_color = md_bg_color
+        self.md_bg_color = md_bg_color or [1, 1, 1, 1]
         self.img = img
         self.add_widget(
             FitImage(source=self.img, radius=self.radius, size=('45dp', '45dp'), size_hint=(None, None),
@@ -33,25 +36,22 @@ class ProfileImg(MDFloatLayout):
                                 halign='center', bold=True))
 
 
-class AlbumImg(MDFloatLayout):
+class AlbumImg(MDFloatLayout, ABC):
     def __init__(self, size_hint=(None, None), size=(50, 50), radius=25, md_bg_color=None, img='', **kwargs):
         super(AlbumImg, self).__init__(**kwargs)
-        if md_bg_color is None:
-            md_bg_color = [0, 0, 0, 1]
         self.size_hint = size_hint
         self.size = size
         self.radius = radius
-        self.md_bg_color = md_bg_color
+        self.md_bg_color = md_bg_color or [0, 0, 0, 1]
         self.img = img
-
         self.add_widget(FitImage(source=self.img, radius=self.radius, size=('30dp', '30dp'), size_hint=(None, None),
                                  center=self.center))
 
 
-class NavBar(MDBoxLayout):
-    def __init__(self, image_source="", md_bg_color=[0, 0, 0, 1], orientation='vertical', height=dp(50),
+class NavBar(MDBoxLayout, ABC):
+    def __init__(self, image_source="", md_bg_color=None, orientation='vertical', height=dp(50),
                  size_hint_y=None, screen_manager=None, **kwargs):
-        self.md_bg_color = md_bg_color
+        self.md_bg_color = md_bg_color or [0, 0, 0, 1]
         self.orientation = orientation
         self.height = height
         self.size_hint_y = size_hint_y
@@ -69,7 +69,7 @@ class NavBar(MDBoxLayout):
         self.add_widget(MDBoxLayout(size_hint_y=None, height='5dp'))
 
 
-class NavIcon(ButtonBehavior, MDBoxLayout):
+class NavIcon(ButtonBehavior, MDBoxLayout, ABC):
     def __init__(self, icon='', text='', orientation='vertical', text_size='14sp', icon_size='35sp', screen='',
                  **kwargs):
         super(NavIcon, self).__init__(**kwargs)
@@ -90,12 +90,12 @@ class NavIcon(ButtonBehavior, MDBoxLayout):
         self.parent.parent.screen_manager.current = self.screen
 
 
-class VideoCard(MDBoxLayout):
-    def __init__(self, data, md_bg_color=[0, 0, 0, 1],
+class VideoCard(MDBoxLayout, ABC):
+    def __init__(self, data, md_bg_color=None,
                  size_hint_y=None, video_state='stop', *args, **kwargs):
         super(VideoCard, self).__init__(**kwargs)
         self.data = data
-        self.md_bg_color = md_bg_color
+        self.md_bg_color = md_bg_color or [0, 0, 0, 1]
         self.size_hint_y = size_hint_y
         self.video_state = video_state
 
@@ -123,7 +123,10 @@ class VideoCard(MDBoxLayout):
 
 
 class SnapScroll(ScrollView):
-    layout = ObjectProperty()  # The adaptive layout inside the scrollview; where widgets are added to
+    """
+    The adaptive layout inside the scrollview; where widgets are added to
+    """
+    layout = ObjectProperty()
 
     def __init__(self, scroll_distance=500, bar_width=0, scroll_wheel_distance=0, **kwargs):
         self.scroll_distance = scroll_distance  # helps prevent kivy detecting multiple scroll in one drag.
