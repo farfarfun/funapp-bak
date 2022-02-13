@@ -12,49 +12,7 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.label import MDIcon, MDLabel
 from kivymd.utils.fitimage import FitImage
-
-
-class VideoCard(MDBoxLayout):
-    def __init__(self, data, md_bg_color=[0, 0, 0, 1],
-                 size_hint_y=None, video_state='stop', *args, **kwargs):
-        super(VideoCard, self).__init__(**kwargs)
-        self.data = data
-        self.md_bg_color = md_bg_color
-        self.size_hint_y = size_hint_y
-        self.video_state = video_state
-        layout1 = MDFloatLayout()
-        layout11 = Video(source=data['video'], state=video_state, pos_hint={'center_x': .5, 'top': 1})
-
-        layout12 = MDBoxLayout(orientation='vertical', pos_hint={'x': 0, 'y': 0}, size_hint_x=None,
-                               width=self.width * 0.8, spacing='5dp', padding='5dp')
-
-        layout121 = MDBoxLayout(size_hint_y=None, height=self.minimum_height)
-        layout121.add_widget(MDIcon(icon='music-note', size_hint=(None, 1), font_size='14sp',
-                                    # size=MDIcon.texture_size,
-                                    ))
-        layout121.add_widget(MDLabel(text=data['song_name'], font_size='14sp', size_hint_y=None,
-                                     # height=MDLabel.texture_size[1],
-                                     ))
-
-        layout12.add_widget(MDLabel(text=data['name'], font_size='14sp', size_hint_y=None,
-                                    # height=MDLabel.texture_size[1],
-                                    ))
-        layout12.add_widget(MDLabel(text=data['caption'], font_size='14sp', size_hint_y=None,
-                                    # height=MDLabel.texture_size[1]
-                                    ))
-        layout12.add_widget(layout121)
-
-        layout13 = MDBoxLayout(orientation='vertical', pos_hint={'right': 1, 'y': 0}, size_hint_x=None,
-                               width=self.width * 0.2, spacing='20dp', padding='5dp')
-        layout13.add_widget(ProfileImg(img=data['profile_pic']))
-        layout13.add_widget(NavIcon(icon='\U0000E80A', text=data['likes'], icon_size='40sp'))
-        layout13.add_widget(NavIcon(icon='\U0000E808', text=data['comments'], icon_size='40sp'))
-        layout13.add_widget(NavIcon(icon='\U0000E80E', text=data['shares'], icon_size='25sp'))
-        layout13.add_widget(AlbumImg(img=data['album_pic']))
-
-        layout1.add_widget(layout11)
-        layout1.add_widget(layout12)
-        layout1.add_widget(layout13)
+from noteapp.utils.widget import widget_wrap
 
 
 class ProfileImg(MDFloatLayout):
@@ -66,21 +24,13 @@ class ProfileImg(MDFloatLayout):
         self.radius = radius
         self.md_bg_color = md_bg_color
         self.img = img
-        self.add_widget(FitImage(source=self.img,
-                                 radius=self.radius,
-                                 size=('45dp', '45dp'),
-                                 size_hint=(None, None),
-                                 center=self.center))
+        self.add_widget(
+            FitImage(source=self.img, radius=self.radius, size=('45dp', '45dp'), size_hint=(None, None),
+                     center=self.center))
 
-        self.add_widget(MDLabel(text='+',
-                                font_size='15sp',
-                                pos_hint={'center_x': .5, 'y': -.15},
-                                size=(dp(20), dp(20)),
-                                size_hint=(None, None),
-                                md_bg_color=get_color_from_hex('#FC2D55'),
-                                radius='20dp',
-                                halign='center',
-                                bold=True))
+        self.add_widget(MDLabel(text='+', font_size='15sp', pos_hint={'center_x': .5, 'y': -.15}, size=(dp(20), dp(20)),
+                                size_hint=(None, None), md_bg_color=get_color_from_hex('#FC2D55'), radius='20dp',
+                                halign='center', bold=True))
 
 
 class AlbumImg(MDFloatLayout):
@@ -99,12 +49,8 @@ class AlbumImg(MDFloatLayout):
 
 
 class NavBar(MDBoxLayout):
-    def __init__(self,
-                 image_source="",
-                 md_bg_color=[0, 0, 0, 1],
-                 orientation='vertical',
-                 height=dp(50), size_hint_y=None,
-                 screen_manager=None, **kwargs):
+    def __init__(self, image_source="", md_bg_color=[0, 0, 0, 1], orientation='vertical', height=dp(50),
+                 size_hint_y=None, screen_manager=None, **kwargs):
         self.md_bg_color = md_bg_color
         self.orientation = orientation
         self.height = height
@@ -112,14 +58,14 @@ class NavBar(MDBoxLayout):
         self.screen_manager = screen_manager
         super(NavBar, self).__init__(**kwargs)
 
-        layout = MDBoxLayout(padding=('10dp', '5dp'), spacing='5dp')
-        layout.add_widget(NavIcon(icon='\U0000E80B', text='Home', icon_size='18sp', text_size='10sp', screen='feed'))
-        layout.add_widget(NavIcon(icon='\U0000E80F', text='Discover', icon_size='18sp', text_size='10sp',
-                                  screen='discover'))
-        layout.add_widget(Image(source=image_source,                  size_hint_x=None, width='35dp'))
-        layout.add_widget(NavIcon(icon='\U0000E80C', text='Inbox', icon_size='18sp', text_size='10sp', screen='inbox'))
-        layout.add_widget(NavIcon(icon='\U0000E80D', text='Me', icon_size='18sp', text_size='10sp', screen='profile'))
-        self.add_widget(layout)
+        self.add_widget(
+            widget_wrap(
+                MDBoxLayout(padding=('10dp', '5dp'), spacing='5dp'),
+                NavIcon(icon='\U0000E80B', text='Home', icon_size='18sp', text_size='10sp', screen='feed'),
+                NavIcon(icon='\U0000E80F', text='Discover', icon_size='18sp', text_size='10sp', screen='discover'),
+                Image(source=image_source, size_hint_x=None, width='35dp'),
+                NavIcon(icon='\U0000E80C', text='Inbox', icon_size='18sp', text_size='10sp', screen='inbox'),
+                NavIcon(icon='\U0000E80D', text='Me', icon_size='18sp', text_size='10sp', screen='profile')))
         self.add_widget(MDBoxLayout(size_hint_y=None, height='5dp'))
 
 
@@ -135,23 +81,45 @@ class NavIcon(ButtonBehavior, MDBoxLayout):
         self.icon_size = icon_size
         self.screen = screen
 
-        self.add_widget(MDIcon(text=self.icon,
-                               font_size=self.icon_size,
-                               font_style='TikTokIcons',
-                               # height=self.texture_size[1],
-                               halign='center',
-                               size_hint_y=None
-                               ))
-        self.add_widget(MDLabel(text=self.text,
-                                # height=self.texture_size[1],
-                                font_size=self.text_size,
-                                bold=True,
-                                size_hint_y=None,
-                                halign='center',
-                                ))
+        self.add_widget(MDIcon(text=self.icon,  # height=self.texture_size[1],
+                               font_size=self.icon_size, font_style='TikTokIcons', halign='center', size_hint_y=None))
+        self.add_widget(MDLabel(text=self.text,  # height=self.texture_size[1],
+                                font_size=self.text_size, bold=True, size_hint_y=None, halign='center', ))
 
     def on_press(self):
         self.parent.parent.screen_manager.current = self.screen
+
+
+class VideoCard(MDBoxLayout):
+    def __init__(self, data, md_bg_color=[0, 0, 0, 1],
+                 size_hint_y=None, video_state='stop', *args, **kwargs):
+        super(VideoCard, self).__init__(**kwargs)
+        self.data = data
+        self.md_bg_color = md_bg_color
+        self.size_hint_y = size_hint_y
+        self.video_state = video_state
+
+        self.add_widget(
+            widget_wrap(
+                MDFloatLayout(),
+                Video(source=data['video'], state=video_state, pos_hint={'center_x': .5, 'top': 1}),
+                widget_wrap(
+                    MDBoxLayout(orientation='vertical', pos_hint={'x': 0, 'y': 0}, size_hint_x=None,
+                                width=self.width * 0.8, spacing='5dp', padding='5dp'),
+                    widget_wrap(
+                        MDBoxLayout(size_hint_y=None, height=self.minimum_height),
+                        MDIcon(icon='music-note', size_hint=(None, 1), font_size='14sp', ),
+                        MDLabel(text=data['song_name'], font_size='14sp', size_hint_y=None, )),
+                    MDLabel(text=data['name'], font_size='14sp', size_hint_y=None, ),
+                    MDLabel(text=data['caption'], font_size='14sp', size_hint_y=None, )),
+                widget_wrap(
+                    MDBoxLayout(orientation='vertical', pos_hint={'right': 1, 'y': 0},
+                                size_hint_x=None, width=self.width * 0.2, spacing='20dp', padding='5dp'),
+                    ProfileImg(img=data['profile_pic']),
+                    NavIcon(icon='\U0000E80A', text=data['likes'], icon_size='40sp'),
+                    NavIcon(icon='\U0000E808', text=data['comments'], icon_size='40sp'),
+                    NavIcon(icon='\U0000E80E', text=data['shares'], icon_size='25sp'),
+                    AlbumImg(img=data['album_pic']))))
 
 
 class SnapScroll(ScrollView):

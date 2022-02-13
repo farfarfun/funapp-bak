@@ -19,6 +19,24 @@ class TiktokScreen(Screen):
         self.data = data or DefaultGenerate()
 
         super(TiktokScreen, self).__init__(**kwargs)
+
+    def on_enter(self, *args):
+        for i in range(10):
+            video_card = VideoCard(data=self.data.next())
+            video_card.height = Window.size[1] - dp(50)
+            if i == 0:
+                video_card.video_state = 'play'
+            self.add_widget(video_card)
+        return super(TiktokScreen, self).on_enter(*args)
+
+
+class TiktokScreenBak(Screen):
+    assets = "./assets"
+
+    def __init__(self, data: DataGenerate = None, **kwargs):
+        self.data = data or DefaultGenerate()
+
+        super(TiktokScreenBak, self).__init__(**kwargs)
         self.layout = MDBoxLayout(orientation='vertical', adaptive_height=True)
 
         layout1 = widget_wrap(
@@ -50,8 +68,8 @@ class TiktokScreen(Screen):
             MDTextButton(text='Following', font_size='16sp', theme_text_color='Custom', text_color=[1, 1, 1, 1],
                          bold=True)
         )
-        self.layout.add_widget(layout1)
-        self.layout.add_widget(layout2)
+        # self.layout.add_widget(layout1)
+        # self.layout.add_widget(layout2)
 
     def on_enter(self, *args):
         for i in range(10):
@@ -60,4 +78,4 @@ class TiktokScreen(Screen):
             if i == 0:
                 video_card.video_state = 'play'
             self.layout.add_widget(video_card)
-        return super(TiktokScreen, self).on_enter(*args)
+        return super(TiktokScreenBak, self).on_enter(*args)
