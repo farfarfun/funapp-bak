@@ -99,7 +99,11 @@ class AlbumImg(MDFloatLayout):
 
 
 class NavBar(MDBoxLayout):
-    def __init__(self, md_bg_color=[0, 0, 0, 1], orientation='vertical', height=dp(50), size_hint_y=None,
+    def __init__(self,
+                 image_source="",
+                 md_bg_color=[0, 0, 0, 1],
+                 orientation='vertical',
+                 height=dp(50), size_hint_y=None,
                  screen_manager=None, **kwargs):
         self.md_bg_color = md_bg_color
         self.orientation = orientation
@@ -112,9 +116,7 @@ class NavBar(MDBoxLayout):
         layout.add_widget(NavIcon(icon='\U0000E80B', text='Home', icon_size='18sp', text_size='10sp', screen='feed'))
         layout.add_widget(NavIcon(icon='\U0000E80F', text='Discover', icon_size='18sp', text_size='10sp',
                                   screen='discover'))
-        layout.add_widget(
-            Image(source='/Users/bingtao/workspace/MyDiary/src/games/notetiktok/tiktok/assets/img/plus.png',
-                  size_hint_x=None, width='35dp'))
+        layout.add_widget(Image(source=image_source,                  size_hint_x=None, width='35dp'))
         layout.add_widget(NavIcon(icon='\U0000E80C', text='Inbox', icon_size='18sp', text_size='10sp', screen='inbox'))
         layout.add_widget(NavIcon(icon='\U0000E80D', text='Me', icon_size='18sp', text_size='10sp', screen='profile'))
         self.add_widget(layout)
