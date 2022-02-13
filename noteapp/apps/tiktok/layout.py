@@ -15,21 +15,13 @@ from kivymd.utils.fitimage import FitImage
 
 
 class VideoCard(MDBoxLayout):
-    def __init__(self, md_bg_color=[0, 0, 0, 1], size_hint_y=None, video_state='stop', *args, **kwargs):
+    def __init__(self, data, md_bg_color=[0, 0, 0, 1],
+                 size_hint_y=None, video_state='stop', *args, **kwargs):
         super(VideoCard, self).__init__(**kwargs)
+        self.data = data
         self.md_bg_color = md_bg_color
         self.size_hint_y = size_hint_y
         self.video_state = video_state
-
-        data = {'name': "",
-                'source': "",
-                'caption': "",
-                'song_name': "",
-                'profile_pic': "",
-                'likes': "",
-                'comments': "",
-                'shares': "",
-                'album_pic': "", }
         layout1 = MDFloatLayout()
         layout11 = Video(source=data['source'], state=video_state, pos_hint={'center_x': .5, 'top': 1})
 

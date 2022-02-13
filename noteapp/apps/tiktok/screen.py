@@ -5,28 +5,16 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDTextButton
 from kivymd.uix.card import MDSeparator
 from kivymd.uix.label import MDLabel
-from noteapp.apps.tiktok import data as users
+from noteapp.apps.tiktok.data import DataGenerate, DefaultGenerate
 from noteapp.apps.tiktok.layout import NavBar, SnapScroll, VideoCard
 from noteapp.utils.widget import widget_wrap
 
 
 class Home(Screen):
-    data = []
 
-    def __init__(self, **kwargs):
-        for profile in users:
-            _data = {
-                'name': profile['name'],
-                'source': profile['video'],
-                'caption': profile['caption'],
-                'song_name': profile['song_name'],
-                'profile_pic': profile['profile_pic'],
-                'likes': profile['likes'],
-                'comments': profile['comments'],
-                'shares': profile['shares'],
-                'album_pic': profile['album_pic'],
-            }
-            self.data.append(_data)
+    def __init__(self, data: DataGenerate = None, **kwargs):
+        self.data = data or DefaultGenerate()
+
         super(Home, self).__init__(**kwargs)
         self.layout = MDBoxLayout(orientation='vertical', adaptive_height=True)
 
@@ -61,12 +49,10 @@ class Home(Screen):
         self.add_widget(layout2)
 
     def on_enter(self, *args):
-        for data in self.data:
-            video_card = VideoCard()
-            video_card.data = data
+        for i in range(10):
+            video_card = VideoCard(data=self.data.next())
             video_card.height = Window.size[1] - dp(50)
-            if self.data.index(data) == 0:
+            if i == 0:
                 video_card.video_state = 'play'
-
             self.layout.add_widget(video_card)
         return super(Home, self).on_enter(*args)
