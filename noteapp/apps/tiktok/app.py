@@ -16,9 +16,9 @@ class WindowManager(ScreenManager):
 Window.size = (310, 600)
 
 
-class TikTok(MDApp):
+class TikTokApp(MDApp):
     def __init__(self, *args, **kwargs):
-        super(TikTok, self).__init__(**kwargs)
+        super(TikTokApp, self).__init__(**kwargs)
         self.wm = WindowManager(transition=FadeTransition())
         self.theme_cls.theme_style = 'Dark'
 
@@ -33,7 +33,3 @@ class TikTok(MDApp):
             self.wm.add_widget(screen)
 
         return self.wm
-
-
-if __name__ == '__main__':
-    TikTok().run()
