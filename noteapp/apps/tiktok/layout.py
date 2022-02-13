@@ -81,7 +81,8 @@ class NavIcon(ButtonBehavior, MDBoxLayout):
         self.screen = screen
 
         self.add_widget(MDIcon(text=self.icon,
-                               font_size=self.icon_size, font_style='TikTokIcons', halign='center', size_hint_y=None))
+                               font_size=self.icon_size,
+                               font_style='TikTokIcons', halign='center', size_hint_y=None))
         self.add_widget(MDLabel(text=self.text,
                                 font_size=self.text_size, bold=True, size_hint_y=None, halign='center', ))
 
@@ -101,7 +102,7 @@ class VideoCard(MDBoxLayout):
         self.add_widget(
             widget_wrap(
                 MDFloatLayout(),
-                Video(source=data['video'], state=video_state, pos_hint={'center_x': .5, 'top': 1}),
+                Video(source=data['profile_pic'], state=self.video_state, pos_hint={'center_x': .5, 'top': 1}),
                 widget_wrap(
                     MDBoxLayout(orientation='vertical', pos_hint={'x': 0, 'y': 0}, size_hint_x=None,
                                 width=self.width * 0.8, spacing='5dp', padding='5dp'),
@@ -120,7 +121,8 @@ class VideoCard(MDBoxLayout):
                     NavIcon(icon='\U0000E80A', text=data['likes'], icon_size='40sp'),
                     NavIcon(icon='\U0000E808', text=data['comments'], icon_size='40sp'),
                     NavIcon(icon='\U0000E80E', text=data['shares'], icon_size='25sp'),
-                    AlbumImg(img=data['album_pic']))))
+                    AlbumImg(img=data['album_pic']))
+            ))
 
 
 class SnapScroll(ScrollView):
