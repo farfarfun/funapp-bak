@@ -23,7 +23,7 @@ class VideoCard(MDBoxLayout):
         self.size_hint_y = size_hint_y
         self.video_state = video_state
         layout1 = MDFloatLayout()
-        layout11 = Video(source=data['source'], state=video_state, pos_hint={'center_x': .5, 'top': 1})
+        layout11 = Video(source=data['video'], state=video_state, pos_hint={'center_x': .5, 'top': 1})
 
         layout12 = MDBoxLayout(orientation='vertical', pos_hint={'x': 0, 'y': 0}, size_hint_x=None,
                                width=self.width * 0.8, spacing='5dp', padding='5dp')
