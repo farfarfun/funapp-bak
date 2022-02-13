@@ -55,4 +55,4 @@ class TiktokScreen(Screen):
             if i == 0:
                 video_card.video_state = 'play'
             self.layout.add_widget(video_card)
-        return super(Home, self).on_enter(*args)
+        return super(TiktokScreen, self).on_enter(*args)
