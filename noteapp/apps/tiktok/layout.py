@@ -80,9 +80,9 @@ class NavIcon(ButtonBehavior, MDBoxLayout):
         self.icon_size = icon_size
         self.screen = screen
 
-        self.add_widget(MDIcon(text=self.icon,  # height=self.texture_size[1],
+        self.add_widget(MDIcon(text=self.icon,
                                font_size=self.icon_size, font_style='TikTokIcons', halign='center', size_hint_y=None))
-        self.add_widget(MDLabel(text=self.text,  # height=self.texture_size[1],
+        self.add_widget(MDLabel(text=self.text,
                                 font_size=self.text_size, bold=True, size_hint_y=None, halign='center', ))
 
     def on_press(self):
@@ -105,12 +105,14 @@ class VideoCard(MDBoxLayout):
                 widget_wrap(
                     MDBoxLayout(orientation='vertical', pos_hint={'x': 0, 'y': 0}, size_hint_x=None,
                                 width=self.width * 0.8, spacing='5dp', padding='5dp'),
+
+                    MDLabel(text=data['name'], font_size='14sp', size_hint_y=None, ),
+                    MDLabel(text=data['caption'], font_size='14sp', size_hint_y=None),
                     widget_wrap(
                         MDBoxLayout(size_hint_y=None, height=self.minimum_height),
                         MDIcon(icon='music-note', size_hint=(None, 1), font_size='14sp', ),
                         MDLabel(text=data['song_name'], font_size='14sp', size_hint_y=None, )),
-                    MDLabel(text=data['name'], font_size='14sp', size_hint_y=None, ),
-                    MDLabel(text=data['caption'], font_size='14sp', size_hint_y=None, )),
+                ),
                 widget_wrap(
                     MDBoxLayout(orientation='vertical', pos_hint={'right': 1, 'y': 0},
                                 size_hint_x=None, width=self.width * 0.2, spacing='20dp', padding='5dp'),
