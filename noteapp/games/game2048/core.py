@@ -2,7 +2,6 @@ import pickle
 
 import numpy as np
 from kivy.animation import Animation
-from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
@@ -10,7 +9,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen, ScreenManager
-from noteapp.games.base import GameApp
 
 tile_color_map = {
     0: (0, 0.3, 0, 1),
@@ -65,32 +63,11 @@ class Tile(Button):
     value = property(get_value, set_value)
 
 
-class Menu(Screen):
-    """the menu screen"""
-
-    def __init__(self, **kwargs):
-        Screen.__init__(self, **kwargs)
-        self.layout = BoxLayout(orientation='vertical')
-        title = Label(text='2048', font_size=48)
-        start_button = Button(text='Start', on_press=self.start_game, font_size=48)
-        exit_button = Button(text='Exit', on_press=App.get_running_app().stop, font_size=48)
-
-        self.layout.add_widget(title)
-        self.layout.add_widget(start_button)
-        self.layout.add_widget(exit_button)
-        self.add_widget(self.layout)
-
-    def start_game(self, value):
-        """slide to game screen and start game"""
-        self.manager.transition.direction = 'left'
-        self.manager.current = 'game'
-
-
-class Game(Screen):
+class Game2048(Screen):
     """the main game screen"""
 
     def __init__(self, **kwargs):
-        super(Game, self).__init__(**kwargs)
+        super(Game2048, self).__init__(**kwargs)
         self.layout = BoxLayout(orientation='vertical')
         self.top_bar = BoxLayout(orientation='horizontal', size_hint_y=0.2)
         self.grid = GridLayout(cols=4, padding=2)
@@ -378,12 +355,43 @@ class Game(Screen):
         self.manager.current = 'menu'
 
 
-class Game2048App(GameApp):
-    def build(self):
-        sm = ScreenManager()
-        menu = Menu(name='menu')
-        game = Game(name='game')
-        sm.add_widget(menu)
-        sm.add_widget(game)
-        sm.current = 'menu'
-        return sm
+class GameList(Screen):
+    """the menu screen"""
+
+    def __init__(self, **kwargs):
+        super(GameList, self).__init__(**kwargs)
+        self.layout = BoxLayout(orientation='vertical')
+        title = Label(text='GameList', font_size=48)
+
+        self.layout.add_widget(title)
+        self.layout.add_widget(Button(text='2048', on_press=self.start_game('2048-1'), font_size=48))
+        self.layout.add_widget(Button(text='2048', on_press=self.start_game('2048-2'), font_size=48))
+        self.add_widget(self.layout)
+
+    def start_game(self, name):
+        def on_press(instance):
+            """slide to game screen and start game"""
+            self.manager.transition.direction = 'left'
+            self.manager.current = name
+
+        return on_press
+
+
+class GameManage(ScreenManager):
+    def __init__(self, *args, **kwargs):
+        super(GameManage, self).__init__(**kwargs)
+        self.add_widget(GameList(name='menu'))
+        self.add_widget(Game2048(name='2048-1'))
+        self.add_widget(Game2048(name='2048-2'))
+        self.current = 'menu'
+
+#
+# class NoteApp(App):
+#     def __init__(self, *args, **kwargs):
+#         super(NoteApp, self).__init__(**kwargs)
+#
+#     def build(self):
+#         return GameManage()
+#
+#
+# NoteApp().run()
