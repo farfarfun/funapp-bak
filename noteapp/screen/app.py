@@ -23,10 +23,10 @@ class AppLayout(MDBoxLayout):
         self.add_widget(widget_wrap(
             MDBoxLayout(orientation='horizontal', size_hint=(1, 0.05), pos_hint={'center_x': 0.5, 'button': 1}),
 
-            Button(text="推荐", on_press=self.change_screen('screen1')),
-            Button(text="游戏", on_press=self.change_screen('games')),
-            Button(text="视频", on_press=self.change_screen('screen3')),
-            Button(text="我的")))
+            Button(text="推荐", font_name='STHeiti Medium.ttc', on_press=self.change_screen('screen1')),
+            Button(text="游戏", font_name='STHeiti Medium.ttc', on_press=self.change_screen('games')),
+            Button(text="视频", font_name='STHeiti Medium.ttc', on_press=self.change_screen('screen3')),
+            Button(text="我的", font_name='STHeiti Medium.ttc')))
 
     def change_screen(self, name):
         def on_press(instance=None):
