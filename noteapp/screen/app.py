@@ -4,7 +4,7 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.boxlayout import MDBoxLayout
 from noteapp.apps.video import VideoScreen
-from noteapp.games.game2048.core import Game2048App
+from noteapp.games.game2048.core import GameManageScreen
 from noteapp.utils.widget import widget_wrap
 
 
@@ -15,7 +15,7 @@ class AppLayout(MDBoxLayout):
         self.screen_manager = ScreenManager()
 
         self.screen_manager.add_widget(VideoScreen(name='screen1'))
-        self.screen_manager.add_widget(VideoScreen(name='screen2'))
+        self.screen_manager.add_widget(GameManageScreen(name='games'))
         self.screen_manager.add_widget(VideoScreen(name='screen3'))
 
         self.add_widget(Button(text="Video", size_hint_y=None, height=40, size_hint=(1, 0.05)))
@@ -23,10 +23,10 @@ class AppLayout(MDBoxLayout):
         self.add_widget(widget_wrap(
             MDBoxLayout(orientation='horizontal', size_hint=(1, 0.05), pos_hint={'center_x': 0.5, 'button': 1}),
 
-            Button(text="B1", on_press=self.change_screen('screen1')),
-            Button(text="B2", on_press=self.change_screen('screen2')),
-            Button(text="B3", on_press=self.change_screen('screen3')),
-            Button(text="B4")))
+            Button(text="推荐", on_press=self.change_screen('screen1')),
+            Button(text="游戏", on_press=self.change_screen('games')),
+            Button(text="视频", on_press=self.change_screen('screen3')),
+            Button(text="我的")))
 
     def change_screen(self, name):
         def on_press(instance=None):

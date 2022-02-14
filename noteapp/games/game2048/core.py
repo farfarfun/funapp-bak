@@ -385,13 +385,8 @@ class GameManage(ScreenManager):
         self.add_widget(Game2048(name='2048-2'))
         self.current = 'menu'
 
-#
-# class NoteApp(App):
-#     def __init__(self, *args, **kwargs):
-#         super(NoteApp, self).__init__(**kwargs)
-#
-#     def build(self):
-#         return GameManage()
-#
-#
-# NoteApp().run()
+
+class GameManageScreen(Screen):
+    def __init__(self, *args, **kwargs):
+        super(GameManageScreen, self).__init__(**kwargs)
+        self.add_widget(GameManage(size=Window.size))
