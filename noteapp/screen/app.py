@@ -4,7 +4,7 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.boxlayout import MDBoxLayout
 from noteapp.apps.video import VideoScreen
-from noteapp.games.game2048.core import GameManageScreen
+from noteapp.games import GameManageScreen
 from noteapp.utils.widget import widget_wrap
 
 
