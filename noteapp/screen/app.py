@@ -15,7 +15,8 @@ class AppLayout(MDBoxLayout):
         self.screen_manager = ScreenManager()
 
         self.screen_manager.add_widget(VideoScreen(name='screen1'))
-        self.screen_manager.add_widget(GameManageScreen(name='games'))
+        #self.screen_manager.add_widget(GameManageScreen(name='games'))
+        self.screen_manager.add_widget(VideoScreen(name='games'))
         self.screen_manager.add_widget(VideoScreen(name='screen3'))
 
         self.add_widget(Button(text="Video", size_hint_y=None, height=40, size_hint=(1, 0.05)))
