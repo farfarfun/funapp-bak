@@ -28,7 +28,7 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1.1
+version = 0.1.3
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -36,7 +36,7 @@ version = 0.1.1
 
 # (list) Application requirements comma separated e.g. requirements = sqlite3,kivy
 # python3,kivy,ffmpeg,youtube_dl,kivymd,kivmob,ffpyplayer,ffpyplayer_codecs,ffmpeg-python
-requirements = python3, kivy==2.0.0, kivymd, ffmpeg, ffpyplayer,ffpyplayer_codecs,ffmpeg-python, numpy, pandas, ffpyplayer, git+https://github.com/notechats/noteapp.git
+requirements = python3, kivy, kivymd,android,pil, ffmpeg, ffpyplayer,ffpyplayer_codecs,ffmpeg-python, numpy, pandas, ffpyplayer, git+https://github.com/notechats/noteapp.git
 
 # (str) Custom source folders for requirements Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../noteapp
@@ -62,10 +62,10 @@ orientation = portrait
 # author = © Copyright Info
 
 # change the major version of python used by the app
-osx.python_version = 3
+# osx.python_version = 3
 
 # Kivy version to use
-osx.kivy_version = 1.9.1
+# osx.kivy_version = 1.9.1
 
 # ########################################################################################################
 # Android specific
