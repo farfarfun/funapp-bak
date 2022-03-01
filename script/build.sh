@@ -6,6 +6,7 @@ notebuild build
 # yes y|buildozer android debug
 # yes y|buildozer android release
 
+rm -rf /home/bingtao/opt/.buildozer/android/platform/build-arm64-v8a/build/python-installs/notechats/noteapp*
 
 yes y|buildozer android debug deploy --ignore-setup-py --ignore-setup-py
 
