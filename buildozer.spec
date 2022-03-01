@@ -1,11 +1,6 @@
 [app]
-
-# (str) Title of your application
 title = notechats
-
-# (str) Package name
 package.name = notechats
-
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
 
@@ -28,15 +23,16 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1.5
+# version = 0.1.5
 
 # (str) Application versioning (method 2)
-# version.regex = __version__ = ['"](.*)['"]
-# version.filename = %(source.dir)s/main.py
+version.regex = (.*)
+version.filename = %(source.dir)s/script/__version__.md
 
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # (list) Application requirements comma separated e.g. requirements = sqlite3,kivy
 # python3,kivy,ffmpeg,youtube_dl,kivymd,kivmob,ffpyplayer,ffpyplayer_codecs,ffmpeg-python
-requirements = python3, kivy, kivymd, numpy, pandas, git+https://github.com/notechats/noteapp.git
+requirements = python3, kivy, kivymd,pillow , numpy, pandas, git+https://github.com/notechats/noteapp.git
 
 # (str) Custom source folders for requirements Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../noteapp
