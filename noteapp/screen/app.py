@@ -3,7 +3,6 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.boxlayout import MDBoxLayout
-#from noteapp.apps.video import VideoScreen
 from noteapp.games import GameManageScreen
 from noteapp.utils.widget import widget_wrap
 
@@ -14,12 +13,11 @@ class AppLayout(MDBoxLayout):
         super(AppLayout, self).__init__(orientation='vertical', **kwargs)
         self.screen_manager = ScreenManager()
 
-        # self.screen_manager.add_widget(VideoScreen(name='screen1'))
         self.screen_manager.add_widget(GameManageScreen(name='screen1'))
         self.screen_manager.add_widget(GameManageScreen(name='screen2'))
         self.screen_manager.add_widget(GameManageScreen(name='screen3'))
+        self.screen_manager.add_widget(GameManageScreen(name='screen4'))
 
-        self.add_widget(Button(text="Video", size_hint_y=None, height=40, size_hint=(1, 0.05)))
         self.add_widget(self.screen_manager)
         self.add_widget(widget_wrap(
             MDBoxLayout(orientation='horizontal', size_hint=(1, 0.05), pos_hint={'center_x': 0.5, 'button': 1}),
@@ -27,7 +25,8 @@ class AppLayout(MDBoxLayout):
             Button(text="推荐", font_name='STHeiti Medium.ttc', on_press=self.change_screen('screen1')),
             Button(text="游戏", font_name='STHeiti Medium.ttc', on_press=self.change_screen('screen2')),
             Button(text="视频", font_name='STHeiti Medium.ttc', on_press=self.change_screen('screen3')),
-            Button(text="我的", font_name='STHeiti Medium.ttc')))
+            Button(text="我的", font_name='STHeiti Medium.ttc', on_press=self.change_screen('screen4'))
+        ))
 
     def change_screen(self, name):
         def on_press(instance=None):

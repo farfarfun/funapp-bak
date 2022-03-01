@@ -32,7 +32,7 @@ version.filename = %(source.dir)s/script/__version__.md
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # (list) Application requirements comma separated e.g. requirements = sqlite3,kivy
 # python3,kivy,ffmpeg,youtube_dl,kivymd,kivmob,ffpyplayer,ffpyplayer_codecs,ffmpeg-python
-requirements = python3, kivy, kivymd,pillow , numpy, pandas, git+https://github.com/notechats/noteapp.git
+requirements = python3,kivy,kivymd,pillow,numpy,pandas,git+https://github.com/notechats/noteapp.git
 
 # (str) Custom source folders for requirements Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../noteapp
