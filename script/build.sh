@@ -8,3 +8,5 @@ notebuild build
 
 
 yes y|buildozer android debug deploy --ignore-setup-py --ignore-setup-py
+
+cd  example && python upload_app.py
