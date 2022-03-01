@@ -1,6 +1,4 @@
-"""
 
-"""
 
 from kivy.metrics import dp
 from kivy.properties import ObjectProperty
