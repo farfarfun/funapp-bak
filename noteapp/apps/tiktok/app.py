@@ -3,7 +3,7 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import FadeTransition, ScreenManager
 from kivymd.app import MDApp
 from kivymd.font_definitions import theme_font_styles
-from noteapp.apps.tiktok.screen import Home
+from .screen import Home
 
 # os.environ['KIVY_VIDEO'] = 'ffpyplayer'
 # os.environ['KIVY_VIDEO'] = 'ffmpeg'
