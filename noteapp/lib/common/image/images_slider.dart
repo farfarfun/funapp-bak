@@ -50,7 +50,7 @@ ValueNotifier themeMode = ValueNotifier(2);
 class DemoItem extends StatelessWidget {
   final String title;
   final String route;
-   DemoItem(this.title, this.route, {Key? key}) : super(key: key);
+   const DemoItem(this.title, this.route, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +85,8 @@ class BasicDemo extends StatelessWidget {
 }
 
 class NoCenterDemo extends StatelessWidget {
+  const NoCenterDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     List<int> list = [1, 2, 3, 4, 5];
