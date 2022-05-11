@@ -5,7 +5,7 @@ class AuthorCard extends StatelessWidget {
   Author author;
   int type;
 
-  AuthorCard(this.author, {this.type = 1}) {}
+  AuthorCard(this.author, {Key? key, this.type = 1}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class AuthorCard extends StatelessWidget {
     } else {
       return Row(
         children: [
-          Container(
+          SizedBox(
               height: 25,
               width: 25,
               child: Image.network(

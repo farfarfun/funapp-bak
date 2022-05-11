@@ -13,7 +13,7 @@ class ResourceDetail {
 }
 
 class EmptyDetail extends ResourceDetail {
-  EmptyDetail() : super(ResourceType.none) {}
+  EmptyDetail() : super(ResourceType.none);
 }
 
 class VideoDetail extends ResourceDetail {
@@ -45,7 +45,7 @@ class VideoDetail extends ResourceDetail {
 class ImageDetail extends ResourceDetail {
   String url;
   String title;
-  ImageDetail(this.url, {this.title = ""}) : super(ResourceType.pic) {}
+  ImageDetail(this.url, {this.title = ""}) : super(ResourceType.pic);
 
   String getUrls() {
     return url;
@@ -59,7 +59,7 @@ class ImageDetail extends ResourceDetail {
 class ImageListDetail extends ResourceDetail {
   List<String> urls;
   String title;
-  ImageListDetail(this.urls, {this.title = ""}) : super(ResourceType.pics) {}
+  ImageListDetail(this.urls, {this.title = ""}) : super(ResourceType.pics);
 
   List<String> getUrls() {
     return urls;

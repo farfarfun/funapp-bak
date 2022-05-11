@@ -22,7 +22,7 @@ class _VideoDetailViewState extends State<VideoDetailView>
     with SingleTickerProviderStateMixin {
   final FijkPlayer player = FijkPlayer();
 
-  _VideoDetailViewState() {}
+  _VideoDetailViewState();
   VideoSourceFormat? _videoSourceTabs;
 
   ShowConfigAbs vConfig = PlayerShowConfig();

@@ -12,7 +12,7 @@ Widget getResourceVideo(VideoDetail videoDetail,
     width: double.infinity,
     height: 300.0,
     alignment: Alignment.center,
-    margin: EdgeInsets.symmetric(vertical: 50.0),
+    margin: const EdgeInsets.symmetric(vertical: 50.0),
     child: LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return InViewNotifierWidget(
@@ -72,7 +72,7 @@ class ResourceCard extends StatefulWidget {
 
 class _ResourceCard extends State<ResourceCard>
     with SingleTickerProviderStateMixin {
-  _ResourceCard() {}
+  _ResourceCard();
 
   @override
   Widget build(BuildContext context) {

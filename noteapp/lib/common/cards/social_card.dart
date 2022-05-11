@@ -3,7 +3,7 @@ import 'package:noteapp/common/domain/base.dart';
 
 class SocialCard extends StatelessWidget {
   ResourceDetail resourceDetail;
-  SocialCard(this.resourceDetail) {}
+  SocialCard(this.resourceDetail, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
