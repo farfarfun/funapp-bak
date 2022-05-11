@@ -4,3 +4,6 @@ android/app/profile
 android/app/release
 .dart_tool
 build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
