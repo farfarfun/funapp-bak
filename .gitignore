@@ -102,3 +102,7 @@ app
 /noteapp/build/
 */.gradle/
 */.idea/
+
+noteapp/.flutter-plugins
+noteapp/.flutter-plugins-dependencies
+noteapp/.packages
