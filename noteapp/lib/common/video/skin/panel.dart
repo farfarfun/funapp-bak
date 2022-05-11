@@ -61,6 +61,7 @@ class CustomFijkPanel extends StatefulWidget {
   final VideoSourceFormat? videoFormat;
 
   CustomFijkPanel({
+    Key? key,
     required this.player,
     required this.viewSize,
     required this.texturePos,
@@ -71,7 +72,7 @@ class CustomFijkPanel extends StatefulWidget {
     required this.videoFormat,
     required this.curTabIdx,
     required this.curActiveIdx,
-  });
+  }) : super(key: key);
 
   @override
   _CustomFijkPanelState createState() => _CustomFijkPanelState();
@@ -80,7 +81,9 @@ class CustomFijkPanel extends StatefulWidget {
 class _CustomFijkPanelState extends State<CustomFijkPanel>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   FijkPlayer get player => widget.player;
+
   ShowConfigAbs get showConfig => widget.showConfig;
+
   VideoSourceFormat get _videoSourceTabs => widget.videoFormat!;
 
   bool _lockStuff = lockStuff;
@@ -112,7 +115,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
       end: Offset.zero,
     ).animate(_animationController!);
     // is not null
-    if (_videoSourceTabs.video!.length < 1) return null;
+    if (_videoSourceTabs.video!.isEmpty) return;
     // init plater state
     setState(() {
       _playerState = player.value.state;
@@ -123,7 +126,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
       });
     }
     // is not null
-    if (_videoSourceTabs.video!.length < 1) return null;
+    if (_videoSourceTabs.video!.isEmpty) return;
     // autoplay and existurl
     if (showConfig.isAutoPlay && !_isPlaying) {
       int curTabIdx = widget.curTabIdx;
@@ -271,7 +274,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
           if (widget.player.value.fullScreen) {
             player.exitFullScreen();
           } else {
-            if (widget.pageContent == null) return null;
+            if (widget.pageContent == null) return;
             player.stop();
             Navigator.pop(widget.pageContent!);
           }
@@ -296,14 +299,12 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
               },
             ),
           ),
-          Container(
-            child: SlideTransition(
-              position: _animation!,
-              child: Container(
-                height: window.physicalSize.height,
-                width: 320,
-                child: _buildPlayDrawer(),
-              ),
+          SlideTransition(
+            position: _animation!,
+            child: SizedBox(
+              height: window.physicalSize.height,
+              width: 320,
+              child: _buildPlayDrawer(),
             ),
           ),
         ],
@@ -424,22 +425,20 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
                             ? barFillingHeight
                             : barHeight,
                     alignment: Alignment.bottomLeft,
-                    child: Container(
+                    child: SizedBox(
                       height: barHeight,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           _buildTopBackBtn(),
                           Expanded(
-                            child: Container(
-                              child: Text(
-                                widget.playerTitle,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                ),
+                            child: Text(
+                              widget.playerTitle,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -490,7 +489,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
           // 错误信息
           const Text(
             "播放失败, 您可以点击重试!",
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.white,
               fontSize: 15,
               fontWeight: FontWeight.bold,
@@ -514,7 +513,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
             },
             child: const Text(
               "点击重试",
-              style: const TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.black),
             ),
           ),
         ],
@@ -524,10 +523,10 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
 
   // 加载中slot
   Widget _buildLoadingStateSlotWidget() {
-    return SizedBox(
+    return const SizedBox(
       width: barHeight * 0.8,
       height: barHeight * 0.8,
-      child: const CircularProgressIndicator(
+      child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation(Colors.white),
       ),
     );
@@ -650,6 +649,7 @@ class _buildGestureDetector extends StatefulWidget {
   final Function changeLockState;
   final ShowConfigAbs showConfig;
   final VideoSourceFormat? videoFormat;
+
   _buildGestureDetector({
     Key? key,
     required this.player,
@@ -672,7 +672,9 @@ class _buildGestureDetector extends StatefulWidget {
 
 class _buildGestureDetectorState extends State<_buildGestureDetector> {
   FijkPlayer get player => widget.player;
+
   ShowConfigAbs get showConfig => widget.showConfig;
+
   VideoSourceFormat get _videoSourceTabs => widget.videoFormat!;
 
   Duration _duration = const Duration();
@@ -860,7 +862,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
       dragRange = 0;
     }
     //
-    this.setState(() {
+    setState(() {
       _isHorizontalMove = true;
       _hideStuff = false;
       _isTouch = true;
@@ -874,7 +876,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
 
   _onHorizontalDragEnd(detills) {
     player.seekTo(_dargPos.inMilliseconds);
-    this.setState(() {
+    setState(() {
       _isHorizontalMove = false;
       _isTouch = false;
       _hideStuff = true;
@@ -1006,7 +1008,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
     return Ink(
       child: InkWell(
         onTap: () => cb(),
-        child: Container(
+        child: SizedBox(
           height: 30,
           child: Padding(
             padding: const EdgeInsets.only(left: 5, right: 5),
@@ -1037,7 +1039,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
     double curTimePro = (currentValue / duration) * 100;
     double curBottomProW = (curConWidth / 100) * curTimePro;
 
-    return Container(
+    return SizedBox(
       height: barHeight,
       child: Stack(
         children: [
@@ -1091,7 +1093,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
                     Padding(
                       padding: const EdgeInsets.only(right: 5.0, left: 5),
                       child: Text(
-                        '${_duration2String(_currentPos)}',
+                        _duration2String(_currentPos),
                         style: const TextStyle(
                           fontSize: 14.0,
                           color: Colors.white,
@@ -1148,16 +1150,14 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
 
                     // 总播放时间
                     _duration.inMilliseconds == 0
-                        ? Container(
-                            child: const Text(
-                              "00:00",
-                              style: TextStyle(color: Colors.white),
-                            ),
+                        ? const Text(
+                            "00:00",
+                            style: TextStyle(color: Colors.white),
                           )
                         : Padding(
                             padding: const EdgeInsets.only(right: 5.0, left: 5),
                             child: Text(
-                              '${_duration2String(_duration)}',
+                              _duration2String(_duration),
                               style: const TextStyle(
                                 fontSize: 14.0,
                                 color: Colors.white,
@@ -1270,7 +1270,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
         if (widget.player.value.fullScreen) {
           player.exitFullScreen();
         } else {
-          if (widget.pageContent == null) return null;
+          if (widget.pageContent == null) return;
           player.stop();
           Navigator.pop(widget.pageContent!);
         }
@@ -1298,21 +1298,19 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
             ],
           ),
         ),
-        child: Container(
+        child: SizedBox(
           height: barHeight,
           child: Row(
             children: <Widget>[
               _buildTopBackBtn(),
               Expanded(
-                child: Container(
-                  child: Text(
-                    widget.playerTitle,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    textAlign: TextAlign.left,
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
+                child: Text(
+                  widget.playerTitle,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textAlign: TextAlign.left,
+                  style: const TextStyle(
+                    color: Colors.white,
                   ),
                 ),
               )
@@ -1342,10 +1340,10 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
                   onPressed: _playOrPause,
                 ),
               )
-            : SizedBox(
+            : const SizedBox(
                 width: barHeight * 0.8,
                 height: barHeight * 0.8,
-                child: const CircularProgressIndicator(
+                child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation(Colors.white),
                 ),
               ),
@@ -1360,10 +1358,10 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
             height: 40,
             alignment: Alignment.center,
             decoration: const BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                const Radius.circular(5),
+              borderRadius: BorderRadius.all(
+                Radius.circular(5),
               ),
-              color: const Color.fromRGBO(0, 0, 0, 0.8),
+              color: Color.fromRGBO(0, 0, 0, 0.8),
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
@@ -1429,7 +1427,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
         Ink(
           child: InkWell(
             onTap: () {
-              if (_speed == speedVals) return null;
+              if (_speed == speedVals) return;
               setState(() {
                 _speed = speed = speedVals;
                 _hideSpeedStu = true;

@@ -21,7 +21,7 @@ class VideoSourceFormatVideoList {
     name = json["name"]?.toString();
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data["url"] = url;
     data["name"] = name;
     return data;
@@ -60,14 +60,14 @@ class VideoSourceFormatVideo {
     }
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data["name"] = name;
     if (list != null) {
       final v = list;
       final arr0 = [];
-      v!.forEach((v) {
+      for (var v in v!) {
         arr0.add(v!.toJson());
-      });
+      }
       data["list"] = arr0;
     }
     return data;
@@ -107,13 +107,13 @@ class VideoSourceFormat {
     }
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (video != null) {
       final v = video;
       final arr0 = [];
-      v!.forEach((v) {
+      for (var v in v!) {
         arr0.add(v!.toJson());
-      });
+      }
       data["video"] = arr0;
     }
     return data;
