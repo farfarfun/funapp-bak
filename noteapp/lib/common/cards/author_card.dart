@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:noteapp/common/domain/author.dart';
+
+class AuthorCard extends StatelessWidget {
+  Author author;
+  int type;
+
+  AuthorCard(this.author, {this.type = 1}) {}
+
+  @override
+  Widget build(BuildContext context) {
+    if (type == 1) {
+      return SizedBox(
+          height: 30,
+          child: Stack(children: <Widget>[
+            Positioned(
+              left: 0,
+              child: SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: Image.network(
+                    author.logo,
+                    fit: BoxFit.cover,
+                  )),
+            ),
+            Positioned(
+                left: 30,
+                child: Text(author.name,
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                    ))),
+            const Positioned(
+              right: 0,
+              child: Text(
+                "关注",
+                style: TextStyle(fontSize: 14.0),
+              ),
+            ),
+          ]));
+    } else {
+      return Row(
+        children: [
+          Container(
+              height: 25,
+              width: 25,
+              child: Image.network(
+                author.logo,
+                fit: BoxFit.cover,
+              )),
+          Text(author.name,
+              style: const TextStyle(
+                fontSize: 14.0,
+                height: 1.2,
+              ))
+        ],
+      );
+    }
+  }
+}
