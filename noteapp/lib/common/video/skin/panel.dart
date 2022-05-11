@@ -60,7 +60,7 @@ class CustomFijkPanel extends StatefulWidget {
   final ShowConfigAbs showConfig;
   final VideoSourceFormat? videoFormat;
 
-  CustomFijkPanel({
+  const CustomFijkPanel({
     Key? key,
     required this.player,
     required this.viewSize,
@@ -600,7 +600,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
         );
       } else {
         ws.add(
-          _buildGestureDetector(
+          _BuildGestureDetector(
             curActiveIdx: widget.curActiveIdx,
             curTabIdx: widget.curTabIdx,
             onChangeVideo: widget.onChangeVideo,
@@ -636,7 +636,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel>
   bool get wantKeepAlive => true;
 }
 
-class _buildGestureDetector extends StatefulWidget {
+class _BuildGestureDetector extends StatefulWidget {
   final FijkPlayer player;
   final Size viewSize;
   final Rect texturePos;
@@ -650,7 +650,7 @@ class _buildGestureDetector extends StatefulWidget {
   final ShowConfigAbs showConfig;
   final VideoSourceFormat? videoFormat;
 
-  _buildGestureDetector({
+  const _BuildGestureDetector({
     Key? key,
     required this.player,
     required this.viewSize,
@@ -667,10 +667,10 @@ class _buildGestureDetector extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _buildGestureDetectorState createState() => _buildGestureDetectorState();
+  _BuildGestureDetectorState createState() => _BuildGestureDetectorState();
 }
 
-class _buildGestureDetectorState extends State<_buildGestureDetector> {
+class _BuildGestureDetectorState extends State<_BuildGestureDetector> {
   FijkPlayer get player => widget.player;
 
   ShowConfigAbs get showConfig => widget.showConfig;
@@ -725,7 +725,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
   };
 
   // 初始化构造函数
-  _buildGestureDetectorState();
+  _BuildGestureDetectorState();
 
   void initEvent() {
     // 设置初始化的值，全屏与半屏切换后，重设
@@ -794,10 +794,7 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
         _duration = value.duration;
       });
     }
-    print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
-    print('++++++++ 是否开始播放 => ${value.state == FijkState.started} ++++++++');
-    print('+++++++++++++++++++ 播放器状态 => ${value.state} ++++++++++++++++++++');
-    print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+
     // 新状态
     bool playing = value.state == FijkState.started;
     bool prepared = value.prepared;
@@ -1138,7 +1135,6 @@ class _buildGestureDetectorState extends State<_buildGestureDetector> {
                                 onChangeEnd: (v) {
                                   setState(() {
                                     player.seekTo(v.toInt());
-                                    print("seek to $v");
                                     _currentPos = Duration(
                                         milliseconds: _seekPos.toInt());
                                     _seekPos = -1;

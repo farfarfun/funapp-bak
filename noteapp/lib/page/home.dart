@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/data/mock.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/common/image/images_slider.dart';
 import 'package:noteapp/common/resource/resource_list.dart';
-import 'package:noteapp/common/cards/video_card.dart';
 
 //
 class DemoHome extends StatelessWidget {
+  const DemoHome({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Carousel demo'),
+        title: const Text('Carousel demo'),
         actions: [
           IconButton(
-              icon: Icon(Icons.nightlight_round),
+              icon: const Icon(Icons.nightlight_round),
               onPressed: () {
                 themeMode.value = themeMode.value == 1 ? 2 : 1;
               })
@@ -35,6 +37,8 @@ class DemoHome extends StatelessWidget {
 }
 
 class DemoDetail extends StatelessWidget {
+  const DemoDetail({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -46,7 +50,7 @@ class DemoDetail extends StatelessWidget {
           themeMode: ThemeMode.values.toList()[value as int],
           debugShowCheckedModeBanner: false,
           routes: {
-            '/': (ctx) => DemoHome(),
+            '/': (ctx) => const DemoHome(),
             '/position': (ctx) => KeepPageviewPosition(),
             '/video': (ctx) => VideoDetailView(VideoDetail(
                 url: "https://media.w3.org/2010/05/sintel/trailer.mp4")),
@@ -67,13 +71,16 @@ class DemoDetail extends StatelessWidget {
 
 class HomePageDetail extends StatefulWidget {
   int _currentIndex = 0;
+
   HomePageDetail({Key? key}) : super(key: key);
+
+  @override
   _HomePageDetail createState() => _HomePageDetail();
 }
 
 class _HomePageDetail extends State<HomePageDetail> {
   final List<Widget> _pageList = [
-    DemoDetail(), //页面1
+    const DemoDetail(), //页面1
     ResourceListView(ResourceGenerateMock(type: ResourceType.video)), //页面2
     ResourceListView(ResourceGenerateMock(type: ResourceType.pics)), //页面3
   ];

@@ -55,7 +55,7 @@ class VideoGenerateMock extends VideoGenerate {
 //
 class ResourceGenerateMock extends ResourceGenerate {
   ResourceType type;
-  ResourceGenerateMock({this.type = ResourceType.none}) {}
+  ResourceGenerateMock({this.type = ResourceType.none});
   @override
   ResourceDetail next() {
     final _random = Random();

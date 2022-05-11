@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //
-const MaterialColor white = const MaterialColor(
+const MaterialColor white = MaterialColor(
   0xFFFFFFFF,
   <int, Color>{
     50: Color(0xFFFFFFFF),
@@ -20,7 +20,7 @@ const MaterialColor white = const MaterialColor(
   },
 );
 
-const MaterialColor primary = const MaterialColor(
+const MaterialColor primary = MaterialColor(
   0xfffb7299,
-  const <int, Color>{50: const Color(0xffff9db5)},
+  <int, Color>{50: Color(0xffff9db5)},
 );
