@@ -106,3 +106,4 @@ app
 noteapp/.flutter-plugins
 noteapp/.flutter-plugins-dependencies
 noteapp/.packages
+noteapp/android/local.properties
