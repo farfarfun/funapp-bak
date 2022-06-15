@@ -17,4 +17,4 @@ jobs:
           refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
           relativePath: noteapp
           skipTests: true
-          
+          force: true
