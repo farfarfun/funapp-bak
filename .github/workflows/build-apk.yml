@@ -13,6 +13,9 @@ jobs:
   process:
     name: all process
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./noteapp
     # 这个任务的步骤
     steps:
       # 拉取项目代码
