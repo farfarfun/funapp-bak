@@ -47,7 +47,7 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD}}
       - run: pwd
       
-      - run: ls 
+      - run: find $PWD | xargs ls -ld
        
       # 发布到 Release
       - name: Release apk
