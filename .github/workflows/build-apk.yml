@@ -53,5 +53,5 @@ jobs:
       - name: Release apk
         uses: ncipollo/release-action@v1.10.0
         with:
-          artifacts: "build/app/outputs/flutter-apk/*.apk,noteapp/build/app/outputs/flutter-apk/*.apk,/home/runner/work/noteapp/noteapp/noteapp/build/app/outputs/flutter-apk/*.apk"
+          artifacts: "noteapp/build/app/outputs/flutter-apk/*.apk,/home/runner/work/noteapp/noteapp/noteapp/build/app/outputs/flutter-apk/*.apk"
           token: ${{ secrets.RELEASE_TOKEN }}
