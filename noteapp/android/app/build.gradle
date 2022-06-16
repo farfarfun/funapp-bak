@@ -52,7 +52,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
 
-        archivesBaseName = "$applicationName-v$$versionName"
+        archivesBaseName = "$applicationName-v$versionName"
         //setProperty("archivesBaseName", applicationId + "-v" + versionCode + "(" + versionName + ")")
     }
 
