@@ -32,6 +32,7 @@ androidExtensions {
 
 android {
     compileSdkVersion flutter.compileSdkVersion
+    ndkVersion "23.2.8568313"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
