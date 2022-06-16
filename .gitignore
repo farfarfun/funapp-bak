@@ -92,7 +92,6 @@ dmypy.json
 .pyre/
 bin/
 apps/
-app
 
 /noteapp/android/.gradle
 /noteapp/android/app/debug
