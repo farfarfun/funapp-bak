@@ -39,7 +39,7 @@ jobs:
         env:
           ENCODED_KEYSTORE: ${{ secrets.ENCODED_KEYSTORE }}
       # 打包 APK
-      - run: flutter build apk --release
+      - run: flutter build apk --release  --split-per-abi
       #- run: flutter build apk --target-platform android-arm64 --split-per-abi  --release
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
