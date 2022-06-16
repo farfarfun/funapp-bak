@@ -93,6 +93,7 @@ dmypy.json
 bin/
 apps/
 
+
 /noteapp/android/.gradle
 /noteapp/android/app/debug
 /noteapp/android/app/profile
