@@ -50,6 +50,9 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+        archivesBaseName = "$applicationId-v$versionCode($versionName)"
+        //setProperty("archivesBaseName", applicationId + "-v" + versionCode + "(" + versionName + ")")
     }
 
     signingConfigs {
