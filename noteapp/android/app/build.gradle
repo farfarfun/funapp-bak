@@ -52,8 +52,6 @@ android {
         versionName flutterVersionName
 
         archivesBaseName = "noteapp-v$versionName"
-        //archivesBaseName = "$applicationName-v$versionName"
-        //setProperty("archivesBaseName", applicationId + "-v" + versionCode + "(" + versionName + ")")
     }
 
     signingConfigs {
