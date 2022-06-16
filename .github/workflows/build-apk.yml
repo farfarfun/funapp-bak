@@ -45,9 +45,13 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD}}
+      - run: pwd
+      
+      - run: ls 
+       
       # 发布到 Release
       - name: Release apk
         uses: ncipollo/release-action@v1.10.0
         with:
-          artifacts: "build/app/outputs/flutter-apk/*.apk,build/*.apk"
+          artifacts: "build/app/outputs/flutter-apk/*.apk,noteapp/build/app/outputs/flutter-apk/*.apk"
           token: ${{ secrets.RELEASE_TOKEN }}
