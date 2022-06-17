@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noteflutter/page/home.dart';
+import 'package:noteflutter/tiktok/app.dart';
 
-//
 void main() {
-  runApp(HomePageDetail());
+  runApp(TikTokApp());
 }
