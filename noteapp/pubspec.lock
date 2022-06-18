@@ -162,7 +162,7 @@ packages:
       name: noteflutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.9"
+    version: "0.0.12"
   path:
     dependency: transitive
     description:

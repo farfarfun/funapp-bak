@@ -141,7 +141,7 @@
     },
     {
       "name": "noteflutter",
-      "rootUri": "file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/noteflutter-0.0.9",
+      "rootUri": "file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/noteflutter-0.0.12",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
@@ -296,7 +296,7 @@
       "languageVersion": "2.0"
     }
   ],
-  "generated": "2022-06-17T09:29:47.939624Z",
+  "generated": "2022-06-18T06:03:15.298761Z",
   "generator": "pub",
   "generatorVersion": "2.18.0-189.0.dev"
 }
