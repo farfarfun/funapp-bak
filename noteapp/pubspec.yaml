@@ -14,7 +14,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  noteflutter: ^0.0.12
+  noteflutter: ^0.0.14
 
 dev_dependencies:
   flutter_test:

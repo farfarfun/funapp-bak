@@ -26,6 +26,10 @@ csslib
 2.12
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/csslib-0.17.2/
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/csslib-0.17.2/lib/
+dio
+2.12
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/lib/
 fake_async
 2.12
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.0/
@@ -54,6 +58,10 @@ html
 2.12
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/html-0.15.0/
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/html-0.15.0/lib/
+http_parser
+2.12
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.1/
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.1/lib/
 inview_notifier_list
 2.12
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/inview_notifier_list-3.0.0/
@@ -80,8 +88,8 @@ file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/meta-1.8.0/
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/meta-1.8.0/lib/
 noteflutter
 2.16
-file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/noteflutter-0.0.12/
-file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/noteflutter-0.0.12/lib/
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/noteflutter-0.0.14/
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/noteflutter-0.0.14/lib/
 path
 2.12
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/path-1.8.2/
@@ -126,6 +134,10 @@ test_api
 2.12
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.9/
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.9/lib/
+typed_data
+2.12
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.1/
+file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.1/lib/
 vector_math
 2.14
 file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2/
