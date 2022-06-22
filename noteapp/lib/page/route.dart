@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/data/mock.dart';
@@ -32,12 +35,23 @@ class RouteItem extends StatefulWidget {
 class _RouteItemState extends State<RouteItem> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(widget.title),
-      onTap: () {
-        Navigator.pushNamed(context, widget.route);
-      },
+    return Container(
+      width: 300,
+      padding: EdgeInsets.only(top: 30),
+      child: CupertinoButton(
+        child: Text(widget.title),
+        color: Color.fromARGB(255, Random.secure().nextInt(255),
+            Random.secure().nextInt(255), Random.secure().nextInt(255)),
+        onPressed: () => Navigator.pushNamed(context, widget.route),
+      ),
     );
+
+    // return ListTile(
+    //   title: Text(widget.title),
+    //   onTap: () {
+    //     Navigator.pushNamed(context, widget.route);
+    //   },
+    // );
   }
 }
 
@@ -57,16 +71,32 @@ class RouteHome extends StatelessWidget {
               })
         ],
       ),
-      body: ListView(
-        children: const <Widget>[
-          RouteItem('播放视频', RouterManage.pathVideo),
-          RouteItem('视频列表', RouterManage.pathVideoList),
-          RouteItem('图片列表', RouterManage.pathImageList),
-          RouteItem('图片集合列表', RouterManage.pathImagesList),
-          RouteItem('资源列表', RouterManage.pathResourceList),
-          RouteItem('tiktok', RouterManage.pathTiktok),
-          RouteItem('tiktok_video', RouterManage.pathTiktokVideo),
-        ],
+      // body: ListView(
+      //   children: const <Widget>[
+      //     RouteItem('播放视频', RouterManage.pathVideo),
+      //     RouteItem('视频列表', RouterManage.pathVideoList),
+      //     RouteItem('图片列表', RouterManage.pathImageList),
+      //     RouteItem('图片集合列表', RouterManage.pathImagesList),
+      //     RouteItem('资源列表', RouterManage.pathResourceList),
+      //     RouteItem('tiktok', RouterManage.pathTiktok),
+      //     RouteItem('tiktok_video', RouterManage.pathTiktokVideo),
+      //   ],
+      // ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            RouteItem('播放视频', RouterManage.pathVideo),
+            RouteItem('视频列表', RouterManage.pathVideoList),
+            RouteItem('图片列表', RouterManage.pathImageList),
+            RouteItem('图片集合列表', RouterManage.pathImagesList),
+            RouteItem('资源列表', RouterManage.pathResourceList),
+            RouteItem('tiktok', RouterManage.pathTiktok),
+            RouteItem('tiktok_video', RouterManage.pathTiktokVideo),
+          ],
+        ),
       ),
     );
   }
