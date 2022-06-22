@@ -4,6 +4,7 @@ import 'package:noteapp/common/data/mock.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/common/resource/resource_list.dart';
 import 'package:noteapp/tiktok/app.dart';
+import 'package:noteapp/tiktok/pages/videoPage.dart';
 
 ValueNotifier themeMode = ValueNotifier(2);
 
@@ -52,6 +53,7 @@ class RouteHome extends StatelessWidget {
           RouteItem('图片集合列表', '/images_list'),
           RouteItem('资源列表', '/resource_list'),
           RouteItem('tiktok', '/tiktok'),
+          RouteItem('tiktok_video', '/tiktok_video'),
         ],
       ),
     );
@@ -89,6 +91,7 @@ class _RouteDetailState extends State<RouteDetail> {
             '/resource_list': (ctx) =>
                 ResourceListView(ResourceGenerateMock(type: ResourceType.none)),
             '/tiktok': (ctx) => TikTokApp('http://47.91.11.122:8446/'),
+            '/tiktok_video': (ctx) => VideoPage('http://47.91.11.122:8446/'),
           },
         );
       },
