@@ -13,7 +13,7 @@ typedef LoadMoreVideo = Future<List<VPVideoController>> Function(
 /// 提供了预加载/释放/加载更多功能
 class TikTokVideoListController extends ChangeNotifier {
   TikTokVideoListController({
-    this.loadMoreCount = 1,
+    this.loadMoreCount = 2,
     this.preloadCount = 3,
     this.disposeCount = 0, // TODO: VideoPlayer有bug(安卓)，当前只能设置为0
   });
@@ -21,7 +21,7 @@ class TikTokVideoListController extends ChangeNotifier {
   /// 到第几个触发预加载，例如:1:最后一个，2:倒数第二个
   final int loadMoreCount;
 
-  /// 预加载多少个视频
+  /// 每次预加载多少个视频
   final int preloadCount;
 
   /// 超出多少个，就释放视频

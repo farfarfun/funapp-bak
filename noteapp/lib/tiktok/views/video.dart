@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:noteapp/common/domain/author.dart';
 import 'package:noteapp/tiktok/style/style.dart';
 import 'package:noteapp/tiktok/views/videoGesture.dart';
 
@@ -45,6 +46,7 @@ class TikTokVideoPage extends StatelessWidget {
     // 用户信息
     Widget userInfo = userInfoWidget ??
         VideoUserInfo(
+          new Author(),
           bottomPadding: bottomPadding,
         );
     // 视频加载的动画
@@ -149,15 +151,11 @@ class VideoLoadingPlaceHolder extends StatelessWidget {
 
 class VideoUserInfo extends StatelessWidget {
   final String? desc;
-  // final Function onGoodGift;
-  const VideoUserInfo({
-    Key? key,
-    required this.bottomPadding,
-    // @required this.onGoodGift,
-    this.desc,
-  }) : super(key: key);
-
+  final Author author;
   final double bottomPadding;
+
+  VideoUserInfo(this.author, {this.desc, required this.bottomPadding, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -171,22 +169,22 @@ class VideoUserInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text(
-            '@朱二旦的枯燥生活',
+          Text(
+            '@' + author.name,
             style: StandardTextStyle.big,
           ),
           Container(height: 6),
           Text(
-            desc ?? '#原创 有钱人的生活就是这么朴实无华，且枯燥 #短视频',
+            author.desc,
             style: StandardTextStyle.normal,
           ),
           Container(height: 6),
           Row(
-            children: const <Widget>[
+            children: <Widget>[
               Icon(Icons.music_note, size: 14),
               Expanded(
                 child: Text(
-                  '朱二旦的枯燥生活创作的原声',
+                  author.name,
                   maxLines: 9,
                   style: StandardTextStyle.normal,
                 ),
