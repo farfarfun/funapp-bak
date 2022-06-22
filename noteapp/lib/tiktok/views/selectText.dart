@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:noteapp/tiktok/style/style.dart';
 
 class SelectText extends StatelessWidget {
-  const SelectText({
-    Key? key,
-    this.isSelect = true,
-    this.title,
-  }) : super(key: key);
-
   final bool isSelect;
   final String? title;
+
+  const SelectText({
+    this.isSelect = true,
+    this.title,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:noteapp/tiktok/app.dart';
+import 'package:noteapp/page/home.dart';
 
+//
 void main() {
-  runApp(TikTokApp('http://47.91.11.122:8446/'));
+  runApp(const HomePageDetail());
 }

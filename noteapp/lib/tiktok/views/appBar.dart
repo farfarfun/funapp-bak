@@ -21,7 +21,7 @@ class TikTokTabBar extends StatelessWidget {
     this.onTabSwitch,
     this.current,
     this.onAddButton,
-    this.hasBackground= false,
+    this.hasBackground = false,
   }) : super(key: key);
 
   @override
@@ -49,19 +49,9 @@ class TikTokTabBar extends StatelessWidget {
         ),
         Expanded(
           child: GestureDetector(
-            child: const Icon(
-              Icons.add_box,
-              size: 32,
-            ),
-            onTap: () => onAddButton?.call(),
-          ),
-        ),
-        
-        Expanded(
-          child: GestureDetector(
             child: SelectText(
               isSelect: current == TikTokPageTag.me,
-              title: '我',
+              title: '我的',
             ),
             onTap: () => onTabSwitch?.call(TikTokPageTag.me),
           ),
