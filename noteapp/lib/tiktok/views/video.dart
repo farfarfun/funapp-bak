@@ -120,7 +120,7 @@ class VideoLoadingPlaceHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           colors: <Color>[
@@ -137,7 +137,7 @@ class VideoLoadingPlaceHolder extends StatelessWidget {
             color: Colors.white.withOpacity(0.3),
           ),
           Container(
-            padding: EdgeInsets.all(50),
+            padding: const EdgeInsets.all(50),
             child: Text(
               tag,
               style: StandardTextStyle.normalWithOpacity,
@@ -168,12 +168,12 @@ class VideoUserInfo extends StatelessWidget {
         left: 12,
         bottom: bottomPadding,
       ),
-      margin: EdgeInsets.only(right: 80),
+      margin: const EdgeInsets.only(right: 80),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
+          const Text(
             '@朱二旦的枯燥生活',
             style: StandardTextStyle.big,
           ),
@@ -184,7 +184,7 @@ class VideoUserInfo extends StatelessWidget {
           ),
           Container(height: 6),
           Row(
-            children: <Widget>[
+            children: const <Widget>[
               Icon(Icons.music_note, size: 14),
               Expanded(
                 child: Text(

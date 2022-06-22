@@ -18,7 +18,7 @@ class TikTokApp extends StatelessWidget {
         primaryColor: ColorPlate.orange,
         scaffoldBackgroundColor: ColorPlate.back1,
         dialogBackgroundColor: ColorPlate.back2,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodyText1: StandardTextStyle.normal,
         ),
       ),

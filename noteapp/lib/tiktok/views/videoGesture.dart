@@ -23,7 +23,7 @@ class TikTokVideoGesture extends StatefulWidget {
 }
 
 class _TikTokVideoGestureState extends State<TikTokVideoGesture> {
-  GlobalKey _key = GlobalKey();
+  final GlobalKey _key = GlobalKey();
 
   // 内部转换坐标点
   Offset _p(Offset p) {
@@ -128,7 +128,7 @@ class _TikTokFavoriteAnimationIconState
     _animationController = AnimationController(
       lowerBound: 0,
       upperBound: 1,
-      duration: Duration(milliseconds: 1600),
+      duration: const Duration(milliseconds: 1600),
       vsync: this,
     );
 
@@ -183,10 +183,10 @@ class _TikTokFavoriteAnimationIconState
       child: content,
       blendMode: BlendMode.srcATop,
       shaderCallback: (Rect bounds) => RadialGradient(
-        center: Alignment.topLeft.add(Alignment(0.66, 0.66)),
+        center: Alignment.topLeft.add(const Alignment(0.66, 0.66)),
         colors: [
-          Color(0xffEF6F6F),
-          Color(0xffF03E3E),
+          const Color(0xffEF6F6F),
+          const Color(0xffF03E3E),
         ],
       ).createShader(bounds),
     );

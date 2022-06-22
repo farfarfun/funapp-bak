@@ -31,12 +31,12 @@ class AdMusicLoadingButton extends StatelessWidget {
     var body = Container(
       height: height ?? 44,
       width: double.infinity,
-      padding: margin ?? EdgeInsets.symmetric(horizontal: 60),
+      padding: margin ?? const EdgeInsets.symmetric(horizontal: 60),
       color: ColorPlate.clear,
       child: Container(
           alignment: Alignment.center,
           decoration: ShapeDecoration(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             shadows: shadow
                 ? [
                     BoxShadow(
@@ -51,7 +51,7 @@ class AdMusicLoadingButton extends StatelessWidget {
             alignment: Alignment.center,
             index: isLoading ? 0 : 1,
             children: <Widget>[
-              CupertinoActivityIndicator(),
+              const CupertinoActivityIndicator(),
               Container(
                 child: AdMucisText.normal(
                   buttonText,

@@ -57,8 +57,8 @@ class DataGenerate {
     }
   }
 
-  Future<void> addFavorite(
-      String userId, String resourceId, String sourceId) async {
+  Future<void> addFavorite(String userId, String resourceId,
+      {String sourceId = "0"}) async {
     Map<String, dynamic> queryParameters = {};
     queryParameters['user_id'] = userId;
     queryParameters['resource_id'] = resourceId;

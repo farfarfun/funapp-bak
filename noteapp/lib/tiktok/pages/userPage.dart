@@ -41,7 +41,7 @@ class _UserPageState extends State<UserPage> {
     );
     Widget avatar = Container(
       height: 120 + MediaQuery.of(context).padding.top,
-      padding: EdgeInsets.only(left: 18),
+      padding: const EdgeInsets.only(left: 18),
       alignment: Alignment.bottomLeft,
       child: OverflowBox(
         alignment: Alignment.bottomLeft,
@@ -50,7 +50,7 @@ class _UserPageState extends State<UserPage> {
         child: Container(
           height: 74,
           width: 74,
-          margin: EdgeInsets.only(bottom: 12),
+          margin: const EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(44),
             color: Colors.orange,
@@ -69,7 +69,7 @@ class _UserPageState extends State<UserPage> {
       ),
     );
     Widget body = ListView(
-      physics: BouncingScrollPhysics(
+      physics: const BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),
       children: <Widget>[
@@ -84,12 +84,12 @@ class _UserPageState extends State<UserPage> {
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(left: 18),
+                padding: const EdgeInsets.only(left: 18),
                 color: ColorPlate.back1,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       '@用户名',
                       style: StandardTextStyle.big,
                     ),
@@ -102,7 +102,7 @@ class _UserPageState extends State<UserPage> {
                     ),
                     Container(height: 10),
                     Row(
-                      children: <Widget>[
+                      children: const <Widget>[
                         _UserTag(tag: '幽默'),
                         _UserTag(tag: '机智'),
                         _UserTag(tag: '枯燥'),
@@ -115,14 +115,14 @@ class _UserPageState extends State<UserPage> {
               ),
               Container(
                 color: ColorPlate.back1,
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 8,
                   vertical: 2,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
+                  children: const <Widget>[
                     TextGroup('356', '关注'),
                     TextGroup('145万', '粉丝'),
                     TextGroup('1423万', '获赞'),
@@ -131,7 +131,7 @@ class _UserPageState extends State<UserPage> {
               ),
               Container(
                 height: 10,
-                margin: EdgeInsets.symmetric(horizontal: 12),
+                margin: const EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -140,14 +140,15 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ),
               ),
-              _UserVideoTable(),
+              const _UserVideoTable(),
             ],
           ),
         ),
       ],
     );
+
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           colors: <Color>[
@@ -160,14 +161,14 @@ class _UserPageState extends State<UserPage> {
         alignment: Alignment.topCenter,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(top: 400),
+            margin: const EdgeInsets.only(top: 400),
             height: double.infinity,
             width: double.infinity,
             color: ColorPlate.back1,
           ),
           body,
           Container(
-            margin: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20),
             height: 62,
             child: TopToolRow(
               canPop: widget.canPop,
@@ -176,13 +177,13 @@ class _UserPageState extends State<UserPage> {
                 child: Container(
                   width: 30,
                   height: 30,
-                  margin: EdgeInsets.all(16),
+                  margin: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.36),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   alignment: Alignment.center,
-                  child: Icon(
+                  child: const Icon(
                     Icons.more_horiz,
                     size: 24,
                   ),
@@ -212,15 +213,15 @@ class _UserRightButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         vertical: 6,
         horizontal: 20,
       ),
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       alignment: Alignment.center,
       child: Text(
         title,
-        style: TextStyle(color: ColorPlate.orange),
+        style: const TextStyle(color: ColorPlate.orange),
       ),
       decoration: BoxDecoration(
         border: Border.all(color: ColorPlate.orange),
@@ -240,8 +241,8 @@ class _UserTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 4),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(
         vertical: 2,
         horizontal: 4,
       ),
@@ -270,90 +271,74 @@ class _UserVideoTable extends StatelessWidget {
       children: <Widget>[
         Container(
           color: ColorPlate.back1,
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 12,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: const <Widget>[
               _PointSelectTextButton(true, '作品'),
               _PointSelectTextButton(false, '关注'),
               _PointSelectTextButton(false, '喜欢'),
             ],
           ),
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              _SmallVideo(),
-              _SmallVideo(),
-              _SmallVideo(),
-            ],
-          ),
+        Row(
+          children: const <Widget>[
+            _SmallVideo(),
+            _SmallVideo(),
+            _SmallVideo(),
+          ],
         ),
       ],
     );
@@ -418,7 +403,7 @@ class _PointSelectTextButton extends StatelessWidget {
                 )
               : Container(),
           Container(
-            padding: EdgeInsets.only(left: 2),
+            padding: const EdgeInsets.only(left: 2),
             child: Text(
               title,
               style: isSelect
@@ -446,7 +431,7 @@ class TextGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
@@ -475,22 +460,22 @@ class UserDetailPage extends StatefulWidget {
 class _UserDetailPageState extends State<UserDetailPage> {
   @override
   Widget build(BuildContext context) {
-    Widget head = TikTokAppbar(
+    Widget head = const TikTokAppbar(
       title: '用户',
     );
     var userHead = Row(
       children: <Widget>[
         Expanded(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Text(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: const Text(
               '个人信息',
               style: StandardTextStyle.smallWithOpacity,
             ),
           ),
         ),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           child: Text(
             '修改',
             style: StandardTextStyle.smallWithOpacity.apply(
@@ -508,49 +493,49 @@ class _UserDetailPageState extends State<UserDetailPage> {
         userHead,
         _UserInfoRow(
           title: '昵称',
-          rightIcon: Text(
+          rightIcon: const Text(
             '朱二蛋的枯燥生活',
             style: StandardTextStyle.small,
           ),
         ),
         _UserInfoRow(
           title: '头像',
-          rightIcon: Text(
+          rightIcon: const Text(
             '上传',
             style: StandardTextStyle.small,
           ),
         ),
         _UserInfoRow(
           title: '手机绑定',
-          rightIcon: Text(
+          rightIcon: const Text(
             '186****7767',
             style: StandardTextStyle.small,
           ),
         ),
         _UserInfoRow(
           title: '地址',
-          rightIcon: Text(
+          rightIcon: const Text(
             '深圳市南山区南海大道',
             style: StandardTextStyle.small,
           ),
         ),
         _UserInfoRow(
           title: '年龄',
-          rightIcon: Text(
+          rightIcon: const Text(
             '18',
             style: StandardTextStyle.small,
           ),
         ),
         _UserInfoRow(
           title: '用户性别',
-          rightIcon: Text(
+          rightIcon: const Text(
             '男',
             style: StandardTextStyle.small,
           ),
         ),
         _UserInfoRow(
           title: '职业',
-          rightIcon: Text(
+          rightIcon: const Text(
             '总裁',
             style: StandardTextStyle.small,
           ),
@@ -603,10 +588,10 @@ class _UserInfoRow extends StatelessWidget {
 
     Widget row = Container(
       height: 48,
-      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.02),
-        border: Border(
+        border: const Border(
           bottom: BorderSide(color: Colors.white12),
         ),
       ),
@@ -615,17 +600,17 @@ class _UserInfoRow extends StatelessWidget {
           icon != null ? iconImg : Container(),
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12),
               child: Text(
                 title!,
-                style: TextStyle(fontSize: 14),
+                style: const TextStyle(fontSize: 14),
               ),
             ),
           ),
           Opacity(
             opacity: 0.6,
             child: rightIcon ??
-                Icon(
+                const Icon(
                   Icons.arrow_forward_ios,
                   size: 12,
                 ),

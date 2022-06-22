@@ -17,7 +17,7 @@ import 'package:video_player/video_player.dart';
 
 class HomePage extends StatefulWidget {
   late DataGenerate generate;
-  HomePage(String baseUrl) {
+  HomePage(String baseUrl, {Key? key}) : super(key: key) {
     generate = DataGenerate(baseUrl);
   }
   @override
@@ -27,8 +27,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   TikTokPageTag tabBarType = TikTokPageTag.home;
   TikTokScaffoldController tkController = TikTokScaffoldController();
-  PageController _pageController = PageController();
-  TikTokVideoListController _videoListController = TikTokVideoListController();
+
+  final PageController _pageController = PageController();
+  final TikTokVideoListController _videoListController =
+      TikTokVideoListController();
 
   /// 记录点赞
   Map<int, bool> favoriteMap = {};
@@ -56,7 +58,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     _videoListController.init(
       pageController: _pageController,
       initialList: generate
-          .nextList(3)
+          .nextList(2)
           .map(
             (e) => VPVideoController(
               videoInfo: e,
@@ -103,9 +105,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         currentPage = FollowPage();
         break;
       case TikTokPageTag.me:
-        currentPage = UserPage(isSelfPage: true);
+        currentPage = const UserPage(isSelfPage: true);
         break;
     }
+
     double a = MediaQuery.of(context).size.aspectRatio;
     bool hasBottomPadding = a < 0.55;
 
@@ -167,8 +170,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         // index: currentPage == null ? 0 : 1,
         children: <Widget>[
           PageView.builder(
-            key: Key('home'),
-            physics: QuickerScrollPhysics(),
+            key: const Key('home'),
+            physics: const QuickerScrollPhysics(),
             controller: _pageController,
             scrollDirection: Axis.vertical,
             itemCount: _videoListController.videoCount,
@@ -186,6 +189,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 onFavorite: () {
                   setState(() {
                     favoriteMap[i] = !isF;
+                    widget.generate
+                        .addFavorite("0", "resourceId", sourceId: "sourceId");
                   });
                   // showAboutDialog(context: context);
                 },
@@ -194,7 +199,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     backgroundColor: Colors.white.withOpacity(0),
                     context: context,
                     builder: (BuildContext context) =>
-                        TikTokCommentBottomSheet(),
+                        const TikTokCommentBottomSheet(),
                   );
                 },
                 onShare: () {},

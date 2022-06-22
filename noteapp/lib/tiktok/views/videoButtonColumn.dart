@@ -32,7 +32,7 @@ class TikTokButtonColumn extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           Tapped(
-            child: TikTokAvatar(),
+            child: const TikTokAvatar(),
             onTap: onAvatar,
           ),
           FavoriteIcon(
@@ -40,19 +40,19 @@ class TikTokButtonColumn extends StatelessWidget {
             isFavorite: isFavorite,
           ),
           _IconButton(
-            icon: IconToText(Icons.mode_comment, size: SysSize.iconBig - 4),
+            icon: const IconToText(Icons.mode_comment, size: SysSize.iconBig - 4),
             text: '4213',
             onTap: onComment,
           ),
           _IconButton(
-            icon: IconToText(Icons.share, size: SysSize.iconBig),
+            icon: const IconToText(Icons.share, size: SysSize.iconBig),
             text: '346',
             onTap: onShare,
           ),
           Container(
             width: SysSize.avatar,
             height: SysSize.avatar,
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(SysSize.avatar / 2.0),
               // color: Colors.black.withOpacity(0.8),
@@ -97,7 +97,7 @@ class TikTokAvatar extends StatelessWidget {
     Widget avatar = Container(
       width: SysSize.avatar,
       height: SysSize.avatar,
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.white,
@@ -120,7 +120,7 @@ class TikTokAvatar extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: ColorPlate.orange,
       ),
-      child: Icon(
+      child: const Icon(
         Icons.add,
         size: 16,
       ),
@@ -128,7 +128,7 @@ class TikTokAvatar extends StatelessWidget {
     return Container(
       width: SysSize.avatar,
       height: 66,
-      margin: EdgeInsets.only(bottom: 6),
+      margin: const EdgeInsets.only(bottom: 6),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[avatar, addButton],
@@ -183,7 +183,7 @@ class _IconButton extends StatelessWidget {
       shadows: [
         Shadow(
           color: Colors.black.withOpacity(0.15),
-          offset: Offset(0, 1),
+          offset: const Offset(0, 1),
           blurRadius: 1,
         ),
       ],
@@ -197,7 +197,7 @@ class _IconButton extends StatelessWidget {
         Container(height: 2),
         Text(
           text ?? '??',
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.normal,
             fontSize: SysSize.small,
             color: ColorPlate.white,
@@ -206,7 +206,7 @@ class _IconButton extends StatelessWidget {
       ],
     );
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: DefaultTextStyle(
         child: body,
         style: shadowStyle,

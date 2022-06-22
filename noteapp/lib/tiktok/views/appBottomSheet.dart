@@ -1,5 +1,5 @@
-import 'package:noteapp/tiktok/style/style.dart';
 import 'package:flutter/material.dart';
+import 'package:noteapp/tiktok/style/style.dart';
 
 class TikTokCommentBottomSheet extends StatelessWidget {
   const TikTokCommentBottomSheet({
@@ -10,14 +10,14 @@ class TikTokCommentBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.zero,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: ColorPlate.back1,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.all(4),
+            margin: const EdgeInsets.all(4),
             height: 4,
             width: 32,
             decoration: BoxDecoration(
@@ -29,17 +29,17 @@ class TikTokCommentBottomSheet extends StatelessWidget {
             height: 24,
             alignment: Alignment.center,
             // color: Colors.white.withOpacity(0.2),
-            child: Text(
+            child: const Text(
               '128条评论',
               style: StandardTextStyle.small,
             ),
           ),
           Expanded(
             child: ListView(
-              physics: AlwaysScrollableScrollPhysics(
+              physics: const AlwaysScrollableScrollPhysics(
                 parent: BouncingScrollPhysics(),
               ),
-              children: <Widget>[
+              children: const <Widget>[
                 _CommentRow(),
                 _CommentRow(),
                 _CommentRow(),
@@ -69,12 +69,12 @@ class _CommentRow extends StatelessWidget {
     var info = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
+        const Text(
           '是假用户哟',
           style: StandardTextStyle.smallWithOpacity,
         ),
         Container(height: 2),
-        Text(
+        const Text(
           '这是一条模拟评论，主播666啊。',
           style: StandardTextStyle.normal,
         ),
@@ -82,7 +82,7 @@ class _CommentRow extends StatelessWidget {
     );
     Widget right = Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
+      children: const <Widget>[
         Icon(
           Icons.favorite,
           color: Colors.white,
@@ -98,7 +98,7 @@ class _CommentRow extends StatelessWidget {
       child: right,
     );
     var avatar = Container(
-      margin: EdgeInsets.fromLTRB(0, 8, 10, 8),
+      margin: const EdgeInsets.fromLTRB(0, 8, 10, 8),
       child: Container(
         height: 36,
         width: 36,
@@ -111,7 +111,7 @@ class _CommentRow extends StatelessWidget {
       ),
     );
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       child: Row(
         children: <Widget>[
           avatar,

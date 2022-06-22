@@ -45,7 +45,8 @@ class _FollowPageState extends State<FollowPage> {
             CustomBottomSheet.showModalBottomSheet(
               backgroundColor: Colors.white.withOpacity(0),
               context: context,
-              builder: (BuildContext context) => TikTokCommentBottomSheet(),
+              builder: (BuildContext context) =>
+                  const TikTokCommentBottomSheet(),
             );
           },
           onShare: () {},
@@ -113,8 +114,8 @@ class FollowRow extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8),
+        const Padding(
+          padding: EdgeInsets.only(left: 8),
           child: Text(
             '朱二蛋的枯燥生活',
             style: StandardTextStyle.normalW,
@@ -122,8 +123,8 @@ class FollowRow extends StatelessWidget {
         )
       ],
     );
-    Widget content = Padding(
-      padding: const EdgeInsets.fromLTRB(2, 6, 50, 8),
+    Widget content = const Padding(
+      padding: EdgeInsets.fromLTRB(2, 6, 50, 8),
       child: Text(
         '#原创 有钱人的生活就是这么朴实无华，且枯燥 #短视频',
         style: StandardTextStyle.normal,
@@ -131,12 +132,12 @@ class FollowRow extends StatelessWidget {
     );
     var buttonRow = Row(
       children: <Widget>[
-        Text(
+        const Text(
           '10-9',
           style: StandardTextStyle.smallWithOpacity,
         ),
         Expanded(child: Container()),
-        _RowButton(
+        const _RowButton(
           iconData: Icons.share,
           title: '分享',
         ),
@@ -163,7 +164,7 @@ class FollowRow extends StatelessWidget {
           ),
         ),
       ),
-      padding: EdgeInsets.fromLTRB(12, 8, 12, 0),
+      padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -173,7 +174,7 @@ class FollowRow extends StatelessWidget {
           Opacity(
             opacity: 0.8,
             child: Container(
-              padding: EdgeInsets.fromLTRB(0, 10, 12, 8),
+              padding: const EdgeInsets.fromLTRB(0, 10, 12, 8),
               child: buttonRow,
             ),
           )

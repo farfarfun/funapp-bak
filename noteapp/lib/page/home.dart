@@ -22,7 +22,6 @@ class DemoItem extends StatelessWidget {
   }
 }
 
-
 //
 class DemoHome extends StatelessWidget {
   const DemoHome({Key? key}) : super(key: key);
@@ -41,7 +40,7 @@ class DemoHome extends StatelessWidget {
         ],
       ),
       body: ListView(
-        children: <Widget>[
+        children: const <Widget>[
           DemoItem('Keep pageview position demo', '/position'),
           DemoItem('video', '/video'),
           DemoItem('video_list', '/video_list'),

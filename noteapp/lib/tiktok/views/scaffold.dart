@@ -87,7 +87,6 @@ class _TikTokScaffoldState extends State<TikTokScaffold>
   late Animation<double> animationY;
   double offsetX = 0.0;
   double offsetY = 0.0;
-  // int currentIndex = 0;
   double inMiddle = 0;
 
   @override
@@ -351,7 +350,7 @@ class _MiddlePage extends StatelessWidget {
     Widget tabBarContainer = tabBar ??
         Container(
           height: 44,
-          child: Placeholder(
+          child: const Placeholder(
             color: Colors.red,
           ),
         );
@@ -371,8 +370,8 @@ class _MiddlePage extends StatelessWidget {
           offset: Offset(0, offsetY!),
           child: Container(
             height: 44,
-            child: Center(
-              child: const Text(
+            child: const Center(
+              child: Text(
                 "下拉刷新内容",
                 style: TextStyle(
                   color: Colors.white,
@@ -391,7 +390,7 @@ class _MiddlePage extends StatelessWidget {
           child: SafeArea(
             child: Container(
               height: 44,
-              child: header ?? Placeholder(color: Colors.green),
+              child: header ?? const Placeholder(color: Colors.green),
             ),
           ),
         ),
@@ -460,7 +459,7 @@ class _LeftPageTransform extends StatelessWidget {
       scale: 0.88 + 0.12 * offsetX! / screenWidth < 0.88
           ? 0.88
           : 0.88 + 0.12 * offsetX! / screenWidth,
-      child: content ?? Placeholder(color: Colors.pink),
+      child: content ?? const Placeholder(color: Colors.pink),
     );
   }
 }
