@@ -8,12 +8,12 @@ class AdMusicLoadingButton extends StatelessWidget {
     Key? key,
     required this.buttonText,
     this.onTap,
-    this.isLoading: false,
-    this.primary: true,
+    this.isLoading = false,
+    this.primary = true,
     this.margin,
     this.height,
     this.backgoundColor,
-    this.shadow: false,
+    this.shadow = false,
     this.textColor,
   }) : super(key: key);
 
@@ -52,29 +52,25 @@ class AdMusicLoadingButton extends StatelessWidget {
             index: isLoading ? 0 : 1,
             children: <Widget>[
               const CupertinoActivityIndicator(),
-              Container(
-                child: AdMucisText.normal(
-                  buttonText,
-                  enableOffset: true,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: textColor ??
-                        (primary ? ColorPlate.white : ColorPlate.orange),
-                  ),
+              AdMucisText.normal(
+                buttonText,
+                enableOffset: true,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: textColor ??
+                      (primary ? ColorPlate.white : ColorPlate.orange),
                 ),
               ),
             ],
           )),
     );
-    return Container(
-      child: Tapped(
-        onTap: () {
-          if (!isLoading) {
-            onTap?.call();
-          }
-        },
-        child: body,
-      ),
+    return Tapped(
+      onTap: () {
+        if (!isLoading) {
+          onTap?.call();
+        }
+      },
+      child: body,
     );
   }
 }

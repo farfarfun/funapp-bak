@@ -12,7 +12,7 @@ class UserPage extends StatefulWidget {
 
   const UserPage({
     Key? key,
-    this.canPop: false,
+    this.canPop= false,
     this.onPop,
     required this.isSelfPage,
     this.onSwitch,
@@ -580,7 +580,7 @@ class _UserInfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget iconImg = Container(
+    Widget iconImg = SizedBox(
       height: 24,
       width: 24,
       child: icon,

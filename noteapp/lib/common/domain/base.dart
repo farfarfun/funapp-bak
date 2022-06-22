@@ -24,7 +24,7 @@ class VideoDetail extends ResourceDetail {
     this.url = "",
     this.title = "",
     this.desc=""
-  }) : super(ResourceType.video) {}
+  }) : super(ResourceType.video);
 
   Map<String, List<Map<String, dynamic>>> getVideoList() {
     return {

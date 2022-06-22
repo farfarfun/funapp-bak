@@ -23,11 +23,9 @@ class _TikTokHeaderState extends State<TikTokHeader> {
     for (var i = 0; i < list.length; i++) {
       headList.add(Expanded(
         child: GestureDetector(
-          child: Container(
-            child: SelectText(
-              title: list[i],
-              isSelect: i == currentSelect,
-            ),
+          child: SelectText(
+            title: list[i],
+            isSelect: i == currentSelect,
           ),
           onTap: () {
             setState(() {
@@ -42,7 +40,7 @@ class _TikTokHeaderState extends State<TikTokHeader> {
     );
     return Container(
       // color: Colors.black.withOpacity(0.3),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -50,7 +48,7 @@ class _TikTokHeaderState extends State<TikTokHeader> {
             child: Tapped(
               child: Container(
                 color: Colors.black.withOpacity(0),
-                padding: EdgeInsets.all(4),
+                padding: const EdgeInsets.all(4),
                 alignment: Alignment.centerLeft,
                 child: Icon(
                   Icons.search,
@@ -72,7 +70,7 @@ class _TikTokHeaderState extends State<TikTokHeader> {
             child: Tapped(
               child: Container(
                 color: Colors.black.withOpacity(0),
-                padding: EdgeInsets.all(4),
+                padding: const EdgeInsets.all(4),
                 alignment: Alignment.centerRight,
                 child: Icon(
                   Icons.tv,

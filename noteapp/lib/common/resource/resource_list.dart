@@ -7,7 +7,7 @@ import 'package:noteapp/common/domain/generate.dart';
 class ResourceListView extends StatefulWidget {
   ResourceGenerate resourceGenerate;
 
-  ResourceListView(this.resourceGenerate) {}
+  ResourceListView(this.resourceGenerate);
 
   @override
   _ResourceListView createState() => _ResourceListView();
@@ -15,7 +15,7 @@ class ResourceListView extends StatefulWidget {
 
 class _ResourceListView extends State<ResourceListView> {
   int maxSize = 1000;
-  _ResourceListView() {}
+  _ResourceListView();
 
   @override
   void initState() {

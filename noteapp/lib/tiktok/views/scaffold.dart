@@ -67,9 +67,9 @@ class TikTokScaffold extends StatefulWidget {
     this.tabBar,
     this.leftPage,
     this.rightPage,
-    this.hasBottomPadding: false,
+    this.hasBottomPadding = false,
     this.page,
-    this.currentIndex: 0,
+    this.currentIndex = 0,
     this.enableGesture,
     this.onPullDownRefresh,
     this.controller,
@@ -340,7 +340,7 @@ class _MiddlePage extends StatelessWidget {
     this.onTopDrag,
     this.offsetX,
     this.offsetY,
-    this.isStack: false,
+    this.isStack = false,
     required this.header,
     required this.tabBar,
     this.page,
@@ -348,9 +348,9 @@ class _MiddlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget tabBarContainer = tabBar ??
-        Container(
+        const SizedBox(
           height: 44,
-          child: const Placeholder(
+          child: Placeholder(
             color: Colors.red,
           ),
         );
@@ -368,9 +368,9 @@ class _MiddlePage extends StatelessWidget {
         opacity: (offsetY! - 20) / 20,
         child: Transform.translate(
           offset: Offset(0, offsetY!),
-          child: Container(
+          child: const SizedBox(
             height: 44,
-            child: const Center(
+            child: Center(
               child: Text(
                 "下拉刷新内容",
                 style: TextStyle(
@@ -388,7 +388,7 @@ class _MiddlePage extends StatelessWidget {
         child: Transform.translate(
           offset: Offset(0, offsetY!),
           child: SafeArea(
-            child: Container(
+            child: SizedBox(
               height: 44,
               child: header ?? const Placeholder(color: Colors.green),
             ),
@@ -401,14 +401,12 @@ class _MiddlePage extends StatelessWidget {
       offset: Offset(offsetX! > 0 ? offsetX! : offsetX! / 5, 0),
       child: Stack(
         children: <Widget>[
-          Container(
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: <Widget>[
-                mainVideoList,
-                tabBarContainer,
-              ],
-            ),
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: <Widget>[
+              mainVideoList,
+              tabBarContainer,
+            ],
           ),
           _headerContain,
         ],

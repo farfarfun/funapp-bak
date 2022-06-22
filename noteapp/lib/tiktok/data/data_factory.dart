@@ -94,6 +94,7 @@ class VideoGenerateFromResource extends VideoGenerate {
     }
   }
 
+  @override
   List<VideoDetail> nextList(int size) {
     List<VideoDetail> videoList = [];
     for (int i = 0; i < size; i++) {

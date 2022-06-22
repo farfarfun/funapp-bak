@@ -27,7 +27,7 @@ class UserVideo {
   static List<UserVideo> fetchVideo() {
     List<UserVideo> list = videoList
         .map((e) => UserVideo(
-            image: '', url: 'https://static.ybhospital.net/$e', desc: '$e'))
+            image: '', url: 'https://static.ybhospital.net/$e', desc: e))
         .toList();
     return list;
   }

@@ -3,5 +3,5 @@ import 'package:noteapp/page/home.dart';
 
 //
 void main() {
-  runApp(HomePageDetail());
+  runApp(const HomePageDetail());
 }

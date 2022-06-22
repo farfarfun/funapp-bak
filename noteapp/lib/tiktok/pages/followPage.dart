@@ -19,7 +19,7 @@ class _FollowPageState extends State<FollowPage> {
   Widget build(BuildContext context) {
     Widget head = TikTokSwitchAppbar(
       index: select,
-      list: ['推荐', '关注'],
+      list: const ['推荐', '关注'],
       onSwitch: (i) => setState(() => select = i),
     );
     Widget body = ListView.builder(
@@ -104,7 +104,7 @@ class FollowRow extends StatelessWidget {
     );
     Widget userInfo = Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 32,
           width: 32,
           child: ClipOval(

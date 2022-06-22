@@ -100,7 +100,7 @@ class TikTokFavoriteAnimationIcon extends StatefulWidget {
     Key? key,
     this.onAnimationComplete,
     this.position,
-    this.size: 100,
+    this.size = 100,
   }) : super(key: key);
 
   @override

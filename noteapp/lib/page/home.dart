@@ -86,7 +86,7 @@ class DemoDetail extends StatelessWidget {
 }
 
 class HomePageDetail extends StatefulWidget {
-  HomePageDetail({Key? key}) : super(key: key);
+  const HomePageDetail({Key? key}) : super(key: key);
 
   @override
   _HomePageDetail createState() => _HomePageDetail();

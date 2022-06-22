@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:noteapp/common/domain/base.dart';
-import 'package:noteapp/tiktok/mock/video.dart';
 import 'package:video_player/video_player.dart';
 
 typedef LoadMoreVideo = Future<List<VPVideoController>> Function(
@@ -68,6 +67,7 @@ class TikTokVideoListController extends ChangeNotifier {
         }
       }
     }
+
     // 快到最底部，添加更多视频
     if (playerList.length - newIndex <= loadMoreCount + 1) {
       _videoProvider?.call(newIndex, playerList).then(
@@ -157,7 +157,7 @@ abstract class TikTokVideoController<T> {
   Future<void> play();
 
   /// 暂停
-  Future<void> pause({bool showPauseIcon: false});
+  Future<void> pause({bool showPauseIcon = false});
 }
 
 class VPVideoController extends TikTokVideoController<VideoPlayerController> {
@@ -172,14 +172,12 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     this.videoInfo,
     required ControllerBuilder<VideoPlayerController> builder,
     ControllerSetter<VideoPlayerController>? afterInit,
-  })  : this._builder = builder,
-        this._afterInit = afterInit;
+  })  : _builder = builder,
+        _afterInit = afterInit;
 
   @override
   VideoPlayerController get controller {
-    if (_controller == null) {
-      _controller = _builder.call();
-    }
+    _controller ??= _builder.call();
     return _controller!;
   }
 
@@ -211,7 +209,7 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     if (!prepared) return;
     _prepared = false;
     await _syncCall(() async {
-      await this.controller.dispose();
+      await controller.dispose();
       _controller = null;
       _disposeLock = Completer<void>();
     });
@@ -223,10 +221,10 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
   }) async {
     if (prepared) return;
     await _syncCall(() async {
-      await this.controller.initialize();
-      await this.controller.setLooping(true);
-      afterInit ??= this._afterInit;
-      await afterInit?.call(this.controller);
+      await controller.initialize();
+      await controller.setLooping(true);
+      afterInit ??= _afterInit;
+      await afterInit?.call(controller);
       _prepared = true;
     });
     if (_disposeLock != null) {
@@ -236,13 +234,13 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
   }
 
   @override
-  Future<void> pause({bool showPauseIcon: false}) async {
+  Future<void> pause({bool showPauseIcon = false}) async {
     await init();
     if (!prepared) return;
     if (_disposeLock != null) {
       await _disposeLock?.future;
     }
-    await this.controller.pause();
+    await controller.pause();
     _showPauseIcon.value = true;
   }
 
@@ -253,7 +251,7 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     if (_disposeLock != null) {
       await _disposeLock?.future;
     }
-    await this.controller.play();
+    await controller.play();
     _showPauseIcon.value = false;
   }
 

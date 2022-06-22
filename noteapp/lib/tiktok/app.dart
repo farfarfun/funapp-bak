@@ -4,7 +4,7 @@ import 'package:noteapp/tiktok/style/style.dart';
 
 class TikTokApp extends StatelessWidget {
   String baseUrl;
-  TikTokApp(this.baseUrl);
+  TikTokApp(this.baseUrl, {Key? key}) : super(key: key);
 
   final ThemeData theme = ThemeData();
   @override

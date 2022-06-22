@@ -18,13 +18,13 @@ class TopToolRow extends StatelessWidget {
             child: Container(
               width: 30,
               height: 30,
-              margin: EdgeInsets.all(16),
+              margin: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.36),
                 borderRadius: BorderRadius.circular(15),
               ),
               alignment: Alignment.center,
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_ios,
                 size: 16,
               ),

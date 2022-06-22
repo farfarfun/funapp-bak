@@ -152,8 +152,9 @@ class _BottomSheetState extends State<BottomSheet> {
         widget.onClosing();
       }
     } else if (widget.animationController!.value < _closeProgressThreshold) {
-      if (widget.animationController!.value > 0.0)
+      if (widget.animationController!.value > 0.0) {
         widget.animationController!.fling(velocity: -1.0);
+      }
       widget.onClosing();
     } else {
       widget.animationController!.forward();

@@ -99,7 +99,7 @@ class _CommentRow extends StatelessWidget {
     );
     var avatar = Container(
       margin: const EdgeInsets.fromLTRB(0, 8, 10, 8),
-      child: Container(
+      child: SizedBox(
         height: 36,
         width: 36,
         child: ClipOval(

@@ -8,7 +8,7 @@ class CommonUtils {
   static antiShake(Function? doSomething,
       {durationTime = deFaultDurationTime}) {
     timer!.cancel();
-    timer = new Timer(Duration(milliseconds: durationTime), () {
+    timer = Timer(Duration(milliseconds: durationTime), () {
       doSomething!.call();
       timer = null;
     });

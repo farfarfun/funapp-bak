@@ -21,7 +21,7 @@ class TikTokTabBar extends StatelessWidget {
     this.onTabSwitch,
     this.current,
     this.onAddButton,
-    this.hasBackground: false,
+    this.hasBackground= false,
   }) : super(key: key);
 
   @override
@@ -49,7 +49,7 @@ class TikTokTabBar extends StatelessWidget {
         ),
         Expanded(
           child: GestureDetector(
-            child: Icon(
+            child: const Icon(
               Icons.add_box,
               size: 32,
             ),
@@ -99,7 +99,7 @@ class TikTokSwitchAppbar extends StatelessWidget {
         GestureDetector(
           onTap: () => onSwitch?.call(i),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             child: Text(
               list![i],
               style: index == i
@@ -137,7 +137,7 @@ class TikTokAppbar extends StatelessWidget {
       width: double.infinity,
       alignment: Alignment.center,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: <Widget>[
             IosBackButton(),
@@ -148,7 +148,7 @@ class TikTokAppbar extends StatelessWidget {
                 style: StandardTextStyle.big,
               ),
             ),
-            Opacity(
+            const Opacity(
               opacity: 0,
               child: Icon(
                 Icons.panorama_fish_eye,
@@ -168,8 +168,8 @@ class IosBackButton extends StatelessWidget {
     return Tapped(
       child: Container(
         color: Colors.white.withOpacity(0),
-        padding: EdgeInsets.symmetric(horizontal: 6, vertical: 16),
-        child: Icon(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 16),
+        child: const Icon(
           Icons.arrow_back_ios,
           size: 18,
         ),

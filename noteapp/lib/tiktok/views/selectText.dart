@@ -1,10 +1,10 @@
-import 'package:noteapp/tiktok/style/style.dart';
 import 'package:flutter/material.dart';
+import 'package:noteapp/tiktok/style/style.dart';
 
 class SelectText extends StatelessWidget {
   const SelectText({
     Key? key,
-    this.isSelect: true,
+    this.isSelect = true,
     this.title,
   }) : super(key: key);
 
@@ -14,7 +14,7 @@ class SelectText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       color: Colors.black.withOpacity(0),
       child: Text(
         title ?? '??',

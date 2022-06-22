@@ -11,7 +11,7 @@ ImageListDetail defaultImageList = ImageListDetail([
 ]);
 
 class ResourceGenerate {
-  ResourceGenerate() {}
+  ResourceGenerate();
   ResourceDetail next() {
     return defaultImage;
   }

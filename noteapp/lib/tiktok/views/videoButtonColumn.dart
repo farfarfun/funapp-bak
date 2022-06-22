@@ -15,7 +15,7 @@ class TikTokButtonColumn extends StatelessWidget {
     this.onFavorite,
     this.onComment,
     this.onShare,
-    this.isFavorite: false,
+    this.isFavorite= false,
     this.onAvatar,
   }) : super(key: key);
 

@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         Navigator.of(context).push(
           MaterialPageRoute(
             fullscreenDialog: true,
-            builder: (context) => HomePageDetail(),
+            builder: (context) => const HomePageDetail(),
           ),
         );
       },

@@ -27,16 +27,17 @@ class TikTokVideoPage extends StatelessWidget {
 
   const TikTokVideoPage({
     Key? key,
-    this.bottomPadding: 16,
+    this.bottomPadding = 16,
     this.tag,
     this.rightButtonColumn,
     this.userInfoWidget,
     this.onAddFavorite,
     this.onSingleTap,
     this.video,
-    this.aspectRatio: 9 / 16.0,
-    this.hidePauseIcon: false,
+    this.aspectRatio = 9 / 16.0,
+    this.hidePauseIcon = false,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // 右边的按钮列表
@@ -56,11 +57,9 @@ class TikTokVideoPage extends StatelessWidget {
           width: double.infinity,
           color: Colors.black,
           alignment: Alignment.center,
-          child: Container(
-            child: AspectRatio(
-              aspectRatio: aspectRatio,
-              child: video,
-            ),
+          child: AspectRatio(
+            aspectRatio: aspectRatio,
+            child: video,
           ),
         ),
         TikTokVideoGesture(
@@ -86,24 +85,23 @@ class TikTokVideoPage extends StatelessWidget {
               ),
       ],
     );
-    Widget body = Container(
-      child: Stack(
-        children: <Widget>[
-          videoContainer,
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            alignment: Alignment.bottomRight,
-            child: rightButtons,
-          ),
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            alignment: Alignment.bottomLeft,
-            child: userInfo,
-          ),
-        ],
-      ),
+
+    Widget body = Stack(
+      children: <Widget>[
+        videoContainer,
+        Container(
+          height: double.infinity,
+          width: double.infinity,
+          alignment: Alignment.bottomRight,
+          child: rightButtons,
+        ),
+        Container(
+          height: double.infinity,
+          width: double.infinity,
+          alignment: Alignment.bottomLeft,
+          child: userInfo,
+        ),
+      ],
     );
     return body;
   }
