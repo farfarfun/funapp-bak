@@ -8,9 +8,21 @@ import 'package:noteapp/tiktok/pages/videoPage.dart';
 
 ValueNotifier themeMode = ValueNotifier(2);
 
+class RouterManage {
+  static const home = '/';
+  static const pathVideo = '/video';
+  static const pathVideoList = '/video_list';
+  static const pathImageList = '/image_list';
+  static const pathImagesList = '/images_list';
+  static const pathResourceList = '/resource_list';
+  static const pathTiktok = '/tiktok';
+  static const pathTiktokVideo = '/tiktok_video';
+}
+
 class RouteItem extends StatefulWidget {
   final String title;
   final String route;
+
   const RouteItem(this.title, this.route, {Key? key}) : super(key: key);
 
   @override
@@ -47,13 +59,13 @@ class RouteHome extends StatelessWidget {
       ),
       body: ListView(
         children: const <Widget>[
-          RouteItem('播放视频', '/video'),
-          RouteItem('视频列表', '/video_list'),
-          RouteItem('图片列表', '/image_list'),
-          RouteItem('图片集合列表', '/images_list'),
-          RouteItem('资源列表', '/resource_list'),
-          RouteItem('tiktok', '/tiktok'),
-          RouteItem('tiktok_video', '/tiktok_video'),
+          RouteItem('播放视频', RouterManage.pathVideo),
+          RouteItem('视频列表', RouterManage.pathVideoList),
+          RouteItem('图片列表', RouterManage.pathImageList),
+          RouteItem('图片集合列表', RouterManage.pathImagesList),
+          RouteItem('资源列表', RouterManage.pathResourceList),
+          RouteItem('tiktok', RouterManage.pathTiktok),
+          RouteItem('tiktok_video', RouterManage.pathTiktokVideo),
         ],
       ),
     );
@@ -79,19 +91,21 @@ class _RouteDetailState extends State<RouteDetail> {
           themeMode: ThemeMode.values.toList()[value as int],
           debugShowCheckedModeBanner: false,
           routes: {
-            '/': (ctx) => const RouteHome(),
-            '/video': (ctx) => VideoDetailView(VideoDetail(
+            RouterManage.home: (ctx) => const RouteHome(),
+            RouterManage.pathVideo: (ctx) => VideoDetailView(VideoDetail(
                 url: "https://media.w3.org/2010/05/sintel/trailer.mp4")),
-            '/image_list': (ctx) =>
+            RouterManage.pathImageList: (ctx) =>
                 ResourceListView(ResourceGenerateMock(type: ResourceType.pic)),
-            '/images_list': (ctx) =>
+            RouterManage.pathImagesList: (ctx) =>
                 ResourceListView(ResourceGenerateMock(type: ResourceType.pics)),
-            '/video_list': (ctx) => ResourceListView(
+            RouterManage.pathVideoList: (ctx) => ResourceListView(
                 ResourceGenerateMock(type: ResourceType.video)),
-            '/resource_list': (ctx) =>
+            RouterManage.pathResourceList: (ctx) =>
                 ResourceListView(ResourceGenerateMock(type: ResourceType.none)),
-            '/tiktok': (ctx) => TikTokApp('http://47.91.11.122:8446/'),
-            '/tiktok_video': (ctx) => VideoPage('http://47.91.11.122:8446/'),
+            RouterManage.pathTiktok: (ctx) =>
+                TikTokApp('http://47.91.11.122:8446/'),
+            RouterManage.pathTiktokVideo: (ctx) =>
+                VideoPage('http://47.91.11.122:8446/'),
           },
         );
       },
