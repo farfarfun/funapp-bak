@@ -98,12 +98,6 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "fluttertoast",
-      "rootUri": "file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "html",
       "rootUri": "file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/html-0.15.0",
       "packageUri": "lib/",
@@ -150,12 +144,6 @@
       "rootUri": "file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/meta-1.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "noteflutter",
-      "rootUri": "file:///home/bingtao/.pub-cache/hosted/pub.dartlang.org/noteflutter-0.0.14",
-      "packageUri": "lib/",
-      "languageVersion": "2.16"
     },
     {
       "name": "path",
@@ -311,10 +299,10 @@
       "name": "noteapp",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-06-21T08:12:08.609587Z",
+  "generated": "2022-06-22T03:16:26.909085Z",
   "generator": "pub",
   "generatorVersion": "2.18.0-189.0.dev"
 }

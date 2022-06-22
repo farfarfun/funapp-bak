@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noteflutter/page/home.dart';
+import 'package:noteapp/page/home.dart';
 
 //
 void main() {

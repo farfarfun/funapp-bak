@@ -12,12 +12,6 @@
 @import fijkplayer;
 #endif
 
-#if __has_include(<fluttertoast/FluttertoastPlugin.h>)
-#import <fluttertoast/FluttertoastPlugin.h>
-#else
-@import fluttertoast;
-#endif
-
 #if __has_include(<video_player_avfoundation/FLTVideoPlayerPlugin.h>)
 #import <video_player_avfoundation/FLTVideoPlayerPlugin.h>
 #else
@@ -34,7 +28,6 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FijkPlugin registerWithRegistrar:[registry registrarForPlugin:@"FijkPlugin"]];
-  [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
   [FLTVideoPlayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTVideoPlayerPlugin"]];
   [WakelockPlugin registerWithRegistrar:[registry registrarForPlugin:@"WakelockPlugin"]];
 }
