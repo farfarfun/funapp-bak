@@ -91,7 +91,7 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
         currentPage = FollowPage();
         break;
       case TikTokPageTag.me:
-        currentPage = const TikTokUserPage(isSelfPage: true);
+        currentPage =  TikTokUserPage(isSelfPage: true);
         break;
     }
 
