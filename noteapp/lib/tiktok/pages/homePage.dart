@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         currentPage = FollowPage();
         break;
       case TikTokPageTag.me:
-        currentPage = const TikTokUserPage(isSelfPage: true);
+        currentPage = TikTokUserPage(isSelfPage: true);
         break;
     }
 
@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   child: VideoPlayer(player.controller),
                 ),
               );
-              
+
               currentVideo = TikTokVideoPage(
                 // 手势播放与自然播放都会产生暂停按钮状态变化，待处理
                 hidePauseIcon: !player.showPauseIcon.value,
@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 key: Key(data.url + '$i'),
                 tag: data.url,
                 bottomPadding: hasBottomPadding ? 16.0 : 16.0,
-                
+
                 userInfoWidget: VideoUserInfo(
                   data.author,
                   desc: data.desc,
