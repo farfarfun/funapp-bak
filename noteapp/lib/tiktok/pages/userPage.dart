@@ -4,25 +4,27 @@ import 'package:noteapp/tiktok/views/appBar.dart';
 import 'package:noteapp/tiktok/views/appRow.dart';
 import 'package:tapped/tapped.dart';
 
-class UserPage extends StatefulWidget {
+class TikTokUserPage extends StatefulWidget {
   final bool canPop;
   final bool isSelfPage;
   final Function? onPop;
   final Function? onSwitch;
+  final String userId;
 
-  const UserPage({
+  const TikTokUserPage({
     Key? key,
-    this.canPop= false,
+    this.userId = '0',
+    this.canPop = false,
     this.onPop,
-    required this.isSelfPage,
+    this.isSelfPage = false,
     this.onSwitch,
   }) : super(key: key);
 
   @override
-  _UserPageState createState() => _UserPageState();
+  _TikTokUserPageState createState() => _TikTokUserPageState();
 }
 
-class _UserPageState extends State<UserPage> {
+class _TikTokUserPageState extends State<TikTokUserPage> {
   @override
   Widget build(BuildContext context) {
     Widget likeButton = Container(

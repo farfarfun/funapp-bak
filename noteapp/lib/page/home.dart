@@ -14,7 +14,8 @@ class HomePageDetail extends StatefulWidget {
 class _HomePageDetail extends State<HomePageDetail> {
   int _currentIndex = 0;
   final List<Widget> _pageList = [
-    const RouteDetail(), //页面1
+    //const RouteDetail(), //页面1
+    RouteDetails(), //页面1
     ResourceListView(ResourceGenerateMock(type: ResourceType.video)), //页面2
     ResourceListView(ResourceGenerateMock(type: ResourceType.pics)), //页面3
   ];

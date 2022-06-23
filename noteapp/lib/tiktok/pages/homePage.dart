@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         currentPage = FollowPage();
         break;
       case TikTokPageTag.me:
-        currentPage = const UserPage(isSelfPage: true);
+        currentPage = const TikTokUserPage(isSelfPage: true);
         break;
     }
 
@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       },
     );
 
-    var userPage = UserPage(
+    var userPage = TikTokUserPage(
       isSelfPage: false,
       canPop: true,
       onPop: () {

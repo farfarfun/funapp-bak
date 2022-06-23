@@ -12,16 +12,17 @@ import 'package:noteapp/tiktok/views/video.dart';
 import 'package:noteapp/tiktok/views/videoButtonColumn.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoPage extends StatefulWidget {
+class TiktokVideoPage extends StatefulWidget {
   late DataGenerate generate;
-  VideoPage(String baseUrl, {Key? key}) : super(key: key) {
+  TiktokVideoPage(String baseUrl, {Key? key}) : super(key: key) {
     generate = DataGenerate(baseUrl);
   }
   @override
-  _VideoPageState createState() => _VideoPageState();
+  _TiktokVideoPageState createState() => _TiktokVideoPageState();
 }
 
-class _VideoPageState extends State<VideoPage> with WidgetsBindingObserver {
+class _TiktokVideoPageState extends State<TiktokVideoPage>
+    with WidgetsBindingObserver {
   TikTokPageTag tabBarType = TikTokPageTag.home;
 
   final PageController _pageController = PageController();
@@ -89,7 +90,7 @@ class _VideoPageState extends State<VideoPage> with WidgetsBindingObserver {
         currentPage = FollowPage();
         break;
       case TikTokPageTag.me:
-        currentPage = const UserPage(isSelfPage: true);
+        currentPage = const TikTokUserPage(isSelfPage: true);
         break;
     }
 
