@@ -4,6 +4,16 @@ import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/common/resource/resource_list.dart';
 import 'package:noteapp/page/route.dart';
 
+class HomePageDetail2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'notechats',
+      home: RouteDetails(),
+    );
+  }
+}
+
 class HomePageDetail extends StatefulWidget {
   const HomePageDetail({Key? key}) : super(key: key);
 
