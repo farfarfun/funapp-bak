@@ -133,7 +133,8 @@ class RouteDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'noteapp',
-        routes: WGRouter.routes,
+        //home: RouteHome(),
+        //routes: WGRouter.routes,
         initialRoute: WGRouter.home, //初始页面路由可代替home
         onGenerateRoute: WGRouter.generateRoute,
         onUnknownRoute: WGRouter.unknownRoute);
@@ -171,11 +172,51 @@ class WGRouter {
   };
 
   static final RouteFactory generateRoute = (settings) {
-    if (settings.name == home) {
-      return MaterialPageRoute(builder: (ctx) {
-        return RouteHome();
-      });
+    switch (settings.name) {
+      case home:
+        return MaterialPageRoute(builder: (ctx) {
+          return RouteHome();
+        });
+      case pathVideo:
+        return MaterialPageRoute(builder: (ctx) {
+          return VideoDetailView(VideoDetail(
+              url: "https://media.w3.org/2010/05/sintel/trailer.mp4"));
+        });
+      case pathImageList:
+        return MaterialPageRoute(builder: (ctx) {
+          return ResourceListView(ResourceGenerateMock(type: ResourceType.pic));
+        });
+      case pathImagesList:
+        return MaterialPageRoute(builder: (ctx) {
+          return ResourceListView(
+              ResourceGenerateMock(type: ResourceType.pics));
+        });
+      case pathVideoList:
+        return MaterialPageRoute(builder: (ctx) {
+          return ResourceListView(
+              ResourceGenerateMock(type: ResourceType.video));
+        });
+      case pathResourceList:
+        return MaterialPageRoute(builder: (ctx) {
+          return ResourceListView(
+              ResourceGenerateMock(type: ResourceType.none));
+        });
+      case pathTiktok:
+        return MaterialPageRoute(builder: (ctx) {
+          return TikTokApp(url);
+        });
+      case pathTiktokVideo:
+        return MaterialPageRoute(builder: (ctx) {
+          return TiktokVideoPage(url);
+        });
+      case pathTiktokUser:
+        return MaterialPageRoute(builder: (ctx) {
+          return TikTokUserPage(
+              //userId: settings.arguments,
+              );
+        });
     }
+
     return null;
   };
 
