@@ -1,17 +1,17 @@
 const String defaultLogo =
-    'https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/389e31d03d36465d8acd9939784df6f0.jpg!sswm';
+    'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif';
 
 class Author {
-  int id;
-  String name;
-  String desc;
-  String logo = defaultLogo;
+  final int id;
+  final String name;
+  final String desc;
+  final String logo;
 
-  Author({this.id = 0, this.name = "无名之辈", this.desc = '', String logo = ""}) {
-    if (logo != "") {
-      this.logo = logo;
-    }
-  }
+  const Author(
+      {this.id = 0,
+      this.name = "无名之辈",
+      this.desc = '',
+      this.logo = defaultLogo});
   static Author fromJson(Map<String, dynamic> json) {
     return Author(
         id: json.containsKey('id') ? json['id'] : 0,
@@ -21,4 +21,4 @@ class Author {
   }
 }
 
-Author mockAuthor = Author();
+const Author mockAuthor = const Author();

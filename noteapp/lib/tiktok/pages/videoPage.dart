@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/page/home.dart';
 import 'package:noteapp/tiktok/controller/tikTokVideoListController.dart';
 import 'package:noteapp/tiktok/data/data_factory.dart';
@@ -139,12 +140,17 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
             // 拼一个视频组件出来
             bool isF = false;
             var player = _videoListController.playerOfIndex(i)!;
-            var data = player.videoInfo!;
+            VideoDetail videoDetail = player.videoInfo!;
             // 右侧按钮列
             Widget buttons = TikTokButtonColumn(
               isFavorite: isF,
               onAvatar: () {
-                //tkController.animateToPage(TikTokPagePositon.right);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return TikTokUserPage(
+                    author: videoDetail.author,
+                  );
+                }));
               },
               onFavorite: () {
                 setState(() {
@@ -174,13 +180,13 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
               // 手势播放与自然播放都会产生暂停按钮状态变化，待处理
               hidePauseIcon: !player.showPauseIcon.value,
               aspectRatio: 9 / 16.0,
-              key: Key(data.url + '$i'),
-              tag: data.url,
+              key: Key(videoDetail.url + '$i'),
+              tag: videoDetail.url,
               bottomPadding: hasBottomPadding ? 16.0 : 16.0,
 
               userInfoWidget: VideoUserInfo(
-                data.author,
-                desc: data.desc,
+                videoDetail.author,
+                desc: videoDetail.desc,
                 bottomPadding: hasBottomPadding ? 16.0 : 50.0,
               ),
               onSingleTap: () async {

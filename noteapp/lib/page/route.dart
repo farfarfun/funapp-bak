@@ -134,7 +134,7 @@ class RouteDetails extends StatelessWidget {
     return MaterialApp(
         title: 'noteapp',
         //home: RouteHome(),
-        //routes: WGRouter.routes,
+        routes: WGRouter.routes,
         initialRoute: WGRouter.home, //初始页面路由可代替home
         onGenerateRoute: WGRouter.generateRoute,
         onUnknownRoute: WGRouter.unknownRoute);
@@ -167,8 +167,7 @@ class WGRouter {
     RouterManage.pathResourceList: (ctx) =>
         ResourceListView(ResourceGenerateMock(type: ResourceType.none)),
     RouterManage.pathTiktok: (ctx) => TikTokApp(url),
-    RouterManage.pathTiktokVideo: (ctx) => TiktokVideoPage(url),
-    RouterManage.pathTiktokUser: (ctx) => TikTokUserPage(),
+    RouterManage.pathTiktokVideo: (ctx) => TiktokVideoPage(url)
   };
 
   static final RouteFactory generateRoute = (settings) {

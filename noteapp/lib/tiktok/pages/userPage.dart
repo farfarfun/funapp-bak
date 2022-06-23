@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noteapp/common/domain/author.dart';
 import 'package:noteapp/tiktok/style/style.dart';
 import 'package:noteapp/tiktok/views/appBar.dart';
 import 'package:noteapp/tiktok/views/appRow.dart';
@@ -9,11 +10,11 @@ class TikTokUserPage extends StatefulWidget {
   final bool isSelfPage;
   final Function? onPop;
   final Function? onSwitch;
-  final String userId;
+  Author author;
 
-  const TikTokUserPage({
+  TikTokUserPage({
     Key? key,
-    this.userId = '0',
+    this.author = mockAuthor,
     this.canPop = false,
     this.onPop,
     this.isSelfPage = false,
@@ -35,7 +36,7 @@ class _TikTokUserPageState extends State<TikTokUserPage> {
         children: <Widget>[
           Tapped(
             child: _UserRightButton(
-              title: widget.isSelfPage ? '钱包' : '关注',
+              title: '关注',
             ),
           ),
         ],
@@ -63,7 +64,7 @@ class _TikTokUserPageState extends State<TikTokUserPage> {
           ),
           child: ClipOval(
             child: Image.network(
-              "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+              widget.author.logo,
               fit: BoxFit.cover,
             ),
           ),
@@ -91,13 +92,13 @@ class _TikTokUserPageState extends State<TikTokUserPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const Text(
-                      '@用户名',
+                    Text(
+                      '@' + widget.author.name,
                       style: StandardTextStyle.big,
                     ),
                     Container(height: 8),
                     Text(
-                      '朴实无华，且枯燥',
+                      widget.author.desc,
                       style: StandardTextStyle.smallWithOpacity.apply(
                         color: Colors.white,
                       ),
