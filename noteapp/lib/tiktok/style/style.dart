@@ -17,33 +17,39 @@ class SysSize {
 class StandardTextStyle {
   static const TextStyle big = TextStyle(
     fontWeight: FontWeight.w600,
+    decoration: TextDecoration.none,
     fontSize: SysSize.big,
     inherit: true,
   );
   static const TextStyle bigWithOpacity = TextStyle(
     color: Color.fromRGBO(0xff, 0xff, 0xff, .66),
     fontWeight: FontWeight.w600,
+    decoration: TextDecoration.none,
     fontSize: SysSize.big,
     inherit: true,
   );
   static const TextStyle normalW = TextStyle(
     fontWeight: FontWeight.w600,
+    decoration: TextDecoration.none,
     fontSize: SysSize.normal,
     inherit: true,
   );
   static const TextStyle normal = TextStyle(
     fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none,
     fontSize: SysSize.normal,
     inherit: true,
   );
   static const TextStyle normalWithOpacity = TextStyle(
     color: Color.fromRGBO(0xff, 0xff, 0xff, .66),
     fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none,
     fontSize: SysSize.normal,
     inherit: true,
   );
   static const TextStyle small = TextStyle(
     fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none,
     fontSize: SysSize.small,
     inherit: true,
   );
@@ -51,6 +57,7 @@ class StandardTextStyle {
     color: Color.fromRGBO(0xff, 0xff, 0xff, .66),
     fontWeight: FontWeight.normal,
     fontSize: SysSize.small,
+    decoration: TextDecoration.none,
     inherit: true,
   );
 }

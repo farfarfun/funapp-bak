@@ -96,6 +96,7 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
               bool isF = false;
               var player = _videoListController.playerOfIndex(i)!;
               VideoDetail videoDetail = player.videoInfo!;
+
               // 右侧按钮列
               Widget buttons = TikTokButtonColumn(
                 isFavorite: isF,

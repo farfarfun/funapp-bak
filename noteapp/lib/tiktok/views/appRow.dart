@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tapped/tapped.dart';
 
 class TopToolRow extends StatelessWidget {
-  final Widget? right;
   final bool? canPop;
   final Function? onPop;
   const TopToolRow({
     Key? key,
-    this.right,
     this.canPop,
     this.onPop,
   }) : super(key: key);
@@ -43,7 +41,6 @@ class TopToolRow extends StatelessWidget {
       children: <Widget>[
         popButton,
         Expanded(child: Container()),
-        right ?? Container(),
       ],
     );
     return topButtonRow;
