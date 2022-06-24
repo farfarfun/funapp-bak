@@ -64,15 +64,15 @@ class TikTokVideoPage extends StatelessWidget {
             child: video,
           ),
         ),
-        TikTokVideoGesture(
-          onAddFavorite: onAddFavorite,
-          onSingleTap: onSingleTap,
-          child: Container(
-            color: ColorPlate.clear,
-            height: double.infinity,
-            width: double.infinity,
-          ),
-        ),
+        // TikTokVideoGesture(
+        //   onAddFavorite: onAddFavorite,
+        //   onSingleTap: onSingleTap,
+        //   child: Container(
+        //     color: ColorPlate.clear,
+        //     height: double.infinity,
+        //     width: double.infinity,
+        //   ),
+        // ),
         hidePauseIcon
             ? Container()
             : Container(
