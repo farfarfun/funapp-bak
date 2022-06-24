@@ -17,7 +17,7 @@ class ResourceGenerate {
   }
 }
 
-class VideoGenerate {
+class VideoGenerate extends ResourceGenerate {
   VideoGenerate();
   VideoDetail next() {
     return VideoDetail();

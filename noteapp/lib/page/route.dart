@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/data/mock.dart';
 import 'package:noteapp/common/domain/base.dart';
+import 'package:noteapp/common/domain/generate.dart';
 import 'package:noteapp/common/resource/resource_list.dart';
 import 'package:noteapp/tiktok/app.dart';
 import 'package:noteapp/tiktok/data/data_factory.dart';
@@ -100,8 +101,8 @@ class _RouteDetailState extends State<RouteDetail> {
   Widget build(BuildContext context) {
     String url = 'http://47.91.11.122:8446/';
     DataGenerate generate = DataGenerate(url);
-    VideoGenerateFromResource(generate);
-    
+    ResourceGenerate resGen = VideoGenerateFromResource(generate);
+
     return ValueListenableBuilder(
       valueListenable: ValueNotifier(2),
       builder: (context, value, g) {
@@ -118,8 +119,7 @@ class _RouteDetailState extends State<RouteDetail> {
                 ResourceListView(ResourceGenerateMock(type: ResourceType.pic)),
             RouterManage.pathImagesList: (ctx) =>
                 ResourceListView(ResourceGenerateMock(type: ResourceType.pics)),
-            RouterManage.pathVideoList: (ctx) => ResourceListView(
-                ResourceGenerateMock(type: ResourceType.video)),
+            RouterManage.pathVideoList: (ctx) => ResourceListView(resGen),
             RouterManage.pathResourceList: (ctx) =>
                 ResourceListView(ResourceGenerateMock(type: ResourceType.none)),
             RouterManage.pathTiktok: (ctx) => TikTokApp(url),
