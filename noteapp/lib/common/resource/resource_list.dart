@@ -24,7 +24,7 @@ class _ResourceListView extends State<ResourceListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    Stack body = Stack(
       fit: StackFit.expand,
       children: <Widget>[
         InViewNotifierList(
@@ -41,6 +41,19 @@ class _ResourceListView extends State<ResourceListView> {
           },
         ),
       ],
+    );
+
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.indigo,
+        dividerColor: Color(0xFFEFEFEF),
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black87)),
+      ),
+      home: Scaffold(
+        //body: Stack(fit: StackFit.expand, children: []),
+        body: body,
+      ),
     );
   }
 }

@@ -201,7 +201,10 @@ class _UserRightButton extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         title,
-        style: const TextStyle(color: ColorPlate.orange),
+        style: const TextStyle(
+          color: ColorPlate.orange,
+          decoration: TextDecoration.none,
+        ),
       ),
       decoration: BoxDecoration(
         border: Border.all(color: ColorPlate.orange),
@@ -249,21 +252,6 @@ class _UserVideoTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(
-          color: ColorPlate.back1,
-          padding: const EdgeInsets.symmetric(
-            vertical: 12,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const <Widget>[
-              _PointSelectTextButton(true, '作品'),
-              _PointSelectTextButton(false, '关注'),
-              _PointSelectTextButton(false, '喜欢'),
-            ],
-          ),
-        ),
         Row(
           children: const <Widget>[
             _SmallVideo(),
@@ -351,48 +339,6 @@ class _SmallVideo extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _PointSelectTextButton extends StatelessWidget {
-  final bool isSelect;
-  final String title;
-  final Function? onTap;
-  const _PointSelectTextButton(
-    this.isSelect,
-    this.title, {
-    Key? key,
-    this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          isSelect
-              ? Container(
-                  width: 6,
-                  height: 6,
-                  decoration: BoxDecoration(
-                    color: ColorPlate.orange,
-                    borderRadius: BorderRadius.circular(3),
-                  ),
-                )
-              : Container(),
-          Container(
-            padding: const EdgeInsets.only(left: 2),
-            child: Text(
-              title,
-              style: isSelect
-                  ? StandardTextStyle.small
-                  : StandardTextStyle.smallWithOpacity,
-            ),
-          )
-        ],
       ),
     );
   }

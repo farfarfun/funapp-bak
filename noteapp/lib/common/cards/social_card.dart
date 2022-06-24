@@ -17,7 +17,10 @@ class SocialCard extends StatelessWidget {
               alignment: Alignment(-0.80, -0.8),
               child: Text(
                 "分享",
-                style: TextStyle(fontSize: 14.0),
+                style: TextStyle(
+                  fontSize: 14.0,
+                  decoration: TextDecoration.none,
+                ),
               )),
           Align(
               alignment: Alignment(-0.41, -0.8),
@@ -27,7 +30,10 @@ class SocialCard extends StatelessWidget {
               alignment: Alignment(-0.23, -0.8),
               child: Text(
                 "收藏",
-                style: TextStyle(fontSize: 14.0),
+                style: TextStyle(
+                  fontSize: 14.0,
+                  decoration: TextDecoration.none,
+                ),
               )),
           Align(
               alignment: Alignment(0.25, -0.8),
@@ -37,7 +43,10 @@ class SocialCard extends StatelessWidget {
               alignment: Alignment(0.43, -0.8),
               child: Text(
                 "评论",
-                style: TextStyle(fontSize: 14.0),
+                style: TextStyle(
+                  fontSize: 14.0,
+                  decoration: TextDecoration.none,
+                ),
               )),
           Align(
               alignment: Alignment(0.80, -0.8),
@@ -47,7 +56,10 @@ class SocialCard extends StatelessWidget {
               alignment: Alignment(0.98, -0.8),
               child: Text(
                 "点赞",
-                style: TextStyle(fontSize: 14.0),
+                style: TextStyle(
+                  fontSize: 14.0,
+                  decoration: TextDecoration.none,
+                ),
               ))
         ]));
   }

@@ -28,12 +28,15 @@ class AuthorCard extends StatelessWidget {
                 child: Text(author.name,
                     style: const TextStyle(
                       fontSize: 14.0,
+                      decoration: TextDecoration.none,
                     ))),
             const Positioned(
               right: 0,
               child: Text(
                 "关注",
-                style: TextStyle(fontSize: 14.0),
+                style: TextStyle(fontSize: 14.0,
+                  decoration: TextDecoration.none,
+                ),
               ),
             ),
           ]));
