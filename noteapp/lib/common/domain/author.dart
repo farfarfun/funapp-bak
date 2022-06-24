@@ -21,4 +21,4 @@ class Author {
   }
 }
 
-const Author mockAuthor = const Author();
+const Author mockAuthor = const Author(id: 0, name: '无名氏', desc: '无名氏无户籍');

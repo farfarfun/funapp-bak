@@ -7,6 +7,7 @@ import 'package:noteapp/common/data/mock.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/common/resource/resource_list.dart';
 import 'package:noteapp/tiktok/app.dart';
+import 'package:noteapp/tiktok/data/data_factory.dart';
 import 'package:noteapp/tiktok/pages/userPage.dart';
 import 'package:noteapp/tiktok/pages/videoPage.dart';
 
@@ -98,6 +99,9 @@ class _RouteDetailState extends State<RouteDetail> {
   @override
   Widget build(BuildContext context) {
     String url = 'http://47.91.11.122:8446/';
+    DataGenerate generate = DataGenerate(url);
+    VideoGenerateFromResource(generate);
+    
     return ValueListenableBuilder(
       valueListenable: ValueNotifier(2),
       builder: (context, value, g) {
