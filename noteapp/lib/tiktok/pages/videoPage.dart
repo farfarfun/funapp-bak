@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/tiktok/controller/tikTokVideoListController.dart';
 import 'package:noteapp/tiktok/data/data_factory.dart';
@@ -125,10 +126,16 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                 onShare: () {},
               );
               // video
+              // Widget currentVideo = Center(
+              //   child: AspectRatio(
+              //     aspectRatio: player.controller.value.aspectRatio,
+              //     child: VideoPlayer(player.controller),
+              //   ),
+              // );
               Widget currentVideo = Center(
                 child: AspectRatio(
                   aspectRatio: player.controller.value.aspectRatio,
-                  child: VideoPlayer(player.controller),
+                  child: VideoDetailView(player.videoInfo),
                 ),
               );
 

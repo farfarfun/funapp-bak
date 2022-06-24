@@ -86,7 +86,6 @@ class FollowRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget video = TikTokVideoPage(
-      // rightButtonColumn: true,
       aspectRatio: 6.0 / 9,
       onAddFavorite: onAddFavorite,
       userInfoWidget: Container(),

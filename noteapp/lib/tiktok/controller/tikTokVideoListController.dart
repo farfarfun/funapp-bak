@@ -164,12 +164,12 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
   VideoPlayerController? _controller;
   ValueNotifier<bool> _showPauseIcon = ValueNotifier<bool>(false);
 
-  final VideoDetail? videoInfo;
+  VideoDetail videoInfo;
 
   final ControllerBuilder<VideoPlayerController> _builder;
   final ControllerSetter<VideoPlayerController>? _afterInit;
   VPVideoController({
-    this.videoInfo,
+    required this.videoInfo,
     required ControllerBuilder<VideoPlayerController> builder,
     ControllerSetter<VideoPlayerController>? afterInit,
   })  : _builder = builder,
