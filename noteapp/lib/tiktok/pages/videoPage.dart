@@ -96,7 +96,7 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
               // 拼一个视频组件出来
               bool isF = false;
               var player = _videoListController.playerOfIndex(i)!;
-              VideoDetail videoDetail = player.videoInfo!;
+              VideoDetail videoDetail = player.videoInfo;
 
               // 右侧按钮列
               Widget buttons = TikTokButtonColumn(
@@ -126,18 +126,20 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                 onShare: () {},
               );
               // video
-              // Widget currentVideo = Center(
+              // Widget currentVideo2 = Center(
               //   child: AspectRatio(
               //     aspectRatio: player.controller.value.aspectRatio,
               //     child: VideoPlayer(player.controller),
               //   ),
               // );
+
               Widget currentVideo = Center(
                 child: AspectRatio(
                   aspectRatio: player.controller.value.aspectRatio,
                   child: VideoDetailView(player.videoInfo),
                 ),
               );
+              currentVideo = VideoDetailView(player.videoInfo);
 
               currentVideo = TikTokVideoPage(
                 // 手势播放与自然播放都会产生暂停按钮状态变化，待处理
