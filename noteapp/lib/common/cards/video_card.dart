@@ -13,7 +13,6 @@ class VideoDetailView extends StatefulWidget {
   VideoDetail videoInfo;
   VideoDetailView(this.videoInfo, {Key? key, this.onPlay = false})
       : super(key: key);
-
   @override
   _VideoDetailViewState createState() => _VideoDetailViewState();
 }

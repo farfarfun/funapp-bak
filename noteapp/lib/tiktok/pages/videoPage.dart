@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/tiktok/controller/tikTokVideoListController.dart';
 import 'package:noteapp/tiktok/data/data_factory.dart';
@@ -125,8 +124,6 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                 onShare: () {},
               );
               // video
-              VideoDetailView currentVideo = VideoDetailView(player.videoInfo);
-              
               Widget tiktokVideo = TikTokVideoPage(
                 aspectRatio: 9 / 16.0,
                 key: Key(videoDetail.url + '$i'),
@@ -138,7 +135,7 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
                 rightButtonColumn: buttons,
-                video: currentVideo,
+                video: player.videoDetailView,
               );
               return tiktokVideo;
             },

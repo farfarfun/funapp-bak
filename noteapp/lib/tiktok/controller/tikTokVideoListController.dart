@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:video_player/video_player.dart';
 
@@ -165,6 +166,7 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
   ValueNotifier<bool> _showPauseIcon = ValueNotifier<bool>(false);
 
   VideoDetail videoInfo;
+  final VideoDetailView videoDetailView;
 
   final ControllerBuilder<VideoPlayerController> _builder;
   final ControllerSetter<VideoPlayerController>? _afterInit;
@@ -173,7 +175,8 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     required ControllerBuilder<VideoPlayerController> builder,
     ControllerSetter<VideoPlayerController>? afterInit,
   })  : _builder = builder,
-        _afterInit = afterInit;
+        _afterInit = afterInit,
+        videoDetailView = VideoDetailView(videoInfo);
 
   @override
   VideoPlayerController get controller {
