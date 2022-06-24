@@ -97,7 +97,6 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
               bool isF = false;
               var player = _videoListController.playerOfIndex(i)!;
               VideoDetail videoDetail = player.videoInfo;
-
               // 右侧按钮列
               Widget buttons = TikTokButtonColumn(
                 isFavorite: isF,
@@ -126,34 +125,18 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                 onShare: () {},
               );
               // video
-
               VideoDetailView currentVideo = VideoDetailView(player.videoInfo);
-
+              
               Widget tiktokVideo = TikTokVideoPage(
-                // 手势播放与自然播放都会产生暂停按钮状态变化，待处理
-                hidePauseIcon: !player.showPauseIcon.value,
                 aspectRatio: 9 / 16.0,
                 key: Key(videoDetail.url + '$i'),
                 tag: videoDetail.url,
                 bottomPadding: hasBottomPadding ? 16.0 : 16.0,
-
                 userInfoWidget: VideoUserInfo(
                   videoDetail.author,
                   desc: videoDetail.desc,
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
-
-                onSingleTap: () async {
-                  currentVideo.onPlay = !currentVideo.onPlay;
-                  setState(() {});
-                },
-
-                onAddFavorite: () {
-                  setState(() {
-                    widget.generate
-                        .addFavorite("0", "resourceId", sourceId: "sourceId");
-                  });
-                },
                 rightButtonColumn: buttons,
                 video: currentVideo,
               );

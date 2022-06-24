@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:noteapp/common/domain/author.dart';
 import 'package:noteapp/tiktok/style/style.dart';
-import 'package:noteapp/tiktok/views/videoGesture.dart';
 
 ///
 /// TikTok风格的一个视频页组件，覆盖在video上，提供以下功能:
@@ -21,22 +20,14 @@ class TikTokVideoPage extends StatelessWidget {
   final Widget? rightButtonColumn;
   final Widget? userInfoWidget;
 
-  final bool hidePauseIcon;
-
-  final Function? onAddFavorite;
-  final Function? onSingleTap;
-
   const TikTokVideoPage({
     Key? key,
     this.bottomPadding = 16,
     this.tag,
     this.rightButtonColumn,
     this.userInfoWidget,
-    this.onAddFavorite,
-    this.onSingleTap,
     this.video,
     this.aspectRatio = 9 / 16.0,
-    this.hidePauseIcon = false,
   }) : super(key: key);
 
   @override
@@ -49,8 +40,6 @@ class TikTokVideoPage extends StatelessWidget {
           new Author(),
           bottomPadding: bottomPadding,
         );
-    // 视频加载的动画
-    // Widget videoLoading = VideoLoadingPlaceHolder(tag: tag);
     // 视频播放页
     Widget videoContainer = Stack(
       children: <Widget>[
@@ -63,28 +52,7 @@ class TikTokVideoPage extends StatelessWidget {
             aspectRatio: aspectRatio,
             child: video,
           ),
-        ),
-        // TikTokVideoGesture(
-        //   onAddFavorite: onAddFavorite,
-        //   onSingleTap: onSingleTap,
-        //   child: Container(
-        //     color: ColorPlate.clear,
-        //     height: double.infinity,
-        //     width: double.infinity,
-        //   ),
-        // ),
-        hidePauseIcon
-            ? Container()
-            : Container(
-                height: double.infinity,
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.play_circle_outline,
-                  size: 120,
-                  color: Colors.white.withOpacity(0.4),
-                ),
-              ),
+        )
       ],
     );
 

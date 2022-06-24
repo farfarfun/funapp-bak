@@ -213,31 +213,15 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               );
 
               currentVideo = TikTokVideoPage(
-                // 手势播放与自然播放都会产生暂停按钮状态变化，待处理
-                hidePauseIcon: !player.showPauseIcon.value,
                 aspectRatio: 9 / 16.0,
                 key: Key(data.url + '$i'),
                 tag: data.url,
                 bottomPadding: hasBottomPadding ? 16.0 : 16.0,
-
                 userInfoWidget: VideoUserInfo(
                   data.author,
                   desc: data.desc,
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
-                onSingleTap: () async {
-                  if (player.controller.value.isPlaying) {
-                    await player.pause();
-                  } else {
-                    await player.play();
-                  }
-                  setState(() {});
-                },
-                onAddFavorite: () {
-                  setState(() {
-                    favoriteMap[i] = true;
-                  });
-                },
                 rightButtonColumn: buttons,
                 video: currentVideo,
               );
