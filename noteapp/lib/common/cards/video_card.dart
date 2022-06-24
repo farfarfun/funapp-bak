@@ -47,7 +47,6 @@ class _VideoDetailViewState extends State<VideoDetailView>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //AuthorCard(widget.videoInfo.author),
         FijkView(
           height: 260,
           color: Colors.black,

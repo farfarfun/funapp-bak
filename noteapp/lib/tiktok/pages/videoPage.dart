@@ -126,22 +126,10 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                 onShare: () {},
               );
               // video
-              // Widget currentVideo2 = Center(
-              //   child: AspectRatio(
-              //     aspectRatio: player.controller.value.aspectRatio,
-              //     child: VideoPlayer(player.controller),
-              //   ),
-              // );
 
-              Widget currentVideo = Center(
-                child: AspectRatio(
-                  aspectRatio: player.controller.value.aspectRatio,
-                  child: VideoDetailView(player.videoInfo),
-                ),
-              );
-              currentVideo = VideoDetailView(player.videoInfo);
+              VideoDetailView currentVideo = VideoDetailView(player.videoInfo);
 
-              currentVideo = TikTokVideoPage(
+              Widget tiktokVideo = TikTokVideoPage(
                 // 手势播放与自然播放都会产生暂停按钮状态变化，待处理
                 hidePauseIcon: !player.showPauseIcon.value,
                 aspectRatio: 9 / 16.0,
@@ -154,14 +142,12 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                   desc: videoDetail.desc,
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
+
                 onSingleTap: () async {
-                  if (player.controller.value.isPlaying) {
-                    await player.pause();
-                  } else {
-                    await player.play();
-                  }
+                  currentVideo.onPlay = !currentVideo.onPlay;
                   setState(() {});
                 },
+
                 onAddFavorite: () {
                   setState(() {
                     widget.generate
@@ -171,7 +157,7 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                 rightButtonColumn: buttons,
                 video: currentVideo,
               );
-              return currentVideo;
+              return tiktokVideo;
             },
           ),
           currentPage ?? Container(),
