@@ -818,8 +818,6 @@ class _BuildGestureDetectorState extends State<_BuildGestureDetector> {
       int newTabIdx = widget.curTabIdx;
       int newActiveIdx = widget.curActiveIdx + 1;
       widget.onChangeVideo!(newTabIdx, newActiveIdx);
-      // 切换播放源
-      changeCurPlayVideo(newTabIdx, newActiveIdx);
     }
   }
 
@@ -1076,13 +1074,6 @@ class _BuildGestureDetectorState extends State<_BuildGestureDetector> {
                               bool isOverFlow = widget.curActiveIdx + 1 >=
                                   _videoSourceTabs
                                       .video![widget.curTabIdx]!.list!.length;
-                              // 没有溢出的情况下
-                              if (!isOverFlow) {
-                                int newTabIdx = widget.curTabIdx;
-                                int newActiveIdx = widget.curActiveIdx + 1;
-                                // 切换播放源
-                                changeCurPlayVideo(newTabIdx, newActiveIdx);
-                              }
                             },
                           )
                         : Container(),
@@ -1468,9 +1459,9 @@ class _BuildGestureDetectorState extends State<_BuildGestureDetector> {
       onHorizontalDragStart: _onHorizontalDragStart,
       onHorizontalDragUpdate: _onHorizontalDragUpdate,
       onHorizontalDragEnd: _onHorizontalDragEnd,
-      onVerticalDragStart: _onVerticalDragStart,
-      onVerticalDragUpdate: _onVerticalDragUpdate,
-      onVerticalDragEnd: _onVerticalDragEnd,
+      // onVerticalDragStart: _onVerticalDragStart,
+      // onVerticalDragUpdate: _onVerticalDragUpdate,
+      // onVerticalDragEnd: _onVerticalDragEnd,
       child: AbsorbPointer(
         absorbing: _hideStuff,
         child: Column(

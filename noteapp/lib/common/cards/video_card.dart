@@ -78,20 +78,6 @@ class _VideoDetailViewState extends State<VideoDetailView>
             );
           },
         ),
-        // Container(
-        //     height: 40,
-        //     color: Colors.yellow,
-        //     child: Stack(children: const <Widget>[
-        //       Positioned(
-        //         left: 0,
-        //         child: Icon(Icons.share, size: 40, color: Colors.white),
-        //       ),
-        //       Positioned(
-        //         right: 0,
-        //         child: Icon(Icons.cloud_download_outlined,
-        //             size: 40, color: Colors.white),
-        //       ),
-        //     ]))
       ],
     );
   }
