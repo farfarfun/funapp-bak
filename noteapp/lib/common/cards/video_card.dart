@@ -49,7 +49,7 @@ class _VideoDetailViewState extends State<VideoDetailView>
       children: [
         //AuthorCard(widget.videoInfo.author),
         FijkView(
-          height: 260,
+          //height: 260,
           color: Colors.black,
           fit: FijkFit.cover,
           player: player,

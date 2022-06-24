@@ -1459,9 +1459,11 @@ class _BuildGestureDetectorState extends State<_BuildGestureDetector> {
       onHorizontalDragStart: _onHorizontalDragStart,
       onHorizontalDragUpdate: _onHorizontalDragUpdate,
       onHorizontalDragEnd: _onHorizontalDragEnd,
+
       // onVerticalDragStart: _onVerticalDragStart,
       // onVerticalDragUpdate: _onVerticalDragUpdate,
       // onVerticalDragEnd: _onVerticalDragEnd,
+
       child: AbsorbPointer(
         absorbing: _hideStuff,
         child: Column(
