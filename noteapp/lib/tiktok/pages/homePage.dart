@@ -205,14 +205,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 onShare: () {},
               );
               // video
-              Widget currentVideo = Center(
-                child: AspectRatio(
-                  aspectRatio: player.controller.value.aspectRatio,
-                  child: VideoPlayer(player.controller),
-                ),
-              );
+              // Widget currentVideo = Center(
+              //   child: AspectRatio(
+              //     aspectRatio: player.controller.value.aspectRatio,
+              //     child: VideoPlayer(player.controller),
+              //   ),
+              // );
 
-              currentVideo = TikTokVideoPage(
+              Widget currentVideo = TikTokVideoPage(
                 aspectRatio: 9 / 16.0,
                 key: Key(data.url + '$i'),
                 tag: data.url,
@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
                 rightButtonColumn: buttons,
-                video: currentVideo,
+                video: player.videoDetailView,
               );
               return currentVideo;
             },
