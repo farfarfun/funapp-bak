@@ -135,10 +135,10 @@ class _AppSettingsState extends State<AppSettings> {
               settingKey: 'notetiktok-video-secret-key',
               initialValue: 'admin',
               validator: (String? secretKey) {
-                if (secretKey != null && secretKey.length > 13) {
+                if (secretKey != null && secretKey.length > 3) {
                   return null;
                 }
-                return "User Name can't be smaller than 14 letters";
+                return "User Name can't be smaller than 4 letters";
               },
               borderColor: Colors.blueAccent,
               errorColor: Colors.deepOrangeAccent,
