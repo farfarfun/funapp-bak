@@ -13,7 +13,6 @@ import 'package:noteapp/tiktok/views/scaffold.dart';
 import 'package:noteapp/tiktok/views/video.dart';
 import 'package:noteapp/tiktok/views/videoButtonColumn.dart';
 import 'package:safemap/safemap.dart';
-import 'package:video_player/video_player.dart';
 
 class HomePage extends StatefulWidget {
   late DataGenerate generate;
@@ -59,22 +58,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       pageController: _pageController,
       initialList: generate
           .nextList(2)
-          .map(
-            (e) => VPVideoController(
-              videoInfo: e,
-              builder: () => VideoPlayerController.network(e.url),
-            ),
-          )
+          .map((e) => VPVideoController(videoInfo: e))
           .toList(),
       videoProvider: (int index, List<VPVideoController> list) async {
         return generate
             .nextList(5)
-            .map(
-              (e) => VPVideoController(
-                videoInfo: e,
-                builder: () => VideoPlayerController.network(e.url),
-              ),
-            )
+            .map((e) => VPVideoController(videoInfo: e))
             .toList();
       },
     );

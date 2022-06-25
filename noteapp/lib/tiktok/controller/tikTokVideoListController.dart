@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/domain/base.dart';
-import 'package:video_player/video_player.dart';
+//import 'package:video_player/video_player.dart';
 
 typedef LoadMoreVideo = Future<List<VPVideoController>> Function(
   int index,
@@ -16,7 +16,7 @@ class TikTokVideoListController extends ChangeNotifier {
   TikTokVideoListController({
     this.loadMoreCount = 2,
     this.preloadCount = 3,
-    this.disposeCount = 0, // TODO: VideoPlayer有bug(安卓)，当前只能设置为0
+    this.disposeCount = 0, 
   });
 
   /// 到第几个触发预加载，例如:1:最后一个，2:倒数第二个
@@ -41,14 +41,10 @@ class TikTokVideoListController extends ChangeNotifier {
 
     // 暂停之前的视频
     if (!(oldIndex == 0 && newIndex == 0)) {
-      playerOfIndex(oldIndex)?.controller.seekTo(Duration.zero);
-      // playerOfIndex(oldIndex)?.controller.addListener(_didUpdateValue);
-      // playerOfIndex(oldIndex)?.showPauseIcon.addListener(_didUpdateValue);
       playerOfIndex(oldIndex)?.pause();
       print('暂停$oldIndex');
     }
     // 开始播放当前的视频
-    playerOfIndex(newIndex)?.controller.addListener(_didUpdateValue);
     playerOfIndex(newIndex)?.showPauseIcon.addListener(_didUpdateValue);
     playerOfIndex(newIndex)?.play();
     print('播放$newIndex');
@@ -57,7 +53,6 @@ class TikTokVideoListController extends ChangeNotifier {
       // 需要释放[disposeCount]之前的视频
       if (i < newIndex - disposeCount || i > newIndex + disposeCount) {
         print('释放$i');
-        playerOfIndex(i)?.controller.removeListener(_didUpdateValue);
         playerOfIndex(i)?.showPauseIcon.removeListener(_didUpdateValue);
         playerOfIndex(i)?.dispose();
       } else {
@@ -130,7 +125,6 @@ class TikTokVideoListController extends ChangeNotifier {
     // 销毁全部
     for (var player in playerList) {
       player.showPauseIcon.dispose();
-      player.dispose();
     }
     playerList = [];
     super.dispose();
@@ -140,55 +134,18 @@ class TikTokVideoListController extends ChangeNotifier {
 typedef ControllerSetter<T> = Future<void> Function(T controller);
 typedef ControllerBuilder<T> = T Function();
 
-/// 抽象类，作为视频控制器必须实现这些方法
-abstract class TikTokVideoController<T> {
-  /// 获取当前的控制器实例
-  T? get controller;
-
-  /// 是否显示暂停按钮
-  ValueNotifier<bool> get showPauseIcon;
-
-  /// 加载视频，在init后，应当开始下载视频内容
-  Future<void> init({ControllerSetter<T>? afterInit});
-
-  /// 视频销毁，在dispose后，应当释放任何内存资源
-  Future<void> dispose();
-
-  /// 播放
-  Future<void> play();
-
-  /// 暂停
-  Future<void> pause({bool showPauseIcon = false});
-}
-
-class VPVideoController extends TikTokVideoController<VideoPlayerController> {
-  VideoPlayerController? _controller;
+class VPVideoController {
   ValueNotifier<bool> _showPauseIcon = ValueNotifier<bool>(false);
 
   VideoDetail videoInfo;
   final VideoDetailView videoDetailView;
 
-  final ControllerBuilder<VideoPlayerController> _builder;
-  final ControllerSetter<VideoPlayerController>? _afterInit;
   VPVideoController({
     required this.videoInfo,
-    required ControllerBuilder<VideoPlayerController> builder,
-    ControllerSetter<VideoPlayerController>? afterInit,
-  })  : _builder = builder,
-        _afterInit = afterInit,
-        videoDetailView = VideoDetailView(
-          videoInfo,
-          height: 1000,
-        );
-
-  @override
-  VideoPlayerController get controller {
-    _controller ??= _builder.call();
-    return _controller!;
-  }
+  }) : videoDetailView = VideoDetailView(videoInfo, height: 800, onPlay: false);
 
   bool get isDispose => _disposeLock != null;
-  bool get prepared => _prepared;
+
   bool _prepared = false;
 
   Completer<void>? _disposeLock;
@@ -210,57 +167,121 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     completer.complete();
   }
 
-  @override
-  Future<void> dispose() async {
-    if (!prepared) return;
-    _prepared = false;
-    await _syncCall(() async {
-      await controller.dispose();
-      _controller = null;
-      _disposeLock = Completer<void>();
-    });
+  void init() {}
+
+  void pause() {
+    videoDetailView.onPlay = false;
   }
 
-  @override
-  Future<void> init({
-    ControllerSetter<VideoPlayerController>? afterInit,
-  }) async {
-    if (prepared) return;
-    await _syncCall(() async {
-      await controller.initialize();
-      await controller.setLooping(true);
-      afterInit ??= _afterInit;
-      await afterInit?.call(controller);
-      _prepared = true;
-    });
-    if (_disposeLock != null) {
-      _disposeLock?.complete();
-      _disposeLock = null;
-    }
+  void play() {
+    videoDetailView.onPlay = true;
   }
 
-  @override
-  Future<void> pause({bool showPauseIcon = false}) async {
-    await init();
-    if (!prepared) return;
-    if (_disposeLock != null) {
-      await _disposeLock?.future;
-    }
-    await controller.pause();
-    _showPauseIcon.value = true;
-  }
-
-  @override
-  Future<void> play() async {
-    await init();
-    if (!prepared) return;
-    if (_disposeLock != null) {
-      await _disposeLock?.future;
-    }
-    await controller.play();
-    _showPauseIcon.value = false;
-  }
+  void dispose() {}
 
   @override
   ValueNotifier<bool> get showPauseIcon => _showPauseIcon;
 }
+
+
+// class VPVideoController extends TikTokVideoController<VideoPlayerController> {
+//   VideoPlayerController? _controller;
+//   ValueNotifier<bool> _showPauseIcon = ValueNotifier<bool>(false);
+
+//   VideoDetail videoInfo;
+//   final VideoDetailView videoDetailView;
+
+//   final ControllerBuilder<VideoPlayerController> _builder;
+//   final ControllerSetter<VideoPlayerController>? _afterInit;
+//   VPVideoController({
+//     required this.videoInfo,
+//     required ControllerBuilder<VideoPlayerController> builder,
+//     ControllerSetter<VideoPlayerController>? afterInit,
+//   })  : _builder = builder,
+//         _afterInit = afterInit,
+//         videoDetailView =
+//             VideoDetailView(videoInfo, height: 800, onPlay: false);
+
+//   @override
+//   VideoPlayerController get controller {
+//     _controller ??= _builder.call();
+//     return _controller!;
+//   }
+
+//   bool get isDispose => _disposeLock != null;
+//   bool get prepared => _prepared;
+//   bool _prepared = false;
+
+//   Completer<void>? _disposeLock;
+
+//   /// 异步方法并发锁
+//   Completer<void>? _syncLock;
+
+//   /// 防止异步方法并发
+//   Future<void> _syncCall(Future Function()? fn) async {
+//     // 设置同步等待
+//     var lastCompleter = _syncLock;
+//     var completer = Completer<void>();
+//     _syncLock = completer;
+//     // 等待其他同步任务完成
+//     await lastCompleter?.future;
+//     // 主任务
+//     await fn?.call();
+//     // 结束
+//     completer.complete();
+//   }
+
+//   @override
+//   Future<void> dispose() async {
+//     if (!prepared) return;
+//     _prepared = false;
+//     await _syncCall(() async {
+//       await controller.dispose();
+//       _controller = null;
+//       _disposeLock = Completer<void>();
+//     });
+//   }
+
+//   @override
+//   Future<void> init({
+//     ControllerSetter<VideoPlayerController>? afterInit,
+//   }) async {
+//     if (prepared) return;
+//     await _syncCall(() async {
+//       await controller.initialize();
+//       await controller.setLooping(true);
+//       afterInit ??= _afterInit;
+//       await afterInit?.call(controller);
+//       _prepared = true;
+//     });
+//     if (_disposeLock != null) {
+//       _disposeLock?.complete();
+//       _disposeLock = null;
+//     }
+//   }
+
+//   @override
+//   Future<void> pause({bool showPauseIcon = false}) async {
+//     await init();
+//     if (!prepared) return;
+//     if (_disposeLock != null) {
+//       await _disposeLock?.future;
+//     }
+//     await controller.pause();
+//     _showPauseIcon.value = true;
+//   }
+
+//   @override
+//   Future<void> play() async {
+//     await init();
+//     if (!prepared) return;
+//     if (_disposeLock != null) {
+//       await _disposeLock?.future;
+//     }
+//     await controller.play();
+//     _showPauseIcon.value = false;
+//   }
+
+//   @override
+//   ValueNotifier<bool> get showPauseIcon => _showPauseIcon;
+// }

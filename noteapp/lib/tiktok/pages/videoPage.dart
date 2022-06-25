@@ -8,7 +8,6 @@ import 'package:noteapp/tiktok/style/physics.dart';
 import 'package:noteapp/tiktok/views/appBottomSheet.dart';
 import 'package:noteapp/tiktok/views/video.dart';
 import 'package:noteapp/tiktok/views/videoButtonColumn.dart';
-import 'package:video_player/video_player.dart';
 
 class TiktokVideoPage extends StatefulWidget {
   late DataGenerate generate;
@@ -50,20 +49,14 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
       initialList: generate
           .nextList(2)
           .map(
-            (e) => VPVideoController(
-              videoInfo: e,
-              builder: () => VideoPlayerController.network(e.url),
-            ),
+            (e) => VPVideoController(videoInfo: e)
           )
           .toList(),
       videoProvider: (int index, List<VPVideoController> list) async {
         return generate
             .nextList(5)
             .map(
-              (e) => VPVideoController(
-                videoInfo: e,
-                builder: () => VideoPlayerController.network(e.url),
-              ),
+              (e) => VPVideoController(videoInfo: e)
             )
             .toList();
       },
