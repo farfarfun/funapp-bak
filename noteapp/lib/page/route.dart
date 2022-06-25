@@ -13,18 +13,6 @@ import 'package:noteapp/tiktok/views/setting.dart';
 
 ValueNotifier themeMode = ValueNotifier(2);
 
-// class RouterManage {
-//   static const home = '/';
-//   static const pathVideo = '/video';
-//   static const pathVideoList = '/video_list';
-//   static const pathImageList = '/image_list';
-//   static const pathImagesList = '/images_list';
-//   static const pathResourceList = '/resource_list';
-//   static const pathTiktok = '/tiktok';
-//   static const pathTiktokVideo = '/tiktok_video';
-//   static const pathTiktokUser = '/tiktok_user';
-// }
-
 class RouteItem extends StatefulWidget {
   final String title;
   final String route;
@@ -87,49 +75,6 @@ class RouteHome extends StatelessWidget {
     );
   }
 }
-
-// class RouteDetail extends StatefulWidget {
-//   const RouteDetail({Key? key}) : super(key: key);
-
-//   @override
-//   State<RouteDetail> createState() => _RouteDetailState();
-// }
-
-// class _RouteDetailState extends State<RouteDetail> {
-//   @override
-//   Widget build(BuildContext context) {
-//     String url = 'http://47.91.11.122:8446/';
-//     DataGenerate generate = DataGenerate(url);
-//     ResourceGenerate resGen = VideoGenerateFromResource(generate);
-
-//     return ValueListenableBuilder(
-//       valueListenable: ValueNotifier(2),
-//       builder: (context, value, g) {
-//         return MaterialApp(
-//           initialRoute: '/',
-//           darkTheme: ThemeData.dark(),
-//           themeMode: ThemeMode.values.toList()[value as int],
-//           debugShowCheckedModeBanner: false,
-//           routes: {
-//             RouterManage.home: (ctx) => const RouteHome(),
-//             RouterManage.pathVideo: (ctx) => VideoDetailView(VideoDetail(
-//                 url: "https://media.w3.org/2010/05/sintel/trailer.mp4")),
-//             RouterManage.pathImageList: (ctx) =>
-//                 ResourceListView(ResourceGenerateMock(type: ResourceType.pic)),
-//             RouterManage.pathImagesList: (ctx) =>
-//                 ResourceListView(ResourceGenerateMock(type: ResourceType.pics)),
-//             RouterManage.pathVideoList: (ctx) => ResourceListView(resGen),
-//             RouterManage.pathResourceList: (ctx) =>
-//                 ResourceListView(ResourceGenerateMock(type: ResourceType.none)),
-//             RouterManage.pathTiktok: (ctx) => TikTokApp(url),
-//             RouterManage.pathTiktokVideo: (ctx) => TiktokVideoPage(url),
-//             RouterManage.pathTiktokUser: (ctx) => TikTokUserPage(),
-//           },
-//         );
-//       },
-//     );
-//   }
-// }
 
 class RouteDetails extends StatelessWidget {
   @override

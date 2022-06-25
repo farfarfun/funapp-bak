@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:noteapp/page/route.dart';
 
 class AppSettings extends StatefulWidget {
   const AppSettings({Key? key}) : super(key: key);
@@ -429,9 +430,10 @@ class SettingBody extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const AppSettings(),
-            ));
+            Navigator.of(context).pushNamed(WGRouter.pathSetting);
+            // Navigator.of(context).push(MaterialPageRoute(
+            //   builder: (context) => const AppSettings(),
+            // ));
             //openAppSettings(context);
           },
           child: const Text('Setting'),
