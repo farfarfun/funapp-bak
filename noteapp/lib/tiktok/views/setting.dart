@@ -417,12 +417,12 @@ class SettingBody extends StatelessWidget {
           onPressed: () {
             Settings.clearCache();
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: const Text('Cache cleared for selected cache.',
+              content: const Text('cleared cache',
                   style: TextStyle(color: Colors.white)),
               backgroundColor: Theme.of(context).primaryColor,
             ));
           },
-          child: const Text('Clear selected Cache'),
+          child: const Text('clear cache'),
         ),
         const SizedBox(
           height: 25.0,
@@ -434,7 +434,7 @@ class SettingBody extends StatelessWidget {
             ));
             //openAppSettings(context);
           },
-          child: const Text('Start Demo'),
+          child: const Text('Setting'),
         ),
       ],
     );
