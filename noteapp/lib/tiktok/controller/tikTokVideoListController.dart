@@ -16,7 +16,7 @@ class TikTokVideoListController extends ChangeNotifier {
   TikTokVideoListController({
     this.loadMoreCount = 2,
     this.preloadCount = 3,
-    this.disposeCount = 0, 
+    this.disposeCount = 0,
   });
 
   /// 到第几个触发预加载，例如:1:最后一个，2:倒数第二个
@@ -45,7 +45,6 @@ class TikTokVideoListController extends ChangeNotifier {
       print('暂停$oldIndex');
     }
     // 开始播放当前的视频
-    playerOfIndex(newIndex)?.showPauseIcon.addListener(_didUpdateValue);
     playerOfIndex(newIndex)?.play();
     print('播放$newIndex');
     // 处理预加载/释放内存
@@ -53,7 +52,7 @@ class TikTokVideoListController extends ChangeNotifier {
       // 需要释放[disposeCount]之前的视频
       if (i < newIndex - disposeCount || i > newIndex + disposeCount) {
         print('释放$i');
-        playerOfIndex(i)?.showPauseIcon.removeListener(_didUpdateValue);
+
         playerOfIndex(i)?.dispose();
       } else {
         // 需要预加载
@@ -123,9 +122,7 @@ class TikTokVideoListController extends ChangeNotifier {
   /// 销毁全部
   void dispose() {
     // 销毁全部
-    for (var player in playerList) {
-      player.showPauseIcon.dispose();
-    }
+    for (var player in playerList) {}
     playerList = [];
     super.dispose();
   }
@@ -167,7 +164,9 @@ class VPVideoController {
     completer.complete();
   }
 
-  void init() {}
+  void init() {
+    //videoDetailView
+  }
 
   void pause() {
     videoDetailView.onPlay = false;
@@ -178,9 +177,6 @@ class VPVideoController {
   }
 
   void dispose() {}
-
-  @override
-  ValueNotifier<bool> get showPauseIcon => _showPauseIcon;
 }
 
 

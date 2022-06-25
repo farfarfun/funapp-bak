@@ -133,7 +133,7 @@ class _AppSettingsState extends State<AppSettings> {
             TextInputSettingsTile(
               title: 'SecretKey',
               settingKey: 'notetiktok-video-secret-key',
-              initialValue: 'admin',
+              initialValue: 'noteapp_secret',
               validator: (String? secretKey) {
                 if (secretKey != null && secretKey.length > 3) {
                   return null;
