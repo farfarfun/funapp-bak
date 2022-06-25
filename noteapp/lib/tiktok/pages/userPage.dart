@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noteapp/common/domain/author.dart';
 import 'package:noteapp/tiktok/style/style.dart';
 import 'package:noteapp/tiktok/views/appRow.dart';
+import 'package:noteapp/tiktok/views/setting.dart';
 import 'package:tapped/tapped.dart';
 
 class TikTokUserPage extends StatefulWidget {
@@ -38,6 +39,7 @@ class _TikTokUserPageState extends State<TikTokUserPage> {
               title: '关注',
             ),
           ),
+          SettingBody(),
         ],
       ),
     );
