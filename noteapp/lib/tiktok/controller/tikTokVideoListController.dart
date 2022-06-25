@@ -176,7 +176,10 @@ class VPVideoController extends TikTokVideoController<VideoPlayerController> {
     ControllerSetter<VideoPlayerController>? afterInit,
   })  : _builder = builder,
         _afterInit = afterInit,
-        videoDetailView = VideoDetailView(videoInfo);
+        videoDetailView = VideoDetailView(
+          videoInfo,
+          height: 1000,
+        );
 
   @override
   VideoPlayerController get controller {

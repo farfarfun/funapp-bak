@@ -10,8 +10,9 @@ import 'package:noteapp/common/video/video_panel.dart';
 
 class VideoDetailView extends StatefulWidget {
   bool onPlay;
+  double height ;
   VideoDetail videoInfo;
-  VideoDetailView(this.videoInfo, {Key? key, this.onPlay = false})
+  VideoDetailView(this.videoInfo, {Key? key, this.onPlay = false,this.height=240})
       : super(key: key);
   @override
   _VideoDetailViewState createState() => _VideoDetailViewState();
@@ -47,7 +48,7 @@ class _VideoDetailViewState extends State<VideoDetailView>
     return Column(
       children: [
         FijkView(
-          height: 260,
+          height: widget.height,
           color: Colors.black,
           fit: FijkFit.cover,
           player: player,
