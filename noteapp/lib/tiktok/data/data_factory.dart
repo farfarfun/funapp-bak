@@ -50,7 +50,7 @@ class DataGenerate {
     queryParameters['page_size'] = pageSize;
     queryParameters['token'] = Settings.getValue<String>(
         'notetiktok-video-secret-key',
-        defaultValue: '');
+        defaultValue: 'noteaoo_secret');
 
     final response =
         await dioGet('tiktok/resource/get', queryParameters: queryParameters);
