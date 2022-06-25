@@ -21,6 +21,7 @@ dependencies:
   inview_notifier_list: ^3.0.0
   shared_preferences: ^2.0.15
   flutter_settings_screens: ^0.3.3-null-safety+1
+  cryptography: ^2.0.5
 
   # 基础的点击
   tapped: ^2.0.0

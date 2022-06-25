@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/common/domain/generate.dart';
 
@@ -20,6 +21,9 @@ class DataGenerate {
     Map<String, dynamic> queryParameters = {};
     queryParameters['page_no'] = pageNo;
     queryParameters['page_size'] = pageSize;
+    queryParameters['token'] = Settings.getValue<String>(
+        'notetiktok-video-secret-key',
+        defaultValue: '');
 
     final response =
         await dioGet('tiktok/resource/get', queryParameters: queryParameters);
@@ -44,6 +48,9 @@ class DataGenerate {
     Map<String, dynamic> queryParameters = {};
     queryParameters['page_no'] = pageNo;
     queryParameters['page_size'] = pageSize;
+    queryParameters['token'] = Settings.getValue<String>(
+        'notetiktok-video-secret-key',
+        defaultValue: '');
 
     final response =
         await dioGet('tiktok/resource/get', queryParameters: queryParameters);
