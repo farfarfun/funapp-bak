@@ -213,7 +213,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
                 rightButtonColumn: buttons,
-                video: player.videoDetailView,
+                //video: player.videoDetailView,
+                video: player.buildWidget(context),
               );
               return currentVideo;
             },
