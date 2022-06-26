@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/tiktok/controller/tikTokVideoListController.dart';
 import 'package:noteapp/tiktok/data/data_factory.dart';
+import 'package:noteapp/tiktok/data/staticData.dart';
 import 'package:noteapp/tiktok/other/bottomSheet.dart' as CustomBottomSheet;
 import 'package:noteapp/tiktok/pages/userPage.dart';
 import 'package:noteapp/tiktok/style/physics.dart';
@@ -40,8 +41,9 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
 
   @override
   void initState() {
-    VideoGenerateFromResource generate =
-        VideoGenerateFromResource(widget.generate);
+    // VideoGenerateFromResource generate =
+    //     VideoGenerateFromResource(widget.generate);
+    VideoGenerateFromResource generate = getResource();
 
     WidgetsBinding.instance!.addObserver(this);
     _videoListController.init(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:noteapp/init.dart';
 import 'package:noteapp/page/route.dart';
-import 'package:noteapp/tiktok/views/setting.dart';
+
 
 //
 void main() {

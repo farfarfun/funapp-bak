@@ -390,12 +390,6 @@ class _AppSettingsState extends State<AppSettings> {
   }
 }
 
-Future<ValueNotifier<Color>> initSettings() async {
-  await Settings.init(cacheProvider: SharePreferenceCache());
-  final _accentColor = ValueNotifier(Colors.blueAccent);
-  return _accentColor;
-}
-
 // void main() {
 //   initSettings().then((accentColor) {
 //     runApp(MyHomePage());

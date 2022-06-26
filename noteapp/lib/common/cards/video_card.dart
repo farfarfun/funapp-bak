@@ -8,7 +8,7 @@ import 'package:noteapp/common/video/video_panel.dart';
 // show 表示只导出 VideoSourceFormat 类
 // https://blog.csdn.net/happiness365/article/details/122114145
 
-class VideoDetailView extends StatelessWidget {
+class VideoDetailView extends StatefulWidget {
   bool onPlay;
   double height;
   VideoDetail videoInfo;
@@ -16,19 +16,41 @@ class VideoDetailView extends StatelessWidget {
   VideoDetailView(this.videoInfo,
       {Key? key, this.onPlay = false, this.height = 240})
       : super(key: key);
+  @override
+  _VideoDetailViewState createState() => _VideoDetailViewState();
+}
 
+class _VideoDetailViewState extends State<VideoDetailView>
+    with SingleTickerProviderStateMixin {
+  _VideoDetailViewState();
   VideoSourceFormat? _videoSourceTabs;
 
   ShowConfigAbs vConfig = PlayerShowConfig();
 
-  void init() {
-    _videoSourceTabs = VideoSourceFormat.fromJson(videoInfo.getVideoList());
+  @override
+  void didUpdateWidget(covariant VideoDetailView oldWidget) {
+    if (widget.onPlay) {
+      widget.player.start();
+    } else {
+      widget.player.pause();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _videoSourceTabs =
+        VideoSourceFormat.fromJson(widget.videoInfo.getVideoList());
+
     //这句不能省，必须有
     speed = 1.0;
   }
 
+  @override
   void dispose() {
-    player.dispose();
+    widget.player.dispose();
+    super.dispose();
   }
 
   @override
@@ -36,10 +58,10 @@ class VideoDetailView extends StatelessWidget {
     return Column(
       children: [
         FijkView(
-          height: height,
+          height: widget.height,
           color: Colors.black,
           fit: FijkFit.cover,
-          player: player,
+          player: widget.player,
           panelBuilder: (FijkPlayer player, FijkData data, BuildContext context,
               Size viewSize, Rect texturePos) {
             return CustomFijkPanel(
@@ -49,7 +71,7 @@ class VideoDetailView extends StatelessWidget {
               pageContent: context,
 
               //标题 当前页面顶部的标题部分
-              playerTitle: videoInfo.title,
+              playerTitle: widget.videoInfo.title,
 
               //视频显示的配置
               showConfig: vConfig,
@@ -68,97 +90,4 @@ class VideoDetailView extends StatelessWidget {
       ],
     );
   }
-
-  void didUpdateWidget(covariant VideoDetailView oldWidget) {
-    if (onPlay) {
-      player.start();
-    } else {
-      player.pause();
-    }
-  }
 }
-
-
-// class VideoDetailView extends StatefulWidget {
-//   bool onPlay;
-//   double height;
-//   VideoDetail videoInfo;
-//   final FijkPlayer player = FijkPlayer();
-//   VideoDetailView(this.videoInfo,
-//       {Key? key, this.onPlay = false, this.height = 240})
-//       : super(key: key);
-//   @override
-//   _VideoDetailViewState createState() => _VideoDetailViewState();
-// }
-
-// class _VideoDetailViewState extends State<VideoDetailView>
-//     with SingleTickerProviderStateMixin {
-//   _VideoDetailViewState();
-//   VideoSourceFormat? _videoSourceTabs;
-
-//   ShowConfigAbs vConfig = PlayerShowConfig();
-
-//   @override
-//   void dispose() {
-//     widget.player.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _videoSourceTabs =
-//         VideoSourceFormat.fromJson(widget.videoInfo.getVideoList());
-
-//     //这句不能省，必须有
-//     speed = 1.0;
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         FijkView(
-//           height: widget.height,
-//           color: Colors.black,
-//           fit: FijkFit.cover,
-//           player: widget.player,
-//           panelBuilder: (FijkPlayer player, FijkData data, BuildContext context,
-//               Size viewSize, Rect texturePos) {
-//             return CustomFijkPanel(
-//               player: player,
-//               viewSize: viewSize,
-//               texturePos: texturePos,
-//               pageContent: context,
-
-//               //标题 当前页面顶部的标题部分
-//               playerTitle: widget.videoInfo.title,
-
-//               //视频显示的配置
-//               showConfig: vConfig,
-
-//               //json格式化后的视频数据
-//               videoFormat: _videoSourceTabs,
-
-//               //当前视频源 资源一 资源二等
-//               curTabIdx: 0,
-
-//               //当前视频 高清 标清 流畅等
-//               curActiveIdx: 0,
-//             );
-//           },
-//         ),
-//       ],
-//     );
-//   }
-
-//   @override
-//   void didUpdateWidget(covariant VideoDetailView oldWidget) {
-//     if (widget.onPlay) {
-//       widget.player.start();
-//     } else {
-//       widget.player.pause();
-//     }
-//     super.didUpdateWidget(oldWidget);
-//   }
-// }
