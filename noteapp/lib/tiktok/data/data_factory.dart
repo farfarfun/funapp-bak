@@ -80,18 +80,13 @@ class VideoGenerateFromResource extends VideoGenerate {
   int cacheSize;
   int index = 0;
 
-  VideoGenerateFromResource(this.generate, {this.cacheSize = 10});
+  VideoGenerateFromResource(this.generate, {this.cacheSize = 50});
 
   @override
   VideoDetail next() {
-    index += 1;
     if (cacheVideoQueue.length < cacheSize / 2) {
-      cacheData(pageNo: (index / cacheSize).ceil(), pageSize: cacheSize);
-    }
-
-    if (cacheVideoQueue.length < cacheSize / 2) {
-      index = 0;
-      cacheData(pageNo: (index / cacheSize).ceil() + 1, pageSize: cacheSize);
+      index += 1;
+      cacheData(pageNo: index, pageSize: 10);
     }
 
     if (cacheVideoQueue.isNotEmpty) {

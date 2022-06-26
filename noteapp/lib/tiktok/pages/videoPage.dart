@@ -122,7 +122,7 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
                 rightButtonColumn: buttons,
-                video: player.buildWidget(context),
+                video: player.videoWidget,
               );
               return tiktokVideo;
             },
