@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noteapp/page/home.dart';
 import 'package:noteapp/tiktok/controller/tikTokVideoListController.dart';
 import 'package:noteapp/tiktok/data/data_factory.dart';
+import 'package:noteapp/tiktok/data/staticData.dart';
 import 'package:noteapp/tiktok/other/bottomSheet.dart' as CustomBottomSheet;
 import 'package:noteapp/tiktok/pages/followPage.dart';
 import 'package:noteapp/tiktok/pages/userPage.dart';
@@ -50,9 +51,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    VideoGenerateFromResource generate =
-        VideoGenerateFromResource(widget.generate);
-
+    // VideoGenerateFromResource generate =
+    //     VideoGenerateFromResource(widget.generate);
+    VideoGenerateFromResource generate = getResource();
     WidgetsBinding.instance!.addObserver(this);
     _videoListController.init(
       pageController: _pageController,
