@@ -48,22 +48,15 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
       pageController: _pageController,
       initialList: generate
           .nextList(2)
-          .map(
-            (e) => VPVideoController(videoInfo: e)
-          )
+          .map((e) => VPVideoController(videoInfo: e))
           .toList(),
       videoProvider: (int index, List<VPVideoController> list) async {
         return generate
             .nextList(5)
-            .map(
-              (e) => VPVideoController(videoInfo: e)
-            )
+            .map((e) => VPVideoController(videoInfo: e))
             .toList();
       },
     );
-    _videoListController.addListener(() {
-      setState(() {});
-    });
 
     super.initState();
   }

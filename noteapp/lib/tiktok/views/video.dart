@@ -47,7 +47,8 @@ class TikTokVideoPage extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           color: Colors.black,
-          alignment: Alignment.center,
+          //alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           child: AspectRatio(
             aspectRatio: aspectRatio,
             child: video,

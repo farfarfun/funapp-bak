@@ -77,10 +77,6 @@ class TikTokVideoListController extends ChangeNotifier {
     index.value = target;
   }
 
-  _didUpdateValue() {
-    notifyListeners();
-  }
-
   /// 获取指定index的player
   VPVideoController? playerOfIndex(int index) {
     if (index < 0 || index > playerList.length - 1) {
@@ -139,11 +135,9 @@ class VPVideoController {
 
   VPVideoController({
     required this.videoInfo,
-  }) : videoDetailView = VideoDetailView(videoInfo, height: 800, onPlay: false);
+  }) : videoDetailView = VideoDetailView(videoInfo, height: 760, onPlay: false);
 
   bool get isDispose => _disposeLock != null;
-
-  bool _prepared = false;
 
   Completer<void>? _disposeLock;
 
@@ -178,106 +172,3 @@ class VPVideoController {
 
   void dispose() {}
 }
-
-
-// class VPVideoController extends TikTokVideoController<VideoPlayerController> {
-//   VideoPlayerController? _controller;
-//   ValueNotifier<bool> _showPauseIcon = ValueNotifier<bool>(false);
-
-//   VideoDetail videoInfo;
-//   final VideoDetailView videoDetailView;
-
-//   final ControllerBuilder<VideoPlayerController> _builder;
-//   final ControllerSetter<VideoPlayerController>? _afterInit;
-//   VPVideoController({
-//     required this.videoInfo,
-//     required ControllerBuilder<VideoPlayerController> builder,
-//     ControllerSetter<VideoPlayerController>? afterInit,
-//   })  : _builder = builder,
-//         _afterInit = afterInit,
-//         videoDetailView =
-//             VideoDetailView(videoInfo, height: 800, onPlay: false);
-
-//   @override
-//   VideoPlayerController get controller {
-//     _controller ??= _builder.call();
-//     return _controller!;
-//   }
-
-//   bool get isDispose => _disposeLock != null;
-//   bool get prepared => _prepared;
-//   bool _prepared = false;
-
-//   Completer<void>? _disposeLock;
-
-//   /// 异步方法并发锁
-//   Completer<void>? _syncLock;
-
-//   /// 防止异步方法并发
-//   Future<void> _syncCall(Future Function()? fn) async {
-//     // 设置同步等待
-//     var lastCompleter = _syncLock;
-//     var completer = Completer<void>();
-//     _syncLock = completer;
-//     // 等待其他同步任务完成
-//     await lastCompleter?.future;
-//     // 主任务
-//     await fn?.call();
-//     // 结束
-//     completer.complete();
-//   }
-
-//   @override
-//   Future<void> dispose() async {
-//     if (!prepared) return;
-//     _prepared = false;
-//     await _syncCall(() async {
-//       await controller.dispose();
-//       _controller = null;
-//       _disposeLock = Completer<void>();
-//     });
-//   }
-
-//   @override
-//   Future<void> init({
-//     ControllerSetter<VideoPlayerController>? afterInit,
-//   }) async {
-//     if (prepared) return;
-//     await _syncCall(() async {
-//       await controller.initialize();
-//       await controller.setLooping(true);
-//       afterInit ??= _afterInit;
-//       await afterInit?.call(controller);
-//       _prepared = true;
-//     });
-//     if (_disposeLock != null) {
-//       _disposeLock?.complete();
-//       _disposeLock = null;
-//     }
-//   }
-
-//   @override
-//   Future<void> pause({bool showPauseIcon = false}) async {
-//     await init();
-//     if (!prepared) return;
-//     if (_disposeLock != null) {
-//       await _disposeLock?.future;
-//     }
-//     await controller.pause();
-//     _showPauseIcon.value = true;
-//   }
-
-//   @override
-//   Future<void> play() async {
-//     await init();
-//     if (!prepared) return;
-//     if (_disposeLock != null) {
-//       await _disposeLock?.future;
-//     }
-//     await controller.play();
-//     _showPauseIcon.value = false;
-//   }
-
-//   @override
-//   ValueNotifier<bool> get showPauseIcon => _showPauseIcon;
-// }
