@@ -8,7 +8,7 @@ DataGenerate generate = DataGenerate(baseUrl);
 VideoGenerateFromResource resource = VideoGenerateFromResource(generate);
 
 Future<void> initDataGenerate() async {
-  await resource.cacheData();
+  await resource.cacheData(pageSize: 20);
   await resource.next();
 }
 

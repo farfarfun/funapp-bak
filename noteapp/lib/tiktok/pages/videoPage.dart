@@ -41,8 +41,6 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
 
   @override
   void initState() {
-    // VideoGenerateFromResource generate =
-    //     VideoGenerateFromResource(widget.generate);
     VideoGenerateFromResource generate = getResource();
 
     WidgetsBinding.instance!.addObserver(this);
