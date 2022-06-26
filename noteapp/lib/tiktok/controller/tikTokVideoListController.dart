@@ -1,8 +1,12 @@
 import 'dart:async';
 
+import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/domain/base.dart';
+import 'package:noteapp/common/video/skin/panel.dart';
+import 'package:noteapp/common/video/skin/schema.dart';
+import 'package:noteapp/common/video/video_panel.dart';
 //import 'package:video_player/video_player.dart';
 
 typedef LoadMoreVideo = Future<List<VPVideoController>> Function(
@@ -131,6 +135,8 @@ typedef ControllerBuilder<T> = T Function();
 
 class VPVideoController {
   VideoDetail videoInfo;
+  FijkPlayer player = FijkPlayer();
+
   final VideoDetailView videoDetailView;
 
   VPVideoController({
@@ -159,16 +165,60 @@ class VPVideoController {
   }
 
   void init() {
+
     //videoDetailView
   }
 
   void pause() {
     videoDetailView.onPlay = false;
+    player.pause();
   }
 
   void play() {
     videoDetailView.onPlay = true;
+    player.start();
   }
 
   void dispose() {}
+
+  Widget buildWidget(BuildContext context) {
+    ShowConfigAbs vConfig = PlayerShowConfig();
+    VideoSourceFormat _videoSourceTabs =
+        VideoSourceFormat.fromJson(videoInfo.getVideoList());
+
+    return Column(
+      children: [
+        FijkView(
+          height: 780,
+          color: Colors.black,
+          fit: FijkFit.cover,
+          player: player,
+          panelBuilder: (FijkPlayer player, FijkData data, BuildContext context,
+              Size viewSize, Rect texturePos) {
+            return CustomFijkPanel(
+              player: player,
+              viewSize: viewSize,
+              texturePos: texturePos,
+              pageContent: context,
+
+              //标题 当前页面顶部的标题部分
+              playerTitle: videoInfo.title,
+
+              //视频显示的配置
+              showConfig: vConfig,
+
+              //json格式化后的视频数据
+              videoFormat: _videoSourceTabs,
+
+              //当前视频源 资源一 资源二等
+              curTabIdx: 0,
+
+              //当前视频 高清 标清 流畅等
+              curActiveIdx: 0,
+            );
+          },
+        ),
+      ],
+    );
+  }
 }

@@ -81,6 +81,7 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
               // 拼一个视频组件出来
               bool isF = false;
               var player = _videoListController.playerOfIndex(i)!;
+
               VideoDetail videoDetail = player.videoInfo;
               // 右侧按钮列
               Widget buttons = TikTokButtonColumn(
@@ -121,7 +122,8 @@ class _TiktokVideoPageState extends State<TiktokVideoPage>
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
                 rightButtonColumn: buttons,
-                video: player.videoDetailView,
+                //video: player.videoDetailView,
+                video: player.buildWidget(context),
               );
               return tiktokVideo;
             },

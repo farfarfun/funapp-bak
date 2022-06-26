@@ -15,18 +15,14 @@ class VideoDetailView extends StatefulWidget {
   final FijkPlayer player = FijkPlayer();
   VideoDetailView(this.videoInfo,
       {Key? key, this.onPlay = false, this.height = 240})
-      : super(key: key) {}
+      : super(key: key);
   @override
   _VideoDetailViewState createState() => _VideoDetailViewState();
 }
 
 class _VideoDetailViewState extends State<VideoDetailView>
     with SingleTickerProviderStateMixin {
-  _VideoDetailViewState() {
-    _videoSourceTabs =
-        VideoSourceFormat.fromJson(widget.videoInfo.getVideoList());
-    speed = 1.0;
-  }
+  _VideoDetailViewState();
   VideoSourceFormat? _videoSourceTabs;
 
   ShowConfigAbs vConfig = PlayerShowConfig();
@@ -41,15 +37,15 @@ class _VideoDetailViewState extends State<VideoDetailView>
     super.didUpdateWidget(oldWidget);
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _videoSourceTabs =
-  //       VideoSourceFormat.fromJson(widget.videoInfo.getVideoList());
+  @override
+  void initState() {
+    super.initState();
+    _videoSourceTabs =
+        VideoSourceFormat.fromJson(widget.videoInfo.getVideoList());
 
-  //   //这句不能省，必须有
-  //   speed = 1.0;
-  // }
+    //这句不能省，必须有
+    speed = 1.0;
+  }
 
   @override
   void dispose() {
