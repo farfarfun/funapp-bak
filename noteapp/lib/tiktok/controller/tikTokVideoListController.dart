@@ -118,7 +118,9 @@ class TikTokVideoListController extends ChangeNotifier {
   /// 销毁全部
   void dispose() {
     // 销毁全部
-    for (var player in playerList) {}
+    for (var player in playerList) {
+      player.videoDetailView.onPlay = false;
+    }
     playerList = [];
     super.dispose();
   }
@@ -128,8 +130,6 @@ typedef ControllerSetter<T> = Future<void> Function(T controller);
 typedef ControllerBuilder<T> = T Function();
 
 class VPVideoController {
-  ValueNotifier<bool> _showPauseIcon = ValueNotifier<bool>(false);
-
   VideoDetail videoInfo;
   final VideoDetailView videoDetailView;
 
