@@ -54,7 +54,6 @@ class TikTokVideoListController extends ChangeNotifier {
       // 需要释放[disposeCount]之前的视频
       if (i < newIndex - disposeCount || i > newIndex + disposeCount) {
         print('释放$i');
-
         playerOfIndex(i)?.dispose();
       } else {
         // 需要预加载
@@ -134,10 +133,13 @@ typedef ControllerBuilder<T> = T Function();
 class VPVideoController {
   VideoDetail videoInfo;
   FijkPlayer player = FijkPlayer();
+  Widget? videoWidget;
 
   VPVideoController({
     required this.videoInfo,
-  });
+  }) {
+    this.videoWidget = this.buildWidget();
+  }
 
   bool get isDispose => _disposeLock != null;
 
@@ -160,7 +162,9 @@ class VPVideoController {
     completer.complete();
   }
 
-  void init() {}
+  void init() {
+    player.prepareAsync();
+  }
 
   void pause() {
     player.pause();
@@ -174,7 +178,7 @@ class VPVideoController {
     player.dispose();
   }
 
-  Widget buildWidget(BuildContext context) {
+  Widget buildWidget() {
     ShowConfigAbs vConfig = PlayerShowConfig();
     VideoSourceFormat _videoSourceTabs =
         VideoSourceFormat.fromJson(videoInfo.getVideoList());

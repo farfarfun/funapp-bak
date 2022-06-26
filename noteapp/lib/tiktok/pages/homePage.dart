@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance!.removeObserver(this);
-    _videoListController.currentPlayer.pause();
+    _videoListController.currentPlayer.dispose();
     super.dispose();
   }
 
@@ -201,7 +201,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
                 rightButtonColumn: buttons,
-                video: player.buildWidget(context),
+                video: player.videoWidget,
               );
               return currentVideo;
             },
