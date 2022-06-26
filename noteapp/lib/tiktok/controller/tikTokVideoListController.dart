@@ -2,12 +2,10 @@ import 'dart:async';
 
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
-import 'package:noteapp/common/cards/video_card.dart';
 import 'package:noteapp/common/domain/base.dart';
 import 'package:noteapp/common/video/skin/panel.dart';
 import 'package:noteapp/common/video/skin/schema.dart';
 import 'package:noteapp/common/video/video_panel.dart';
-//import 'package:video_player/video_player.dart';
 
 typedef LoadMoreVideo = Future<List<VPVideoController>> Function(
   int index,
@@ -18,8 +16,8 @@ typedef LoadMoreVideo = Future<List<VPVideoController>> Function(
 /// 提供了预加载/释放/加载更多功能
 class TikTokVideoListController extends ChangeNotifier {
   TikTokVideoListController({
-    this.loadMoreCount = 2,
-    this.preloadCount = 3,
+    this.loadMoreCount = 5,
+    this.preloadCount = 10,
     this.disposeCount = 0,
   });
 
@@ -123,7 +121,7 @@ class TikTokVideoListController extends ChangeNotifier {
   void dispose() {
     // 销毁全部
     for (var player in playerList) {
-      player.videoDetailView.onPlay = false;
+      player.dispose();
     }
     playerList = [];
     super.dispose();
@@ -137,11 +135,9 @@ class VPVideoController {
   VideoDetail videoInfo;
   FijkPlayer player = FijkPlayer();
 
-  final VideoDetailView videoDetailView;
-
   VPVideoController({
     required this.videoInfo,
-  }) : videoDetailView = VideoDetailView(videoInfo, height: 760, onPlay: false);
+  });
 
   bool get isDispose => _disposeLock != null;
 
@@ -164,22 +160,19 @@ class VPVideoController {
     completer.complete();
   }
 
-  void init() {
-
-    //videoDetailView
-  }
+  void init() {}
 
   void pause() {
-    videoDetailView.onPlay = false;
     player.pause();
   }
 
   void play() {
-    videoDetailView.onPlay = true;
     player.start();
   }
 
-  void dispose() {}
+  void dispose() {
+    player.dispose();
+  }
 
   Widget buildWidget(BuildContext context) {
     ShowConfigAbs vConfig = PlayerShowConfig();

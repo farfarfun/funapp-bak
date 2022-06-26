@@ -51,8 +51,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    // VideoGenerateFromResource generate =
-    //     VideoGenerateFromResource(widget.generate);
     VideoGenerateFromResource generate = getResource();
     WidgetsBinding.instance!.addObserver(this);
     _videoListController.init(
@@ -155,9 +153,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       leftPage: userPage,
       rightPage: userPage,
       enableGesture: tabBarType == TikTokPageTag.home,
-      // onPullDownRefresh: _fetchData,
       page: Stack(
-        // index: currentPage == null ? 0 : 1,
         children: <Widget>[
           PageView.builder(
             key: const Key('home'),
@@ -182,7 +178,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     widget.generate
                         .addFavorite("0", "resourceId", sourceId: "sourceId");
                   });
-                  // showAboutDialog(context: context);
                 },
                 onComment: () {
                   CustomBottomSheet.showModalBottomSheet(
@@ -194,13 +189,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 },
                 onShare: () {},
               );
-              // video
-              // Widget currentVideo = Center(
-              //   child: AspectRatio(
-              //     aspectRatio: player.controller.value.aspectRatio,
-              //     child: VideoPlayer(player.controller),
-              //   ),
-              // );
 
               Widget currentVideo = TikTokVideoPage(
                 aspectRatio: 9 / 16.0,
@@ -213,7 +201,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   bottomPadding: hasBottomPadding ? 16.0 : 50.0,
                 ),
                 rightButtonColumn: buttons,
-                //video: player.videoDetailView,
                 video: player.buildWidget(context),
               );
               return currentVideo;
