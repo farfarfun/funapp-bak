@@ -21,11 +21,11 @@ version_path = path.join(path.abspath(path.dirname(__file__)), 'script/__version
 
 version = read_version(version_path)
 
-install_requires = ['tqdm', 'notebuild', 'numpy', 'pandas','pillow']
+install_requires = ['tqdm', 'funbuild', 'numpy', 'pandas','pillow']
 
-setup(name='noteapp',
+setup(name='funapp',
       version=version,
-      description='noteapp',
+      description='funapp',
       author='bingtao',
       author_email='1007530194@qq.com',
       url='https://github.com/1007530194',

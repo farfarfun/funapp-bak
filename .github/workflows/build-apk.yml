@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./noteapp
+        working-directory: ./funapp
     # 这个任务的步骤
     steps:
       # 拉取项目代码
@@ -50,5 +50,5 @@ jobs:
       - name: Release apk
         uses: ncipollo/release-action@v1.10.0
         with:
-          artifacts: "noteapp/build/app/outputs/apk/release/*.apk"
+          artifacts: "funapp/build/app/outputs/apk/release/*.apk"
           token: ${{ secrets.RELEASE_TOKEN }}

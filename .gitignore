@@ -94,19 +94,19 @@ bin/
 apps/
 
 
-/noteapp/android/.gradle
-/noteapp/android/app/debug
-/noteapp/android/app/profile
-/noteapp/android/app/release
-/noteapp/.dart_tool
-/noteapp/build/
+/funapp/android/.gradle
+/funapp/android/app/debug
+/funapp/android/app/profile
+/funapp/android/app/release
+/funapp/.dart_tool
+/funapp/build/
 */.gradle/
 */.idea/
 
-noteapp/.flutter-plugins
-noteapp/.flutter-plugins-dependencies
-noteapp/.packages
-noteapp/android/local.properties
+funapp/.flutter-plugins
+funapp/.flutter-plugins-dependencies
+funapp/.packages
+funapp/android/local.properties
 
 # ---- AI 编码助手 ----
 # 只忽略本地状态；团队有意共享的 agent / 命令 / 规则定义仍然版本化。
