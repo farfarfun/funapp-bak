@@ -13,6 +13,7 @@ jobs:
   process:
     name: all process
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: ./funapp
