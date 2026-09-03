@@ -14,7 +14,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  dio: ^4.0.6
+  dio: ^5.0.0
   carousel_slider: ^4.1.1
   fijkplayer: ^0.10.1
   wakelock: ^0.6.1+2
