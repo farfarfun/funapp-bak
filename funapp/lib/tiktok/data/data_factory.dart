@@ -16,14 +16,27 @@ class DataGenerate {
     return Dio().get(baseUrl + uri, queryParameters: queryParameters);
   }
 
+  /// 从设置中读取访问后端接口用的 token。
+  ///
+  /// 不再提供硬编码默认值：用户必须在「设置」页里自行配置
+  /// `notetiktok-video-secret-key`，缺失时直接报错，避免所有安装共用同一个
+  /// 内置默认凭据。
+  String _requireSecretKey() {
+    final token = Settings.getValue<String>('notetiktok-video-secret-key',
+        defaultValue: '');
+    if (token == null || token.isEmpty) {
+      throw StateError(
+          '未配置 notetiktok-video-secret-key，请先在「设置」页填写 SecretKey 后再试');
+    }
+    return token;
+  }
+
   Future<List<VideoDetail>> getResource(
       {int pageNo = 1, int pageSize = 10}) async {
     Map<String, dynamic> queryParameters = {};
     queryParameters['page_no'] = pageNo;
     queryParameters['page_size'] = pageSize;
-    queryParameters['token'] = Settings.getValue<String>(
-        'notetiktok-video-secret-key',
-        defaultValue: 'funapp_secret');
+    queryParameters['token'] = _requireSecretKey();
 
     final response =
         await dioGet('tiktok/resource/get', queryParameters: queryParameters);
@@ -48,9 +61,7 @@ class DataGenerate {
     Map<String, dynamic> queryParameters = {};
     queryParameters['page_no'] = pageNo;
     queryParameters['page_size'] = pageSize;
-    queryParameters['token'] = Settings.getValue<String>(
-        'notetiktok-video-secret-key',
-        defaultValue: 'funapp_secret');
+    queryParameters['token'] = _requireSecretKey();
 
     final response =
         await dioGet('tiktok/resource/get', queryParameters: queryParameters);

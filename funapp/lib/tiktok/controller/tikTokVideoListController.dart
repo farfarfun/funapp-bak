@@ -44,21 +44,21 @@ class TikTokVideoListController extends ChangeNotifier {
     // 暂停之前的视频
     if (!(oldIndex == 0 && newIndex == 0)) {
       playerOfIndex(oldIndex)?.pause();
-      print('暂停$oldIndex');
+      debugPrint('暂停$oldIndex');
     }
     // 开始播放当前的视频
     playerOfIndex(newIndex)?.play();
-    print('播放$newIndex');
+    debugPrint('播放$newIndex');
     // 处理预加载/释放内存
     for (var i = 0; i < playerList.length; i++) {
       // 需要释放[disposeCount]之前的视频
       if (i < newIndex - disposeCount || i > newIndex + disposeCount) {
-        print('释放$i');
+        debugPrint('释放$i');
         playerOfIndex(i)?.dispose();
       } else {
         // 需要预加载
         if (i > newIndex && i < newIndex + preloadCount) {
-          print('预加载$i');
+          debugPrint('预加载$i');
           playerOfIndex(i)?.init();
         }
       }

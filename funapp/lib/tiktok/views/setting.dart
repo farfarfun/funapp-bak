@@ -133,7 +133,9 @@ class _AppSettingsState extends State<AppSettings> {
             TextInputSettingsTile(
               title: 'SecretKey',
               settingKey: 'notetiktok-video-secret-key',
-              initialValue: 'funapp_secret',
+              // 不再内置默认凭据：留空强制用户自行配置，
+              // 缺失时 DataGenerate 会直接报错提示来这里填写。
+              initialValue: '',
               validator: (String? secretKey) {
                 if (secretKey != null && secretKey.length > 3) {
                   return null;

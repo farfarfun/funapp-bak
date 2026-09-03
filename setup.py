@@ -21,7 +21,12 @@ version_path = path.join(path.abspath(path.dirname(__file__)), 'script/__version
 
 version = read_version(version_path)
 
-install_requires = ['tqdm', 'funbuild', 'numpy', 'pandas','pillow']
+# 注意：find_packages() 在本仓库当前实际返回空列表——仓库里没有任何
+# 带 __init__.py 的 Python 包目录（`funapp/` 是 Flutter 项目目录，不是 Python
+# 包）。这里打出来的一直是一个不含任何代码的空 wheel，install_requires 列出的
+# 依赖并没有被任何代码实际导入。funbuild 是构建期工具，不应留在运行时依赖里。
+install_requires = ['tqdm>=4.60', 'numpy>=1.24', 'pandas>=1.5', 'pillow>=9.0']
+extras_require = {'dev': ['funbuild>=1.6.66']}
 
 setup(name='funapp',
       version=version,
@@ -33,5 +38,6 @@ setup(name='funapp',
       packages=find_packages(),
       package_data={"": ["*.*"]},
       include_package_data=True,
-      install_requires=install_requires
+      install_requires=install_requires,
+      extras_require=extras_require,
       )
