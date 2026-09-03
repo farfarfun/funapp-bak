@@ -8,6 +8,11 @@ on:
     tags:
       - v*
 
+# 防止连续打 tag 时并行触发多个发布 run 互相竞态覆盖产物
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 # 这个工作流程需要执行的任务
 jobs:
   process:
