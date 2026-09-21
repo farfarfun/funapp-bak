@@ -1,26 +1,29 @@
 import 'dart:async';
-//
+
+/// Small helpers for delaying and limiting callbacks.
 class CommonUtils {
-  // 防抖函数: eg:输入框连续输入，用户停止操作300ms才执行访问接口
-  static const deFaultDurationTime = 300;
+  /// Default delay in milliseconds for [antiShake] and [throttle].
+  static const int defaultDurationTime = 300;
   static Timer? timer;
 
-  static antiShake(Function? doSomething,
-      {durationTime = deFaultDurationTime}) {
-    timer!.cancel();
+  /// Runs [doSomething] after input has been idle for [durationTime] ms.
+  static void antiShake(void Function()? doSomething,
+      {int durationTime = defaultDurationTime}) {
+    timer?.cancel();
     timer = Timer(Duration(milliseconds: durationTime), () {
-      doSomething!.call();
+      doSomething?.call();
       timer = null;
     });
   }
 
-  // 节流函数: eg:300ms内，只会触发一次
+  /// Runs [doSomething] at most once per [durationTime] milliseconds.
   static int startTime = 0;
 
-  static throttle(Function? doSomething, {durationTime = deFaultDurationTime}) {
+  static void throttle(void Function()? doSomething,
+      {int durationTime = defaultDurationTime}) {
     int currentTime = DateTime.now().millisecondsSinceEpoch;
     if (currentTime - startTime > durationTime) {
-      doSomething!.call();
+      doSomething?.call();
       startTime = DateTime.now().millisecondsSinceEpoch;
     }
   }

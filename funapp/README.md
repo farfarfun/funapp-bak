@@ -24,9 +24,12 @@ flutter run -d chrome
 
 运行后从首页可以进入「播放视频」「视频列表」「图片列表」「资源列表」「tiktok」等各个演示页面（见 `lib/page/route.dart`）。
 
-其中 tiktok 相关页面需要连接一个后端资源接口（默认地址见 `lib/page/route.dart` 里的 `WGRouter.url`），
+其中 tiktok 相关页面需要连接一个后端资源接口（默认地址为本机 `http://127.0.0.1:8446/`，可用
+`--dart-define=FUNAPP_API_URL=https://example.invalid/` 覆盖），
 并需要在应用内「设置」页填写 `SecretKey`（对应后端接口的 `token`）后才能正常拉取数据，
 应用不再内置默认密钥。
+
+本仓库是 `funapp` 的历史备份，维护重点是保留可复现的 Flutter 示例；新功能应提交到主项目仓库。
 
 ## 打包
 

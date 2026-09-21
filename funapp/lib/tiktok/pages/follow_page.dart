@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:funapp/tiktok/other/bottomSheet.dart' as CustomBottomSheet;
+import 'package:funapp/tiktok/other/bottom_sheet.dart' as CustomBottomSheet;
 import 'package:funapp/tiktok/style/style.dart';
-import 'package:funapp/tiktok/views/appBar.dart';
-import 'package:funapp/tiktok/views/appBottomSheet.dart';
+import 'package:funapp/tiktok/views/app_bar.dart';
+import 'package:funapp/tiktok/views/app_bottom_sheet.dart';
 import 'package:funapp/tiktok/views/video.dart';
 import 'package:safemap/safemap.dart';
 import 'package:tapped/tapped.dart';

@@ -2,13 +2,15 @@ import 'package:funapp/tiktok/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:tapped/tapped.dart';
 
+/// Action column displayed beside a TikTok-style video.
 class TikTokButtonColumn extends StatelessWidget {
   final double? bottomPadding;
   final bool isFavorite;
-  final Function? onFavorite;
-  final Function? onComment;
-  final Function? onShare;
-  final Function? onAvatar;
+  final VoidCallback? onFavorite;
+  final VoidCallback? onComment;
+  final VoidCallback? onShare;
+  final VoidCallback? onAvatar;
+  /// Creates the action column for a video.
   const TikTokButtonColumn({
     Key? key,
     this.bottomPadding,
@@ -71,7 +73,7 @@ class FavoriteIcon extends StatelessWidget {
     this.isFavorite,
   }) : super(key: key);
   final bool? isFavorite;
-  final Function? onFavorite;
+  final VoidCallback? onFavorite;
 
   @override
   Widget build(BuildContext context) {

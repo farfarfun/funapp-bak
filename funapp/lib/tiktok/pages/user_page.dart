@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funapp/common/domain/author.dart';
 import 'package:funapp/tiktok/style/style.dart';
-import 'package:funapp/tiktok/views/appRow.dart';
+import 'package:funapp/tiktok/views/app_row.dart';
 import 'package:funapp/tiktok/views/setting.dart';
 import 'package:tapped/tapped.dart';
 

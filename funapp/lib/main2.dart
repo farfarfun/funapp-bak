@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funapp/tiktok/app.dart';
+import 'package:funapp/tiktok/data/static_data.dart';
 
 void main() {
-  runApp(TikTokApp('http://47.91.11.122:8446/'));
+  runApp(TikTokApp(baseUrl));
 }

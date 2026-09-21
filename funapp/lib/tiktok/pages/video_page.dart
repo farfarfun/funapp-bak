@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:funapp/common/domain/base.dart';
-import 'package:funapp/tiktok/controller/tikTokVideoListController.dart';
+import 'package:funapp/tiktok/controller/tiktok_video_list_controller.dart';
 import 'package:funapp/tiktok/data/data_factory.dart';
-import 'package:funapp/tiktok/data/staticData.dart';
-import 'package:funapp/tiktok/other/bottomSheet.dart' as CustomBottomSheet;
-import 'package:funapp/tiktok/pages/userPage.dart';
+import 'package:funapp/tiktok/data/static_data.dart';
+import 'package:funapp/tiktok/other/bottom_sheet.dart' as CustomBottomSheet;
+import 'package:funapp/tiktok/pages/user_page.dart';
 import 'package:funapp/tiktok/style/physics.dart';
-import 'package:funapp/tiktok/views/appBottomSheet.dart';
+import 'package:funapp/tiktok/views/app_bottom_sheet.dart';
 import 'package:funapp/tiktok/views/video.dart';
-import 'package:funapp/tiktok/views/videoButtonColumn.dart';
+import 'package:funapp/tiktok/views/video_button_column.dart';
 
 class TiktokVideoPage extends StatefulWidget {
   late DataGenerate generate;

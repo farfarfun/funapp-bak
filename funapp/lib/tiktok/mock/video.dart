@@ -45,4 +45,4 @@ class UserVideo {
     return 'image:$image' '\nvideo:$url';
   }
 }
-// http://47.91.11.122:8446/resource/get?page_size=2
+// Example endpoint: ${FUNAPP_API_URL}/resource/get?page_size=2

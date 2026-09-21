@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:funapp/page/home.dart';
-import 'package:funapp/tiktok/controller/tikTokVideoListController.dart';
+import 'package:funapp/tiktok/controller/tiktok_video_list_controller.dart';
 import 'package:funapp/tiktok/data/data_factory.dart';
-import 'package:funapp/tiktok/data/staticData.dart';
-import 'package:funapp/tiktok/other/bottomSheet.dart' as CustomBottomSheet;
-import 'package:funapp/tiktok/pages/followPage.dart';
-import 'package:funapp/tiktok/pages/userPage.dart';
+import 'package:funapp/tiktok/data/static_data.dart';
+import 'package:funapp/tiktok/other/bottom_sheet.dart' as CustomBottomSheet;
+import 'package:funapp/tiktok/pages/follow_page.dart';
+import 'package:funapp/tiktok/pages/user_page.dart';
 import 'package:funapp/tiktok/style/physics.dart';
-import 'package:funapp/tiktok/views/appBar.dart';
-import 'package:funapp/tiktok/views/appBottomSheet.dart';
+import 'package:funapp/tiktok/views/app_bar.dart';
+import 'package:funapp/tiktok/views/app_bottom_sheet.dart';
 import 'package:funapp/tiktok/views/header.dart';
 import 'package:funapp/tiktok/views/scaffold.dart';
 import 'package:funapp/tiktok/views/video.dart';
-import 'package:funapp/tiktok/views/videoButtonColumn.dart';
+import 'package:funapp/tiktok/views/video_button_column.dart';
 import 'package:safemap/safemap.dart';
 
 class HomePage extends StatefulWidget {
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       },
     );
 
-    var userPage = TikTokUserPage(
+    var user_page = TikTokUserPage(
       isSelfPage: false,
       canPop: true,
       onPop: () {
@@ -150,8 +150,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       hasBottomPadding: hasBackground,
       tabBar: tikTokTabBar,
       header: header,
-      leftPage: userPage,
-      rightPage: userPage,
+      leftPage: user_page,
+      rightPage: user_page,
       enableGesture: tabBarType == TikTokPageTag.home,
       page: Stack(
         children: <Widget>[

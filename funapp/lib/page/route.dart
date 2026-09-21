@@ -7,8 +7,9 @@ import 'package:funapp/common/data/mock.dart';
 import 'package:funapp/common/domain/base.dart';
 import 'package:funapp/common/resource/resource_list.dart';
 import 'package:funapp/tiktok/app.dart';
-import 'package:funapp/tiktok/pages/userPage.dart';
-import 'package:funapp/tiktok/pages/videoPage.dart';
+import 'package:funapp/tiktok/data/static_data.dart';
+import 'package:funapp/tiktok/pages/user_page.dart';
+import 'package:funapp/tiktok/pages/video_page.dart';
 import 'package:funapp/tiktok/views/setting.dart';
 
 ValueNotifier themeMode = ValueNotifier(2);
@@ -101,7 +102,7 @@ class WGRouter {
   static const pathTiktokVideo = '/tiktok_video';
   static const pathTiktokUser = '/tiktok_user';
 
-  static final String url = 'http://47.91.11.122:8446/';
+  static const String url = baseUrl;
 
   static final Map<String, WidgetBuilder> routes = {
     home: (ctx) => const RouteHome(),

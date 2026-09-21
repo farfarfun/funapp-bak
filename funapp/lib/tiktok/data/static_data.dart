@@ -2,7 +2,12 @@
 
 import 'package:funapp/tiktok/data/data_factory.dart';
 
-final String baseUrl = 'http://47.91.11.122:8446/';
+/// API endpoint. Override with `--dart-define=FUNAPP_API_URL=...` for a
+/// deployment-specific backend.
+const String baseUrl = String.fromEnvironment(
+  'FUNAPP_API_URL',
+  defaultValue: 'http://127.0.0.1:8446/',
+);
 
 DataGenerate generate = DataGenerate(baseUrl);
 VideoGenerateFromResource resource = VideoGenerateFromResource(generate);

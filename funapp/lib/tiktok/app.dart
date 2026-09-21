@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:funapp/tiktok/pages/homePage.dart';
+import 'package:funapp/tiktok/pages/home_page.dart';
 import 'package:funapp/tiktok/style/style.dart';
 
 class TikTokApp extends StatelessWidget {

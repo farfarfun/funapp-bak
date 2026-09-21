@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
-import 'package:funapp/tiktok/data/staticData.dart';
+import 'package:funapp/tiktok/data/static_data.dart';
 
 Future<ValueNotifier<Color>> initSettings() async {
   await initDataGenerate();

@@ -4,6 +4,8 @@
 详见 [`funapp/README.md`](funapp/README.md)。仓库名带 `-bak`，历史上是 `noteapp` 迁移改名后的产物，
 `baks/` 目录下保留了更早期的快照，不再维护。
 
+这是历史备份仓库，不作为独立 Python 包发布；唯一的可运行项目是 `funapp/` 下的 Flutter 应用。
+
 ## 安装与运行
 
 ```bash
