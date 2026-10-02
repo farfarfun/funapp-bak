@@ -1,9 +1,13 @@
 import 'package:funapp/common/domain/base.dart';
 
-//
+/// 占位视频对象：没有真实数据时返回它，避免调用方拿到 null。
 VideoDetail defaultVideo = VideoDetail();
+
+/// 占位单图对象：没有真实数据时作为默认资源返回。
 ImageDetail defaultImage = ImageDetail(
     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F811%2F091214203241%2F140912203241-2-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653893347&t=486c68ebd9c196df4c4dcd4930eca73d");
+
+/// 占位多图对象：没有真实数据时作为图集资源返回。
 ImageListDetail defaultImageList = ImageListDetail([
   "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdesk-fd.zol-img.com.cn%2Ft_s960x600c5%2Fg5%2FM00%2F02%2F05%2FChMkJ1bKyaOIB1YfAAusnvE99Z8AALIQQPgER4AC6y2052.jpg&refer=http%3A%2F%2Fdesk-fd.zol-img.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653893347&t=e81cdb517382b238ab0add7d593d82f9",
   "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-06-15%2F5b236a18acfc0.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653893347&t=e9803366ccc95d31830d7feff2853949",
@@ -27,6 +31,7 @@ class VideoGenerate extends ResourceGenerate {
   VideoGenerate();
 
   /// 返回下一个视频对象。
+  @override
   VideoDetail next() {
     return VideoDetail();
   }

@@ -4,7 +4,7 @@
 一套通用的图片/视频资源卡片与列表组件（`lib/common/`），以及若干示例入口页面（`lib/example/`、`lib/page/`）。
 项目主要用于验证 `fijkplayer`/`video_player` 播放器、`dio` 网络请求、`carousel_slider` 轮播等能力的组合使用。
 
-> 本仓库为 `funapp` 的备份仓库（仓库名带 `-bak` 后缀），当前是本仓库内唯一还在维护的源码目录。
+> 本目录是 `farfarfun/funapp-bak` 仓库内唯一可运行、可构建的源码目录；同级 `../baks/` 下的快照为只读存档。
 
 ## 安装
 
@@ -26,10 +26,19 @@ flutter run -d chrome
 
 其中 tiktok 相关页面需要连接一个后端资源接口（默认地址为本机 `http://127.0.0.1:8446/`，可用
 `--dart-define=FUNAPP_API_URL=https://example.invalid/` 覆盖），
-并需要在应用内「设置」页填写 `SecretKey`（对应后端接口的 `token`）后才能正常拉取数据，
-应用不再内置默认密钥。
+并需要在应用内「设置」页填写 `SecretKey`（对应后端接口的 `token`）后才能正常拉取数据。
+应用不内置默认密钥：未填写时 `DataGenerate` 会抛 `StateError` 并提示去「设置」页配置，
+不会拿一个所有安装共用的内置凭据去请求后端。
 
-本仓库是 `funapp` 的历史备份，维护重点是保留可复现的 Flutter 示例；新功能应提交到主项目仓库。
+## 检查与测试
+
+```bash
+# 静态分析（含 analysis_options.yaml 里的 lint 规则）
+flutter analyze
+
+# 单元测试
+flutter test
+```
 
 ## 打包
 

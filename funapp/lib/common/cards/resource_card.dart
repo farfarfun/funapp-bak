@@ -74,7 +74,10 @@ Widget getResource(ResourceDetail resourceInfo,
 
 /// 展示资源作者、资源内容和社交操作的组合卡片。
 class ResourceCard extends StatefulWidget {
+  /// 卡片要展示的资源元数据（作者、类型、社交计数等）。
   ResourceDetail resourceDetail;
+
+  /// 已按资源类型构建好的内容视图（视频播放器 / 单图 / 图集）。
   Widget resource;
 
   /// 使用 [resourceDetail] 和已构建的 [resource] 内容创建卡片。

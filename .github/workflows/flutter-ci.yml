@@ -1,0 +1,41 @@
+name: Flutter CI
+
+# 每次 push / PR 都做静态分析和单元测试，避免只有打 tag 发版时才发现编译错误
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze-and-test:
+    name: analyze and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ./funapp
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          channel: "stable"
+          flutter-version: "3.0.0"
+
+      - run: flutter pub get
+
+      # 只有真正的 error 才让流水线失败；info/warning 仅作为提示输出，
+      # 避免这份存档代码里的历史 lint 噪音把 CI 常态性地搞红
+      - name: flutter analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      # 用 --reporter expanded 把实际执行了多少用例打出来，防止 0 用例的空跑被当成通过
+      - name: flutter test
+        run: flutter test --reporter expanded

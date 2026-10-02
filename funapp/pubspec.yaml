@@ -1,8 +1,11 @@
 name: funapp
-description: funapp for farfarfun
+description: Flutter 多媒体 demo app：仿抖音竖向短视频信息流（播放、点赞手势、评论弹层、用户主页）+ 通用图片/视频资源卡片与列表组件。
 repository: https://github.com/farfarfun/funapp-bak/tree/master/funapp
 
-version: 0.3.6
+# 这是应用工程，不发布到 pub.dev
+publish_to: none
+
+version: 0.3.7
 
 environment:
   sdk: ">=2.16.2 <3.0.0"

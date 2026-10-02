@@ -1,10 +1,18 @@
 # funapp-bak
 
-一个 Flutter 多媒体 demo app 仓库：竖向短视频信息流（仿抖音）+ 通用图片/视频资源列表组件，
-详见 [`funapp/README.md`](funapp/README.md)。仓库名带 `-bak`，历史上是 `noteapp` 迁移改名后的产物，
-`baks/` 目录下保留了更早期的快照，不再维护。
+一个 Flutter 多媒体 demo app 的归档仓库：竖向短视频信息流（仿抖音）+ 通用图片/视频资源列表组件，
+详见 [`funapp/README.md`](funapp/README.md)。
 
-这是历史备份仓库，不作为独立 Python 包发布；唯一的可运行项目是 `funapp/` 下的 Flutter 应用。
+仓库布局：
+
+- `funapp/` —— 唯一可运行、可构建的 Flutter 工程，仓库内所有维护工作都在这里；
+- `baks/` —— 只读的早期代码快照，仅供查阅，不编译、不接受修改；
+- `script/`、`example/` —— 本机构建与 APK 上传用的辅助脚本。
+
+本仓库不发布任何 Python 包，也不发布到 pub.dev；交付物是 `funapp/` 构建出的 APK（见 `.github/workflows/build-apk.yml`，推送 `v*` tag 触发）。
+
+> 命名说明：仓库名 `funapp-bak` 与 Flutter 工程名 `funapp` 不一致，这是归档仓库的既有状态；
+> `farfarfun/funapp` 是另一个独立的 Python 项目，与本仓库无关。
 
 ## 安装与运行
 
