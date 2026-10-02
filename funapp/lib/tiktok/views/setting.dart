@@ -26,9 +26,6 @@ class _AppSettingsState extends State<AppSettings> {
               enabledLabel: 'Enabled',
               disabledLabel: 'Disabled',
               leading: const Icon(Icons.wifi),
-              onChange: (value) {
-                debugPrint('key-wifi: $value');
-              },
             ),
             CheckboxSettingsTile(
               settingKey: 'key-blue-tooth',
@@ -38,34 +35,22 @@ class _AppSettingsState extends State<AppSettings> {
               enabledLabel: 'Enabled',
               disabledLabel: 'Disabled',
               leading: const Icon(Icons.bluetooth),
-              onChange: (value) {
-                debugPrint('key-blue-tooth: $value');
-              },
             ),
             SwitchSettingsTile(
               leading: const Icon(Icons.developer_mode),
               settingKey: 'key-switch-dev-mode',
               title: 'Developer Settings',
-              onChange: (value) {
-                debugPrint('key-switch-dev-mod: $value');
-              },
               childrenIfEnabled: <Widget>[
                 CheckboxSettingsTile(
                   leading: const Icon(Icons.adb),
                   settingKey: 'key-is-developer',
                   title: 'Developer Mode',
                   defaultValue: true,
-                  onChange: (value) {
-                    debugPrint('key-is-developer: $value');
-                  },
                 ),
                 SwitchSettingsTile(
                   leading: const Icon(Icons.usb),
                   settingKey: 'key-is-usb-debugging',
                   title: 'USB Debugging',
-                  onChange: (value) {
-                    debugPrint('key-is-usb-debugging: $value');
-                  },
                 ),
                 SimpleSettingsTile(
                   title: 'Root Settings',
@@ -75,7 +60,6 @@ class _AppSettingsState extends State<AppSettings> {
                 SimpleSettingsTile(
                   title: 'Custom Settings',
                   subtitle: 'Tap to execute custom callback',
-                  onTap: () => debugPrint('Custom action'),
                 ),
               ],
             ),
@@ -89,17 +73,11 @@ class _AppSettingsState extends State<AppSettings> {
                     leading: const Icon(Icons.adb),
                     settingKey: 'key-is-developer',
                     title: 'Developer Mode',
-                    onChange: (bool value) {
-                      debugPrint('Developer Mode ${value ? 'on' : 'off'}');
-                    },
                   ),
                   SwitchSettingsTile(
                     leading: const Icon(Icons.usb),
                     settingKey: 'key-is-usb-debugging',
                     title: 'USB Debugging',
-                    onChange: (value) {
-                      debugPrint('USB Debugging: $value');
-                    },
                   ),
                 ],
               ),
@@ -155,9 +133,6 @@ class _AppSettingsState extends State<AppSettings> {
                   enabledLabel: 'Enabled',
                   disabledLabel: 'Disabled',
                   leading: const Icon(Icons.timelapse),
-                  onChange: (value) {
-                    debugPrint('key-day-light-saving: $value');
-                  },
                 ),
                 SwitchSettingsTile(
                   settingKey: 'key-dark-mode',
@@ -165,9 +140,6 @@ class _AppSettingsState extends State<AppSettings> {
                   enabledLabel: 'Enabled',
                   disabledLabel: 'Disabled',
                   leading: const Icon(Icons.palette),
-                  onChange: (value) {
-                    debugPrint('jey-dark-mode: $value');
-                  },
                 ),
               ],
             ),
@@ -182,9 +154,6 @@ class _AppSettingsState extends State<AppSettings> {
                   enabledLabel: 'Enabled',
                   disabledLabel: 'Disabled',
                   leading: const Icon(Icons.timelapse),
-                  onChange: (value) {
-                    debugPrint('key-day-light-savings-2: $value');
-                  },
                 ),
                 SwitchSettingsTile(
                   settingKey: 'key-dark-mode-2',
@@ -192,9 +161,6 @@ class _AppSettingsState extends State<AppSettings> {
                   enabledLabel: 'Enabled',
                   disabledLabel: 'Disabled',
                   leading: const Icon(Icons.palette),
-                  onChange: (value) {
-                    debugPrint('key-dark-mode-2: $value');
-                  },
                 ),
               ],
             ),
@@ -214,9 +180,6 @@ class _AppSettingsState extends State<AppSettings> {
                 30: 'Monthly',
               },
               selected: 0,
-              onChange: (value) {
-                debugPrint('key-radio-sync-period: $value');
-              },
             ),
             DropDownSettingsTile<int>(
               title: 'E-Mail View',
@@ -229,9 +192,6 @@ class _AppSettingsState extends State<AppSettings> {
                 6: 'Squizzed',
               },
               selected: 2,
-              onChange: (value) {
-                debugPrint('key-dropdown-email-view: $value');
-              },
             ),
           ],
         ),
@@ -250,9 +210,6 @@ class _AppSettingsState extends State<AppSettings> {
                 'Monthly',
               ],
               selected: 'Daily',
-              onChange: (value) {
-                debugPrint('key-radio-sync-settings: $value');
-              },
             ),
             SimpleDropDownSettingsTile(
               title: 'Beauty Filter',
@@ -267,9 +224,6 @@ class _AppSettingsState extends State<AppSettings> {
                 'Horrific',
               ],
               selected: 'Special',
-              onChange: (value) {
-                debugPrint('key-dropdown-beauty-filter: $value');
-              },
             )
           ],
         ),
@@ -290,9 +244,6 @@ class _AppSettingsState extends State<AppSettings> {
                 4.0: 'Horrific',
               },
               selected: 2.5,
-              onChange: (value) {
-                debugPrint('key-radio-beauty-filter-expandable: $value');
-              },
             ),
             DropDownSettingsTile<int>(
               title: 'Preferred Sync Period',
@@ -305,9 +256,6 @@ class _AppSettingsState extends State<AppSettings> {
                 30: 'Monthly',
               },
               selected: 0,
-              onChange: (value) {
-                debugPrint('key-dropdown-sync-period-2: $value');
-              },
             )
           ],
         ),
@@ -324,15 +272,9 @@ class _AppSettingsState extends State<AppSettings> {
               leading: const Icon(Icons.volume_up),
               decimalPrecision: 0,
               onChange: (value) {
-                debugPrint('\n===== on change end =====\n'
-                    'key-slider-volume: $value'
-                    '\n==========\n');
                 Future.delayed(const Duration(seconds: 1), () {
                   // Reset value only if the current value is not 20
                   if (Settings.getValue('key-slider-volume') != 20) {
-                    debugPrint('\n===== on change end =====\n'
-                        'Resetting value to 20'
-                        '\n==========\n');
                     Settings.setValue('key-slider-volume', 20.0, notify: true);
                   }
                 });
@@ -342,9 +284,6 @@ class _AppSettingsState extends State<AppSettings> {
               settingKey: 'key-color-picker',
               title: 'Accent Color',
               defaultValue: Colors.blue,
-              onChange: (value) {
-                debugPrint('key-color-picker: $value');
-              },
             )
           ],
         ),
@@ -361,29 +300,11 @@ class _AppSettingsState extends State<AppSettings> {
               step: 0.1,
               decimalPrecision: 1,
               leading: const Icon(Icons.aspect_ratio),
-              onChange: (value) {
-                debugPrint('\n===== on change =====\n'
-                    'key-custom-ratio-slider-2: $value'
-                    '\n==========\n');
-              },
-              onChangeStart: (value) {
-                debugPrint('\n===== on change start =====\n'
-                    'key-custom-ratio-slider-2: $value'
-                    '\n==========\n');
-              },
-              onChangeEnd: (value) {
-                debugPrint('\n===== on change end =====\n'
-                    'key-custom-ratio-slider-2: $value'
-                    '\n==========\n');
-              },
             ),
             ColorPickerSettingsTile(
               settingKey: 'key-color-picker-2',
               title: 'Accent Picker',
               defaultValue: Colors.blue,
-              onChange: (value) {
-                debugPrint('key-color-picker-2: $value');
-              },
             )
           ],
         )

@@ -213,7 +213,6 @@ class _TikTokScaffoldState extends State<TikTokScaffold>
   // 水平方向滑动结束
   onHorizontalDragEnd(details, screenWidth) {
     if (!widget.enableGesture!) return;
-    debugPrint('velocity:${details.velocity}');
     var vOffset = details.velocity.pixelsPerSecond.dx;
 
     // 速度很快时
@@ -311,7 +310,6 @@ class _TikTokScaffoldState extends State<TikTokScaffold>
       offsetY = 0;
       setState(() {});
     }
-    debugPrint(absorbing.toString());
   }
 
   @override

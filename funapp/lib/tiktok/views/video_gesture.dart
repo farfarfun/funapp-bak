@@ -57,7 +57,6 @@ class _TikTokVideoGestureState extends State<TikTokVideoGesture> {
       onTapDown: (detail) {
         setState(() {
           if (canAddFavorite) {
-            debugPrint('添加爱心，当前爱心数量:${icons.length}');
             icons.add(_p(detail.globalPosition));
             widget.onAddFavorite?.call();
             justAddFavorite = true;
@@ -77,9 +76,6 @@ class _TikTokVideoGestureState extends State<TikTokVideoGesture> {
           }
         });
         canAddFavorite = true;
-      },
-      onTapCancel: () {
-        debugPrint('onTapCancel');
       },
       child: Stack(
         children: <Widget>[
@@ -115,12 +111,6 @@ class _TikTokFavoriteAnimationIconState
   void dispose() {
     _animationController?.dispose();
     super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    debugPrint('didChangeDependencies');
-    super.didChangeDependencies();
   }
 
   @override

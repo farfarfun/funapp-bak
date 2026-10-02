@@ -10,19 +10,28 @@ ImageListDetail defaultImageList = ImageListDetail([
   "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fc%2F54376f06e80b6.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653893347&t=73588f90d5cae45689208109ddd08cff"
 ]);
 
+/// 提供通用资源对象的基础生成器。
 class ResourceGenerate {
+  /// 创建资源生成器。
   ResourceGenerate();
+
+  /// 返回下一个默认资源对象。
   ResourceDetail next() {
     return defaultImage;
   }
 }
 
+/// 提供视频资源的生成器。
 class VideoGenerate extends ResourceGenerate {
+  /// 创建视频资源生成器。
   VideoGenerate();
+
+  /// 返回下一个视频对象。
   VideoDetail next() {
     return VideoDetail();
   }
 
+  /// 返回包含 [size] 个视频的列表。
   List<VideoDetail> nextList(int size) {
     return List.empty();
   }
