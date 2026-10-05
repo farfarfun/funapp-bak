@@ -18,6 +18,7 @@ final double barFillingHeight =
     MediaQueryData.fromWindow(window).padding.top + barHeight;
 final double barGap = barFillingHeight - barHeight;
 
+/// 描述 [CustomFijkPanel] 中各项控制功能的显示与自动播放配置。
 abstract class ShowConfigAbs {
   late bool nextBtn;
   late bool speedBtn;
@@ -30,6 +31,7 @@ abstract class ShowConfigAbs {
   late bool isAutoPlay;
 }
 
+/// 标记实现者可处理播放器更换视频源的行为。
 class WithPlayerChangeSource {}
 
 String _duration2String(Duration duration) {
@@ -48,18 +50,45 @@ String _duration2String(Duration duration) {
       : "$twoDigitMinutes:$twoDigitSeconds";
 }
 
+/// 为 [player] 提供视频播放控制、选集和锁屏交互的自定义面板。
+///
+/// [viewSize] 和 [texturePos] 描述播放器画面位置；[showConfig] 控制可见功能；
+/// [videoFormat]、[curTabIdx] 与 [curActiveIdx] 确定当前视频来源和选中项。
 class CustomFijkPanel extends StatefulWidget {
+  /// 面板所控制的播放器实例。
   final FijkPlayer player;
+
+  /// 播放器视图尺寸。
   final Size viewSize;
+
+  /// 播放器纹理在页面中的位置。
   final Rect texturePos;
+
+  /// 面板所在的可选页面上下文。
   final BuildContext? pageContent;
+
+  /// 面板显示的播放器标题。
   final String playerTitle;
+
+  /// 切换视频后调用的可选回调。
   final Function? onChangeVideo;
+
+  /// 当前视频源标签的索引。
   final int curTabIdx;
+
+  /// 当前标签内视频的索引。
   final int curActiveIdx;
+
+  /// 面板控制项与自动播放的配置。
   final ShowConfigAbs showConfig;
+
+  /// 当前视频源格式和候选视频列表。
   final VideoSourceFormat? videoFormat;
 
+  /// 创建自定义播放器面板。
+  ///
+  /// [pageContent] 为可选的页面上下文，[playerTitle] 为显示标题；
+  /// [onChangeVideo] 会在切换视频时调用。
   const CustomFijkPanel({
     Key? key,
     required this.player,

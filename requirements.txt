@@ -1,0 +1,2 @@
+# 仅供 example/upload_app.py 使用的 Python 依赖。
+fundrive>=2.0.89

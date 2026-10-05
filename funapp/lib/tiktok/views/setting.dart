@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:funapp/page/route.dart';
 
+/// 展示应用设置页。
+///
+/// 不接收额外参数，页面内负责提供网络、开发者模式和 SecretKey 配置项。
 class AppSettings extends StatefulWidget {
+  /// 创建应用设置页。
   const AppSettings({Key? key}) : super(key: key);
 
   @override

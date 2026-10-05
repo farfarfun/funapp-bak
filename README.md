@@ -24,6 +24,24 @@ flutter run
 
 更详细的说明（页面导航、后端 token 配置）见 [`funapp/README.md`](funapp/README.md)。
 
+## Python 上传脚本
+
+`example/upload_app.py` 使用 `fundrive` 将 release APK 上传到蓝奏云。安装依赖后运行：
+
+```bash
+python -m pip install -r requirements.txt
+python example/upload_app.py [apk 路径]
+```
+
+可通过 `LANZOU_FOLDER_ID` 环境变量指定目标文件夹；认证信息由 `fundrive` 管理。
+
+## 第三方声明
+
+`funapp/lib/tiktok/other/bottom_sheet.dart` 基于 Chromium Authors 的 BSD-3-Clause
+许可代码修改而来，来源为 [Chromium 源码库](https://chromium.googlesource.com/chromium/src/)。其完整许可文本与修改说明见
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)；该第三方许可不受本仓库 MIT
+许可证替代。
+
 ## 打包
 
 [打包参考](https://xie.infoq.cn/article/7b10cb8ef48310eda845bbfcd)
