@@ -112,7 +112,7 @@ class _AppSettingsState extends State<AppSettings> {
             //   borderColor: Colors.blueAccent,
             //   errorColor: Colors.deepOrangeAccent,
             // ),
-            const SimpleSettingsTile(
+            SimpleSettingsTile(
               title: 'SecretKey',
               subtitle:
                   'Use --dart-define=FUNAPP_SECRET_KEY=... when starting the app',
