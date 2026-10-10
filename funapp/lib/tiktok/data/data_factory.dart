@@ -2,16 +2,22 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:funapp/common/domain/base.dart';
 import 'package:funapp/common/domain/generate.dart';
+
+/// 由构建命令注入的后端访问密钥，绝不持久化到应用普通设置中。
+const String configuredSecretKey = String.fromEnvironment('FUNAPP_SECRET_KEY');
 
 /// 通过后端接口读取和更新短视频资源数据。
 class DataGenerate {
   String baseUrl;
+  final String _secretKey;
 
   /// 创建使用 [baseUrl] 作为接口根地址的数据访问对象。
-  DataGenerate(this.baseUrl) {}
+  ///
+  /// [secretKey] 未传入时读取 `FUNAPP_SECRET_KEY` 编译期定义。
+  DataGenerate(this.baseUrl, {String? secretKey})
+      : _secretKey = secretKey ?? configuredSecretKey;
 
   /// 向相对路径 [uri] 发起 GET 请求，并附带可选的 [queryParameters]。
   ///
@@ -21,19 +27,16 @@ class DataGenerate {
     return Dio().get(baseUrl + uri, queryParameters: queryParameters);
   }
 
-  /// 从设置中读取访问后端接口用的 token。
+  /// 返回访问后端接口用的 token。
   ///
-  /// 不再提供硬编码默认值：用户必须在「设置」页里自行配置
-  /// `notetiktok-video-secret-key`，缺失时直接报错，避免所有安装共用同一个
-  /// 内置默认凭据。
+  /// 不提供硬编码默认值，也不从普通应用设置读取凭据。缺失时直接报错，避免
+  /// 所有安装共用内置凭据或将密钥明文持久化。
   String _requireSecretKey() {
-    final token = Settings.getValue<String>('notetiktok-video-secret-key',
-        defaultValue: '');
-    if (token == null || token.isEmpty) {
+    if (_secretKey.trim().isEmpty) {
       throw StateError(
-          '未配置 notetiktok-video-secret-key，请先在「设置」页填写 SecretKey 后再试');
+          '未配置 FUNAPP_SECRET_KEY，请通过 --dart-define=FUNAPP_SECRET_KEY=... 注入后再试');
     }
-    return token;
+    return _secretKey;
   }
 
   /// 分页获取视频资源。

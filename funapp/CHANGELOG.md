@@ -1,4 +1,12 @@
 
+## NEXT
+
+### 变更
+
+* **破坏性变更**：tiktok 的 `SecretKey` 不再可在设置页保存到普通应用设置。请将原有密钥改为
+  `flutter run --dart-define=FUNAPP_SECRET_KEY=...`（CI/CD 同样传入该 `--dart-define`）；首次升级
+  启动会删除旧的 `notetiktok-video-secret-key` 明文设置项
+
 ## 0.3.7
 
 ### 新增

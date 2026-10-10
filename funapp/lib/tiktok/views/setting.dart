@@ -112,20 +112,11 @@ class _AppSettingsState extends State<AppSettings> {
             //   borderColor: Colors.blueAccent,
             //   errorColor: Colors.deepOrangeAccent,
             // ),
-            TextInputSettingsTile(
+            const SimpleSettingsTile(
               title: 'SecretKey',
-              settingKey: 'notetiktok-video-secret-key',
-              // 不再内置默认凭据：留空强制用户自行配置，
-              // 缺失时 DataGenerate 会直接报错提示来这里填写。
-              initialValue: '',
-              validator: (String? secretKey) {
-                if (secretKey != null && secretKey.length > 3) {
-                  return null;
-                }
-                return "User Name can't be smaller than 4 letters";
-              },
-              borderColor: Colors.blueAccent,
-              errorColor: Colors.deepOrangeAccent,
+              subtitle:
+                  'Use --dart-define=FUNAPP_SECRET_KEY=... when starting the app',
+              enabled: false,
             ),
             ModalSettingsTile(
               title: 'Quick setting dialog',

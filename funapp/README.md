@@ -26,9 +26,15 @@ flutter run -d chrome
 
 其中 tiktok 相关页面需要连接一个后端资源接口（默认地址为本机 `http://127.0.0.1:8446/`，可用
 `--dart-define=FUNAPP_API_URL=https://example.invalid/` 覆盖），
-并需要在应用内「设置」页填写 `SecretKey`（对应后端接口的 `token`）后才能正常拉取数据。
-应用不内置默认密钥：未填写时 `DataGenerate` 会抛 `StateError` 并提示去「设置」页配置，
-不会拿一个所有安装共用的内置凭据去请求后端。
+并需要在启动时注入 `SecretKey`（对应后端接口的 `token`）后才能正常拉取数据：
+
+```bash
+flutter run --dart-define=FUNAPP_SECRET_KEY=your-secret-key
+```
+
+应用不内置默认密钥，也不会将其写入普通应用设置；未注入时 `DataGenerate` 会抛
+`StateError`。升级自 0.3.7 或更早版本时，旧的设置页密钥会在首次启动时删除，请改用
+上述启动参数或由 CI/CD 注入同名 `--dart-define`。
 
 ## 检查与测试
 
