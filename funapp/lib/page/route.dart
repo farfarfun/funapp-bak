@@ -14,10 +14,17 @@ import 'package:funapp/tiktok/views/setting.dart';
 
 ValueNotifier themeMode = ValueNotifier(2);
 
+/// 提供跳转到指定路由的首页入口。
+///
+/// [title] 为按钮文本，[route] 为目标路由。
 class RouteItem extends StatefulWidget {
+  /// 按钮展示文本。
   final String title;
+
+  /// 点击后跳转的路由。
   final String route;
 
+  /// 使用 [title] 和目标 [route] 创建路由入口。
   const RouteItem(this.title, this.route, {Key? key}) : super(key: key);
 
   @override
